@@ -1,14 +1,14 @@
 # 📦 Estoque Mobile
 
 ## 👥 Integrantes do Grupo
-* **Carlos Henrique de Araujo Nunes** - GitHub: [CarlosHenriiique021](https://github.com/CarlosHenriiique021))
+* **Carlos Henrique de Araujo Nunes** - GitHub: [CarlosHenriiique021](https://github.com/CarlosHenriiique021)
 * **Matheus de Matos Paes da Silva** - GitHub: [MatheusDev0705](https://github.com/MatheusDev0705)
 * **Flávio Leandro Cézar Ferreira de Lima** - GitHub: [agregor2012](https://github.com/agregor2012)
 
 ---
 
 ## 📄 Descrição do Sistema
-O **[Nome da Aplicação]** é uma aplicação mobile desenvolvida em React Native para a disciplina de Desenvolvimento Mobile. O objetivo principal do projeto é oferecer um **Sistema de Gerenciamento de Estoque e Usuários**, unindo uma experiência de navegação fluida com a persistência de dados local.
+O **Estoque Mobile** é uma aplicação mobile desenvolvida em React Native para a disciplina de Desenvolvimento Mobile. O objetivo principal do projeto é oferecer um **Sistema de Gerenciamento de Estoque e Usuários**, unindo uma experiência de navegação fluida com a persistência de dados local.
 
 O aplicativo conta com controle de autenticação simulada, permitindo que múltiplos usuários se cadastrem e gerenciem seus perfis. Na área logada, o sistema oferece um CRUD completo para o controle de produtos (estoque), além de telas institucionais para apresentação da equipe de desenvolvedores e contato direto via API do WhatsApp.
 
