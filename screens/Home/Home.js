@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, Tou
 import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../../style';
+import { ola } from '../../services/storage';
 
 export default function Home() {
 
@@ -10,7 +11,9 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-            <Text>Home</Text>
+            <TouchableOpacity>
+            <Text onPress={ola}>Home</Text>
+            </TouchableOpacity>
         </View>
     )
 };
