@@ -5,9 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from '../../style';
 import { ola } from '../../services/storage';
 
-export default function Home() {
-
-    const navigation = useNavigation();
+export default function Home({navigation}) {
 
     return (
         <View style={styles.container}>

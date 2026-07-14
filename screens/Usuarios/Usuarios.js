@@ -4,9 +4,7 @@ import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../../style';
 
-export default function Usuarios() {
-
-    const navigation = useNavigation();
+export default function Usuarios({navigation}) {
 
     return (
         <View style={styles.container}>

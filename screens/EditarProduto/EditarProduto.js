@@ -4,9 +4,7 @@ import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../../style';
 
-export default function EditarProduto() {
-
-    const navigation = useNavigation();
+export default function EditarProduto({navigation}) {
 
     return (
         <View style={styles.container}>
