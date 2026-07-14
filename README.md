@@ -4,7 +4,7 @@
 * **Carlos Henrique de Araujo Nunes** - GitHub: [CarlosHenriiique021](https://github.com/CarlosHenriiique021)
 * **Matheus de Matos Paes da Silva** - GitHub: [MatheusDev0705](https://github.com/MatheusDev0705)
 * **Flávio Leandro Cézar Ferreira de Lima** - GitHub: [agregor2012](https://github.com/agregor2012)
-
+* **Flávio Leandro Cézar Ferreira de Lima** - GitHub: [Kayo-Dantas](https://github.com/Kayo-Dantas)
 ---
 
 ## 📄 Descrição do Sistema
