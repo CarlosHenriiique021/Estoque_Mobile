@@ -11,7 +11,7 @@ import CadastroUsuario from './screens/CadastroUsuario/CadastroUsuario';
 import CadastroProduto from './screens/CadastroProduto/CadastroProduto';
 import Desenvolvedores from './screens/Desenvolvedores/Desenvolvedores';
 import EditarProduto from './screens/EditarProduto/EditarProduto';
-import EditarUsuario from './screens/EditarUsario/EditarUsuario';
+import EditarUsuario from './screens/EditarUsuario/EditarUsuario';
 import FaleConosco from './screens/FaleConosco/FaleConosco';
 import Perfil from './screens/Perfil/Perfil';
 import Produtos from './screens/Produtos/Produtos';
