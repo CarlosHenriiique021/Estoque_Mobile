@@ -7,8 +7,8 @@ import { styles } from '../../style';
 export default function Usuarios({navigation}) {
 
     return (
-        <View style={styles.container}>
-            <Text>Usuarios</Text>
+        <View style={styles.viewPrincipal}>
+            
         </View>
     )
 };

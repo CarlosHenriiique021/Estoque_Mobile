@@ -7,8 +7,8 @@ import { styles } from '../../style';
 export default function Desenvolvedores({navigation}) {
 
     return (
-        <View style={styles.container}>
-            <Text>Desenvolvedores</Text>
+        <View style={styles.viewPrincipal}>
+            
         </View>
     )
 };

@@ -1,26 +1,23 @@
 import { StyleSheet } from 'react-native';
 
+const colors = {
+  primary: '#01071b',    // Azul Escuro Profissional
+};
+
 export const styles = StyleSheet.create({
-  container: {
+  viewPrincipal: {
     flex: 1,
-    backgroundColor: '#b8b4b4',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.primary,
+    justifyContent: 'center'
   },
-  
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#333',
+
+  texto1: {
+    color: 'red',
+    fontSize: 90
   },
-  button: {
-    marginTop: 20,
-    padding: 15,
-    backgroundColor: '#007AFF',
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
+
+   texto2: {
+    color: 'white',
+    fontFamily: 'GoogleSans_500Medium '
   }
 });

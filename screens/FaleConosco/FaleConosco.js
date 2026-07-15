@@ -7,8 +7,8 @@ import { styles } from '../../style';
 export default function FaleConosco({navigation}) {
 
     return (
-        <View style={styles.container}>
-            <Text>Fale Conosco</Text>
+        <View style={styles.viewPrincipal}>
+            
         </View>
     )
 };

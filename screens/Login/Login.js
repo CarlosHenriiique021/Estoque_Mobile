@@ -7,8 +7,8 @@ import { styles } from '../../style';
 export default function Login({ navigation }) {
 
     return (
-        <View style={styles.container}>
-            <Text>Login</Text>
+        <View style={styles.viewPrincipal}>
+            
         </View>
     )
 };

@@ -2,6 +2,18 @@ import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Touchable, 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { useState } from 'react';
 
+export function fonte() {
+
+    let [fontsLoaded] = useFonts({
+    GoogleSans_400Regular,
+    GoogleSans_500Medium,
+  });
+
+  if (!fontsLoaded) {
+    return <ActivityIndicator />;
+  };
+}
+
 async function salvarUsuario() {
 
     try {

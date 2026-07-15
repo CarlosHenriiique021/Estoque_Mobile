@@ -7,8 +7,8 @@ import { styles } from '../../style';
 export default function CadastroProduto({navigation}) {
 
     return (
-        <View style={styles.container}>
-            <Text>CadastroProduto</Text>
+        <View style={styles.viewPrincipal}>
+            
         </View>
     )
 };

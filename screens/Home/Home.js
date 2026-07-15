@@ -8,10 +8,8 @@ import { ola } from '../../services/storage';
 export default function Home({navigation}) {
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity>
-            <Text onPress={ola}>Home</Text>
-            </TouchableOpacity>
+        <View style={styles.viewPrincipal}>
+            
         </View>
     )
 };
