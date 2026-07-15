@@ -522,3 +522,38 @@
 {"_e":"metro:client_log","_t":1783988065018,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
 {"_e":"metro:client_log","_t":1783988065019,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
 {"_e":"metro:client_log","_t":1783988066982,"level":"log","data":["Hello World"]}
+{"_e":"root:init","_t":1784132972939,"format":"v0-jsonl","version":"57.0.8"}
+{"_e":"env:mode","_t":1784132972941,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1784132972948,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1784132973821,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1784132974851,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1784132975522,"plugins":[]}
+{"_e":"metro:instantiate","_t":1784132984435,"atlas":false,"workers":3,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1784132991124,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1784132991125,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1784132991142,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1784132991244,"id":"1","progress":0.33851239669421485,"total":55,"current":32}
+{"_e":"metro:bundling:progress","_t":1784132991350,"id":"1","progress":0.765625,"total":72,"current":63}
+{"_e":"metro:bundling:progress","_t":1784132991451,"id":"1","progress":0.765625,"total":86,"current":73}
+{"_e":"metro:bundling:progress","_t":1784132991553,"id":"1","progress":0.765625,"total":133,"current":112}
+{"_e":"metro:bundling:progress","_t":1784132991654,"id":"1","progress":0.7971938775510204,"total":140,"current":125}
+{"_e":"metro:bundling:progress","_t":1784132991755,"id":"1","progress":0.8202207191171236,"total":159,"current":144}
+{"_e":"metro:bundling:progress","_t":1784132991860,"id":"1","progress":0.9888580256546299,"total":179,"current":178}
+{"_e":"metro:bundling:progress","_t":1784132993275,"id":"1","progress":0.999,"total":179,"current":179}
+{"_e":"metro:bundling:progress","_t":1784132993399,"id":"1","progress":0.999,"total":215,"current":185}
+{"_e":"metro:bundling:progress","_t":1784132993499,"id":"1","progress":0.999,"total":307,"current":215}
+{"_e":"metro:bundling:progress","_t":1784132993600,"id":"1","progress":0.999,"total":326,"current":239}
+{"_e":"metro:bundling:progress","_t":1784132993704,"id":"1","progress":0.999,"total":372,"current":277}
+{"_e":"metro:bundling:progress","_t":1784132993804,"id":"1","progress":0.999,"total":413,"current":313}
+{"_e":"metro:bundling:progress","_t":1784132993904,"id":"1","progress":0.999,"total":500,"current":365}
+{"_e":"metro:bundling:progress","_t":1784132994004,"id":"1","progress":0.999,"total":534,"current":450}
+{"_e":"metro:bundling:progress","_t":1784132994104,"id":"1","progress":0.999,"total":564,"current":499}
+{"_e":"metro:bundling:progress","_t":1784132994204,"id":"1","progress":0.999,"total":583,"current":552}
+{"_e":"metro:bundling:progress","_t":1784132994307,"id":"1","progress":0.999,"total":593,"current":586}
+{"_e":"metro:bundling:progress","_t":1784132994407,"id":"1","progress":0.999,"total":593,"current":591}
+{"_e":"metro:bundling:progress","_t":1784132995247,"id":"1","progress":0.999,"total":593,"current":592}
+{"_e":"metro:bundling:done","_t":1784132995369,"id":"1","total":593,"ms":4243.9608}
+{"_e":"metro:client_log","_t":1784132995975,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1784132995976,"level":"log","data":["{}"]}
+{"_e":"metro:client_log","_t":1784132995976,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1784132995977,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
