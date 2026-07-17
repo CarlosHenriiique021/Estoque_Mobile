@@ -20,7 +20,7 @@ import Usuarios from './screens/Usuarios/Usuarios';
 
 
 const Tab = createBottomTabNavigator();
-console.log(localStorage);
+
 
 export default function App() {
 

@@ -5,13 +5,19 @@ const colors = {
 };
 
 export const styles = StyleSheet.create({
-
   viewPrincipal: {
     flex: 1,
     backgroundColor: '#fff',
     paddingHorizontal: 30,
     justifyContent: 'flex-start',
     paddingTop: 20,
+  },
+
+  logotipo: {
+    width: 180,
+    height: 180,
+    alignSelf: 'center',
+    marginBottom: 5,
   },
 
   textoLogo: {
@@ -49,13 +55,27 @@ export const styles = StyleSheet.create({
     marginBottom: 6,
   },
 
-  button: {
-    backgroundColor: '#2563eb',
+  input: {
+    color: '#000',
+    backgroundColor: colors.primary,
     height: 50,
     borderRadius: 10,
+    paddingHorizontal: 15,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: '#6b6b6be1',
+    marginTop: 5,
+  },
+
+  button: {
+    width: '65%',
+    backgroundColor: '#2563eb',
+    height: 50,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
+    alignSelf: 'center',
   },
 
   textoButton: {
@@ -65,6 +85,10 @@ export const styles = StyleSheet.create({
   },
 
   areaCadastro: {
+    marginTop: 25,
+  },
+
+  arealogin: {
     flexDirection: 'row',
     justifyContent: 'center',
     marginTop: 25,
@@ -80,11 +104,20 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  logotipo: {
-    width: 180,
-    height: 180,
-    alignSelf: 'center',
-    marginBottom: 5,
+  login: {
+    color: '#2563eb',
+    fontWeight: 'bold',
   },
 
+  textotitulo: {
+    fontSize: 35,
+    color: '#ffffff',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+
+  subtitulo: {
+    marginTop: -10,
+    paddingHorizontal: 20,
+  },
 });
