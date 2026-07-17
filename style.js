@@ -9,16 +9,18 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.primary,
     justifyContent: 'center',
+    alignItems: 'center'
   },
 
   texto: {
     color: 'white',
     fontFamily: 'poppins',
-    fontWeight: 'semibold',
+    fontSize: 20,
     padding: 5,
-    marginTop: 5
+    marginTop: 8
   },
   input: {
+    color: '#ffff',
     backgroundColor: colors.primary,
     height: 50,
     borderRadius: 10,
@@ -26,11 +28,14 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     borderWidth: 1,
     borderColor: '#6b6b6be1',
+    marginTop: 5
   },
+
   button: {
- backgroundColor: '#2563eb',
+    width: '65%',
+    backgroundColor: '#2563eb',
     height: 50,
-    borderRadius: 10,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
@@ -54,7 +59,7 @@ export const styles = StyleSheet.create({
   textoConta: {
     color: 'whitesmoke',
   },
-  textosubtitulo: {
+  textotitulo: {
     fontSize: 35,
     color: '#ffffff',
     fontWeight: 'bold',
