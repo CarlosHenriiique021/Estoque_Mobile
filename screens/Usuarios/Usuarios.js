@@ -19,7 +19,7 @@ const [usuarios, setUsuarios] = useState ([])
     return (
         
         
-            <View style={{ flex: 1, padding: 20 }}>
+            <View style={{padding: 20, backgroundColor: '#01071b' }}>
             <FlatList
             data={usuarios}
             keyExtractor={(item, index) => index.toString()}
@@ -28,11 +28,26 @@ const [usuarios, setUsuarios] = useState ([])
                         padding: 15,
                         borderWidth: 1,
                         borderRadius: 10,
-                        marginBottom: 10
+                        marginBottom: 10,
+                        backgroundColor: '#010322'
                     }}>
-                        <Text>Nome: {item.nome}</Text>
-                        <Text>Email: {item.email}</Text>
-                        <Text>Senha: {item.senha}</Text>
+                        <Text style = {{
+                            color: '#ffff',
+                            fontSize: 23,
+                            fontFamily: 'Montserrat'    }}>
+                                {item.nome}</Text>
+
+                        <Text style = {{
+                            color: '#6b7280',
+                            fontSize: 20,
+                            fontFamily: 'Montserrat'
+                        }}>{item.email}</Text>
+
+                        <Text style = {{
+                            color: '#6b7280',
+                            fontSize: 20,
+                            fontFamily: 'Montserrat'
+                        }}>Senha: {item.senha}</Text>
                     </View>
                 )}
                 />
