@@ -2,9 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity } from 'react-native';
 import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from '../../style';
+import { styles } from '../../styles/style';
+import { ola } from '../../services/storage';
 
-export default function EditarUsuario({navigation}) {
+export default function Home({navigation}) {
 
     return (
         <View style={styles.viewPrincipal}>
@@ -12,4 +13,3 @@ export default function EditarUsuario({navigation}) {
         </View>
     )
 };
-

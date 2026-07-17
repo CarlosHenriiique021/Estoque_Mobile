@@ -1,22 +1,20 @@
-import { StyleSheet, Text, View, Image, FlatList, FlatListComponent } from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage"
-
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Home from './screens/Home/Home';
-import Login from './screens/Login/Login';
-import CadastroUsuario from './screens/CadastroUsuario/CadastroUsuario';
-import CadastroProduto from './screens/CadastroProduto/CadastroProduto';
-import Desenvolvedores from './screens/Desenvolvedores/Desenvolvedores';
-import EditarProduto from './screens/EditarProduto/EditarProduto';
-import EditarUsuario from './screens/EditarUsuario/EditarUsuario';
-import FaleConosco from './screens/FaleConosco/FaleConosco';
-import Perfil from './screens/Perfil/Perfil';
-import Produtos from './screens/Produtos/Produtos';
-import Usuario from './screens/Usuarios/Usuarios';
-import Usuarios from './screens/Usuarios/Usuarios';
+
+import Home from './src/screens/Home/Home';
+import Login from './src/screens/Login/Login';
+import CadastroUsuario from './src/screens/CadastroUsuario/CadastroUsuario';
+import CadastroProduto from './src/screens/CadastroProduto/CadastroProduto';
+import Desenvolvedores from './src/screens/Desenvolvedores/Desenvolvedores';
+import EditarProduto from './src/screens/EditarProduto/EditarProduto';
+import EditarUsuario from './src/screens/EditarUsuario/EditarUsuario';
+import FaleConosco from './src/screens/FaleConosco/FaleConosco';
+import Perfil from './src/screens/Perfil/Perfil';
+import Produtos from './src/screens/Produtos/Produtos';
+import Usuarios from './src/screens/Usuarios/Usuarios';
+
 
 
 const Tab = createBottomTabNavigator();

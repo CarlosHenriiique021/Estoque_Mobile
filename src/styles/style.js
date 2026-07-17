@@ -48,6 +48,25 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
   },
 
+  textoCadastro: {
+    fontSize: 22,
+    color: 'black',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+
+  textoCadastroInput: {
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#d1d5db',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    fontSize: 16,
+    color: '#000000',
+    backgroundColor: '#ffffff',
+    marginBottom: 15,
+  },
+
   texto: {
     color: '#111827',
     fontSize: 15,
@@ -81,11 +100,14 @@ export const styles = StyleSheet.create({
   textoButton: {
     color: '#ffffff',
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 18,
   },
 
   areaCadastro: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     marginTop: 25,
+    gap: 5,
   },
 
   arealogin: {
@@ -109,15 +131,55 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  textotitulo: {
-    fontSize: 35,
-    color: '#ffffff',
+  subtitulo: {
+    marginTop: -10,
+    paddingHorizontal: 20,
+  },
+  headerCadastro: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    width: '100%',
+    height: 50,
+    position: 'relative',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+
+  containerTextoHeader: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  textoCadastro: {
+    fontSize: 24,
+    color: '#000000',
     fontWeight: 'bold',
     textAlign: 'center',
   },
 
-  subtitulo: {
-    marginTop: -10,
-    paddingHorizontal: 20,
+  botaoVoltar: {
+    position: 'absolute',
+    left: 0,
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+  },
+
+  setaVoltar: {
+    fontSize: 38,
+    color: '#000000',
+    fontWeight: '300',
+    fontFamily: 'sans-serif',
+    textAlignVertical: 'center',
+    lineHeight: 40,
+  },
+
+  textoCadastro: {
+    fontSize: 22,
+    color: 'black',
+    fontWeight: '600',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

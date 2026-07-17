@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput } from 'react-native';
 import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from '../../style';
+import { styles } from '../../styles/style';
+
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
@@ -12,7 +13,8 @@ export default function Login({ navigation }) {
         <View style={styles.viewPrincipal}>
 
             <Image style={styles.logotipo}
-                source={require('../../assets/images/logo.png')}
+                source={require('../../../assets/images/logo.png')}
+
                 style={styles.logotipo}
             />
             <Text style={styles.textoLogo}>Estoque Mobile</Text>
@@ -24,6 +26,7 @@ export default function Login({ navigation }) {
             <TextInput
                 style={styles.textoLogin1}
                 placeholder="seuemail@exemplo.com"
+                placeholderTextColor='gray'
                 value={email}
                 onChangeText={setEmail}
             />
@@ -33,6 +36,7 @@ export default function Login({ navigation }) {
             <TextInput
                 style={styles.textoLogin1}
                 placeholder="Digite sua senha"
+                placeholderTextColor='gray'
                 value={senha}
                 onChangeText={setSenha}
                 secureTextEntry
@@ -49,7 +53,7 @@ export default function Login({ navigation }) {
                     Não tem uma conta?
                 </Text>
 
-                <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
+                <TouchableOpacity onPress={() => navigation.navigate('CadastroUsuario')}>
                     <Text style={styles.cadastro}>
                         Criar conta
                     </Text>
