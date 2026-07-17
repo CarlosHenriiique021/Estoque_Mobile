@@ -10,6 +10,7 @@ import { styles } from '../../style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CadastroUsuario({navigation}) {
+
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -18,22 +19,27 @@ export default function CadastroUsuario({navigation}) {
  async function cadastrar() {
     
     if (!nome || !email || !senha || !confirmarSenha) {
-        alert('Preencher tudo')
+        alert('Todos os campos devem ser preenchidos.');
         return;
     }
 
     if (senha !== confirmarSenha) {
-        alert('As senhas não são iguais')
+        alert('As senhas não coincidem.');  
         return;
     }
 
     if (senha.length < 6) {
-    alert('Erro: A senha deve ter pelo menos 6 caracteres.');
+    alert('A senha deve ter no mínimo 6 caracteres.');
     return;
 }
 
         alert('Cadastro realizado!')
-        
+
+        setNome('');
+        setEmail('');
+        setSenha('');
+        setConfirmarSenha('');
+
         const usuario = {
     nome: nome,
     email: email,
