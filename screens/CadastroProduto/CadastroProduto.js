@@ -1,10 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput } from 'react-native';
 import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../../style';
 
 export default function CadastroProduto({ navigation }) {
+
+    const [nomeProduto, setNomeProduto] = useState('');
+    const [categoria, setCategoria] = useState('');
+    const [quantidade, setQuantidade] = useState('');
+    const [valor, setValor] = useState(0);
+
+    async function salvarProduto(){
+        try {
+            const novoProduto = {
+                id: Date.now().toString,
+                nomeProduto,
+                categoria,
+                quantidade,
+                valor,
+            }
+        } catch {
+
+        }
+    };
 
     return (
         <View style={styles.container}>
