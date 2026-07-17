@@ -20,8 +20,6 @@ export const styles = StyleSheet.create({
     marginBottom: 30
   },
 
-
-
   logo: {
     width: 300,
     height: 300,
@@ -49,17 +47,7 @@ export const styles = StyleSheet.create({
     paddingTop: 10
   },
 
-  textoCifrao: {
-    fontSize: 17,
-    padding: 10,
-    backgroundColor: colors.secondary,
-    borderBottomLeftRadius: 5,
-    borderTopLeftRadius: 5,
-    marginTop: 2,
-    borderWidth: 1,
-    borderColor: 'black',
-    color: 'white'
-  },
+
 
   textoInput: {
     fontSize: 17,
@@ -73,6 +61,21 @@ export const styles = StyleSheet.create({
     borderColor: 'black',
   },
 
+  textoCifrao: {
+    fontSize: 17,
+    padding: 10,
+    backgroundColor: colors.secondary,
+    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: 5,
+    marginTop: 2,
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 0,
+    borderColor: 'black',
+    color: 'white'
+  },
+
   textoInputValor: {
     fontSize: 17,
     paddingVertical: 10,
@@ -84,7 +87,6 @@ export const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: colors.secondary,
     borderWidth: 1,
-    borderLeftWidth: -1,
     borderColor: 'black',
   },
 
