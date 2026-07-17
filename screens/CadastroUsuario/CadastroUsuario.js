@@ -4,7 +4,8 @@ import {
     View,
     TouchableOpacity,
     TextInput,
-    Alert 
+    Alert,
+
 } from 'react-native';
 import { styles } from '../../style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -33,30 +34,28 @@ export default function CadastroUsuario({navigation}) {
     return;
 }
 
-        alert('Cadastro realizado!')
+        
 
-        setNome('');
-        setEmail('');
-        setSenha('');
-        setConfirmarSenha('');
-
-        const usuario = {
+        const novoUsuario  = {
     nome: nome,
     email: email,
     senha: senha
-}
-       await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
+};
+        const json = await AsyncStorage.getItem('usuarios');
+        const usuarios = json ? JSON.parse(json) : [];
+         usuarios.push(novoUsuario);
+         
+        await AsyncStorage.setItem('usuarios', JSON.stringify(usuarios));  
 
+        alert('Cadastro realizado!');
+
+    setNome('');
+    setEmail('');
+    setSenha('');
+    setConfirmarSenha('');
+    
     }
 
-    async function mostrar() {
-
-      const json = await AsyncStorage.getItem('usuario');
-      const usuario = JSON.parse(json);
-     alert(
-    `Informações do Usuário\n\nNome: ${usuario.nome}\nEmail: ${usuario.email}\nSenha: ${usuario.senha}`
-  );
-}
     return (
     <View style={styles.viewPrincipal}>
 
@@ -119,15 +118,6 @@ export default function CadastroUsuario({navigation}) {
 
                 <Text style = {styles.textoButton}>
                     Cadastrar
-                </Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity  
-            style = {styles.button}
-            onPress={mostrar}
-            >
-                <Text style = {styles.textoButton}>
-                    Mostrar usuario
                 </Text>
             </TouchableOpacity>
    
