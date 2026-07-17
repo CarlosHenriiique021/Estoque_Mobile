@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput, Alert } from 'react-native';
+import {
+    Text,
+    View,
+    TouchableOpacity,
+    TextInput,
+    Alert 
+} from 'react-native';
 import { styles } from '../../style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -25,18 +31,20 @@ export default function CadastroUsuario({navigation}) {
     alert('Erro: A senha deve ter pelo menos 6 caracteres.');
     return;
 }
-    else {
+
         alert('Cadastro realizado!')
         
         const usuario = {
-        nome, email, senha
-        }
+    nome: nome,
+    email: email,
+    senha: senha
+}
        await AsyncStorage.setItem('usuario', JSON.stringify(usuario));
-    }
-     
+
     }
 
     async function mostrar() {
+
       const json = await AsyncStorage.getItem('usuario');
       const usuario = JSON.parse(json);
      alert(
@@ -81,7 +89,7 @@ export default function CadastroUsuario({navigation}) {
             style = {styles.input}  
             placeholder='Mínimo 6 caracteres'
             placeholderTextColor = 'gray'
-            secureTextEntry = {true}
+             secureTextEntry={true}
             value = {senha}
             onChangeText={setSenha}
             />
@@ -92,7 +100,7 @@ export default function CadastroUsuario({navigation}) {
             style = {styles.input}  
             placeholder='Confirme sua senha'
             placeholderTextColor= 'gray'
-            secureTextEntry = {true}
+             secureTextEntry={true}
             value = {confirmarSenha}
             onChangeText={setConfirmarSenha}
             />
