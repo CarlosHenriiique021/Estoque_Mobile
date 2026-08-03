@@ -26,20 +26,24 @@ const [usuarios, setUsuarios] = useState ([])
     return (
         
         
-            <View style={{flex: 1, padding: 20, backgroundColor: '#01071b' }}>
+            <View style={{flex: 1, padding: 20, backgroundColor: '#ffff' }}>
             <FlatList
             data={usuarios}
             keyExtractor={(item, index) => index.toString()}
             renderItem={({ item, index }) => (
                     <View style={{
                         padding: 15,
-                        borderWidth: 1,
                         borderRadius: 10,
+                        borderColor: '#000000',
                         marginBottom: 10,
-                        backgroundColor: '#010322'
+                        backgroundColor: '#ffffff',
+                        borderWidth: 1,
+                        borderColor: '#d1d5db',
+                        shadowRadius: 1,
+                        shadowOpacity: 2,
                     }}>
                         <Text style = {{
-                            color: '#ffff',
+                            color: '#000000',
                             fontSize: 23,
                             fontFamily: 'Montserrat'    }}>
                                 {item.nome}</Text>
@@ -55,15 +59,15 @@ const [usuarios, setUsuarios] = useState ([])
                             fontSize: 20,
                             fontFamily: 'Montserrat'
                         }}>{item.senha}</Text>
-                
-                        <TouchableOpacity>
+                <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 15, marginTop: 10 }}>
+                        <TouchableOpacity onPress={() => navigation.navigate('EditarUsuario')}>
                             <Ionicons name="pencil" size={24} color="#3b82f6" />
                         </TouchableOpacity>
 
                         <TouchableOpacity onPress={() => apagarUsuario(index)}>
                                 <Ionicons name="trash" size={24} color="#ef4444" />
                             </TouchableOpacity>
-                   
+                   </View>
                     </View>
                 )}
                 />

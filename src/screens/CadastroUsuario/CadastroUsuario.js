@@ -53,9 +53,13 @@ export default function CadastroUsuario({navigation}) {
     setEmail('');
     setSenha('');
     setConfirmarSenha('');
-    
-    }
 
+setTimeout(() => {
+    alert('Redirencionando para a tela de login...');
+        navigation.navigate('Login');
+
+    }, 1000);
+}
     return (
         <View style={styles.viewPrincipal}>
             <View style={styles.titulo}>
@@ -112,7 +116,7 @@ export default function CadastroUsuario({navigation}) {
                 onChangeText={setConfirmarSenha}
             />
 
-            {/* REMOVIDO: </View> */}
+
 
             <TouchableOpacity style={styles.button} onPress={cadastrar}>
                 <Text style={styles.textoButton}>Cadastrar</Text>
