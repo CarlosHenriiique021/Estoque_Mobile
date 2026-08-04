@@ -1,20 +1,51 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput } from 'react-native';
-import { Picker, ScrollView } from 'react-native-web';
-import { useNavigation } from '@react-navigation/native';
+import { Text , View , Image , TouchableOpacity , TextInput , Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from '../../styles/style';
-
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
 
+    async function trataLogin() {
+        console.log("1. Clicou no botão de login");
+
+        if (!email || !senha) {
+            alert('Preencha todos os campos!');
+            return;
+        }
+
+        try {
+            const dados = await AsyncStorage.getItem('usuarios');
+
+            if (!dados) {
+                alert('Nenhum usuário cadastrado no sistema!');
+                return;
+            }
+
+            const listaUsuarios = JSON.parse(dados);
+
+            const usuarioValido = listaUsuarios.find(
+                (user) => user.email.trim().toLowerCase() === email.trim().toLowerCase() && user.senha === senha
+            );
+
+            if (usuarioValido) {
+                alert(`Bem-vindo!`);
+                navigation.navigate('Home');
+            } else {
+                alert('E-mail ou senha incorretos!');
+            }
+
+        } catch (error) {
+            alert('Ocorreu um erro ao tentar fazer login.');
+        }
+    }
+
     return (
         <View style={styles.viewPrincipal}>
 
-            <Image style={styles.logotipo}
+            <Image
                 source={require('../../../assets/images/logo.png')}
-
                 style={styles.logotipo}
             />
             <Text style={styles.textoLogo}>Estoque Mobile</Text>
@@ -29,6 +60,8 @@ export default function Login({ navigation }) {
                 placeholderTextColor='gray'
                 value={email}
                 onChangeText={setEmail}
+                keyboardType="email-address"
+                autoCapitalize="none"
             />
 
             <Text style={styles.texto}>Senha</Text>
@@ -42,7 +75,7 @@ export default function Login({ navigation }) {
                 secureTextEntry
             />
 
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity style={styles.button} onPress={trataLogin}>
                 <Text style={styles.textoButton}>
                     Entrar
                 </Text>
@@ -60,8 +93,6 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
             </View>
 
-
         </View>
-    )
-};
-
+    );
+}
