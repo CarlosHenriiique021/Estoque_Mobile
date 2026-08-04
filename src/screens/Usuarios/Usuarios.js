@@ -39,26 +39,33 @@ const [usuarios, setUsuarios] = useState ([])
                         backgroundColor: '#ffffff',
                         borderWidth: 1,
                         borderColor: '#d1d5db',
-                        shadowRadius: 1,
-                        shadowOpacity: 2,
-                    }}>
+                        shadowRadius: 2,
+                        shadowOpacity: 1,
+                        shadowColor: '#000000',
+                        shadowOffset: { width: 1, height: 1 },
+                }}>
+
                         <Text style = {{
                             color: '#000000',
-                            fontSize: 23,
-                            fontFamily: 'Montserrat'    }}>
-                                {item.nome}</Text>
+                            fontSize: 28,
+                            fontFamily: 'Montserrat',
+                            fontWeight: 'bold'  
+                        }}>
+                            {item.nome} </Text>
 
                         <Text style = {{
                             color: '#6b7280',
                             fontSize: 20,
                             fontFamily: 'Montserrat'
-                        }}>{item.email}</Text>
+                        }}>
+                            {item.email}</Text>
 
                         <Text style = {{
                             color: '#6b7280',
                             fontSize: 20,
                             fontFamily: 'Montserrat'
-                        }}>{item.senha}</Text>
+                        }}>
+                            {item.senha}</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 15, marginTop: 10 }}>
                         <TouchableOpacity onPress={() => navigation.navigate('EditarUsuario')}>
                             <Ionicons name="pencil" size={24} color="#3b82f6" />
