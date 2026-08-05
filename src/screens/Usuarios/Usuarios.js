@@ -3,6 +3,7 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from '../../styles/style';
 import { Ionicons } from '@expo/vector-icons';
+
 export default function Usuarios({navigation}) {
 const [usuarios, setUsuarios] = useState ([])
 
@@ -67,7 +68,9 @@ const [usuarios, setUsuarios] = useState ([])
                         }}>
                             {item.senha}</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 15, marginTop: 10 }}>
-                        <TouchableOpacity onPress={() => navigation.navigate('EditarUsuario')}>
+                        <TouchableOpacity onPress={() => navigation.navigate('EditarUsuario',
+                            { usuario: item, index: index }
+                        )}>
                             <Ionicons name="pencil" size={24} color="#3b82f6" />
                         </TouchableOpacity>
 
