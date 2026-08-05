@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Text, View, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from '../../styles/style';
+
+import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Login({ navigation }) {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+
+    const { isDark, toggleTheme } = useTheme();
 
     async function trataLogin() {
         console.log("1. Clicou no botão de login");
@@ -42,34 +46,80 @@ export default function Login({ navigation }) {
     }
 
     return (
-        <View style={styles.viewPrincipal}>
+        // 3. Aplica cor de fundo dinâmica na View principal
+        <View style={[
+            styles.viewPrincipal, 
+            { backgroundColor: isDark ? '#121212' : '#FFFFFF' }
+        ]}>
+
+            {/* 4. Botão Flutuante de Tema no topo */}
+            <TouchableOpacity 
+                onPress={toggleTheme} 
+                style={{
+                    position: 'absolute',
+                    top: 40,
+                    right: 20,
+                    padding: 8,
+                    borderRadius: 20,
+                    backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0',
+                    zIndex: 10
+                }}
+            >
+                <Text style={{ fontSize: 16 }}>
+                    {isDark ? '☀️' : '🌙'}
+                </Text>
+            </TouchableOpacity>
 
             <Image
                 source={require('../../../assets/images/logo.png')}
                 style={styles.logotipo}
             />
-            <Text style={styles.textoLogo}>Estoque Mobile</Text>
+            
+            {/* Ajuste de cores dos textos para garantir legibilidade */}
+            <Text style={[styles.textoLogo, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                Estoque Mobile
+            </Text>
 
-            <Text style={styles.textoLogin}>Faça login para continuar</Text>
+            <Text style={[styles.textoLogin, { color: isDark ? '#AAAAAA' : '#666666' }]}>
+                Faça login para continuar
+            </Text>
 
-            <Text style={styles.texto}>E-mail</Text>
+            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                E-mail
+            </Text>
 
             <TextInput
-                style={styles.textoLogin1}
+                style={[
+                    styles.textoLogin1, 
+                    { 
+                        color: isDark ? '#FFFFFF' : '#000000',
+                        borderColor: isDark ? '#444444' : '#CCCCCC',
+                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
+                    }
+                ]}
                 placeholder="seuemail@exemplo.com"
-                placeholderTextColor='gray'
+                placeholderTextColor={isDark ? '#888888' : 'gray'}
                 value={email}
                 onChangeText={setEmail}
                 keyboardType="email-address"
                 autoCapitalize="none"
             />
 
-            <Text style={styles.texto}>Senha</Text>
+            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                Senha
+            </Text>
 
             <TextInput
-                style={styles.textoLogin1}
+                style={[
+                    styles.textoLogin1, 
+                    { 
+                        color: isDark ? '#FFFFFF' : '#000000',
+                        borderColor: isDark ? '#444444' : '#CCCCCC',
+                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
+                    }
+                ]}
                 placeholder="Digite sua senha"
-                placeholderTextColor='gray'
+                placeholderTextColor={isDark ? '#888888' : 'gray'}
                 value={senha}
                 onChangeText={setSenha}
                 secureTextEntry
@@ -82,7 +132,7 @@ export default function Login({ navigation }) {
             </TouchableOpacity>
 
             <View style={styles.areaCadastro}>
-                <Text style={styles.textoConta}>
+                <Text style={[styles.textoConta, { color: isDark ? '#CCCCCC' : '#333333' }]}>
                     Não tem uma conta?
                 </Text>
 

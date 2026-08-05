@@ -2256,3 +2256,179 @@
 {"_e":"metro:instantiate","_t":1784306570111,"atlas":false,"workers":8,"host":"::","port":8081}
 {"_e":"metro:client_log","_t":1784306580815,"level":"error","data":["Project is incompatible with this version of Expo Go\n\nThis project requires a newer version of Expo Go.\n\nHow to fix this error:\nDownload the latest version of Expo Go from the Play Store."]}
 >>>>>>> origin/matheus-CadastroUsuario
+{"_e":"root:init","_t":1785888544233,"format":"v0-jsonl","version":"57.0.9"}
+{"_e":"env:mode","_t":1785888544234,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1785888544237,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1785888544622,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1785888545033,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1785888545454,"plugins":[]}
+{"_e":"metro:instantiate","_t":1785888549633,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1785888558669,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785888558669,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1785888558673,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1785888559302,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1785888559403,"id":"1","progress":0.16000000000000003,"total":9,"current":4}
+{"_e":"metro:bundling:progress","_t":1785888560068,"id":"1","progress":0.25,"total":9,"current":5}
+{"_e":"metro:bundling:progress","_t":1785888560168,"id":"1","progress":0.3511659807956104,"total":27,"current":16}
+{"_e":"metro:bundling:progress","_t":1785888560271,"id":"1","progress":0.3511659807956104,"total":92,"current":28}
+{"_e":"metro:bundling:progress","_t":1785888560373,"id":"1","progress":0.3511659807956104,"total":121,"current":51}
+{"_e":"metro:bundling:progress","_t":1785888560475,"id":"1","progress":0.3511659807956104,"total":128,"current":74}
+{"_e":"metro:bundling:progress","_t":1785888560576,"id":"1","progress":0.3511659807956104,"total":193,"current":94}
+{"_e":"metro:bundling:progress","_t":1785888560683,"id":"1","progress":0.3511659807956104,"total":208,"current":105}
+{"_e":"metro:bundling:progress","_t":1785888560785,"id":"1","progress":0.3511659807956104,"total":262,"current":119}
+{"_e":"metro:bundling:progress","_t":1785888560885,"id":"1","progress":0.3511659807956104,"total":296,"current":139}
+{"_e":"metro:bundling:progress","_t":1785888560985,"id":"1","progress":0.3511659807956104,"total":321,"current":159}
+{"_e":"metro:bundling:progress","_t":1785888561092,"id":"1","progress":0.3511659807956104,"total":351,"current":176}
+{"_e":"metro:bundling:progress","_t":1785888561195,"id":"1","progress":0.3511659807956104,"total":371,"current":185}
+{"_e":"metro:bundling:progress","_t":1785888561298,"id":"1","progress":0.3511659807956104,"total":384,"current":202}
+{"_e":"metro:bundling:progress","_t":1785888561400,"id":"1","progress":0.3511659807956104,"total":400,"current":222}
+{"_e":"metro:bundling:progress","_t":1785888561500,"id":"1","progress":0.3511659807956104,"total":411,"current":243}
+{"_e":"metro:bundling:progress","_t":1785888561601,"id":"1","progress":0.382671714440238,"total":430,"current":266}
+{"_e":"metro:bundling:progress","_t":1785888561706,"id":"1","progress":0.47146892055469436,"total":434,"current":298}
+{"_e":"metro:bundling:progress","_t":1785888561807,"id":"1","progress":0.5240500945179585,"total":460,"current":333}
+{"_e":"metro:bundling:progress","_t":1785888561906,"id":"1","progress":0.5410874711966768,"total":503,"current":370}
+{"_e":"metro:bundling:progress","_t":1785888562006,"id":"1","progress":0.5827166249053086,"total":524,"current":400}
+{"_e":"metro:bundling:progress","_t":1785888562106,"id":"1","progress":0.6489197530864198,"total":540,"current":435}
+{"_e":"metro:bundling:progress","_t":1785888562208,"id":"1","progress":0.6565154503616042,"total":585,"current":474}
+{"_e":"metro:bundling:progress","_t":1785888562307,"id":"1","progress":0.7302479338842974,"total":605,"current":517}
+{"_e":"metro:bundling:progress","_t":1785888562408,"id":"1","progress":0.78819750148721,"total":615,"current":546}
+{"_e":"metro:bundling:progress","_t":1785888562508,"id":"1","progress":0.8695112746973254,"total":622,"current":580}
+{"_e":"metro:bundling:progress","_t":1785888562609,"id":"1","progress":0.9038178921702464,"total":649,"current":617}
+{"_e":"metro:bundling:progress","_t":1785888562709,"id":"1","progress":0.9328172848283064,"total":673,"current":650}
+{"_e":"metro:bundling:progress","_t":1785888562810,"id":"1","progress":0.997078160801614,"total":684,"current":683}
+{"_e":"metro:bundling:progress","_t":1785888563717,"id":"1","progress":0.999,"total":684,"current":684}
+{"_e":"metro:bundling:progress","_t":1785888563818,"id":"1","progress":0.999,"total":686,"current":686}
+{"_e":"metro:bundling:done","_t":1785888563906,"id":"1","total":686,"ms":5237.0512}
+{"_e":"metro:bundling:started","_t":1785888564081,"id":"3","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1785888564138,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785888572215,"level":"log","data":["1. Clicou no botão de login"]}
+{"_e":"metro:client_log","_t":1785888593566,"level":"log","data":["1. Clicou no botão de login"]}
+{"_e":"metro:client_log","_t":1785888594443,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1785888596455,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1785888613484,"id":"7","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:started","_t":1785888735149,"id":"8","platform":"web","environment":null,"entry":"src\\contexts\\ThemeContext.js"}
+{"_e":"metro:bundling:started","_t":1785888735150,"id":"9","platform":"web","environment":null,"entry":"App.js"}
+{"_e":"metro:bundling:started","_t":1785888737993,"id":"b","platform":"web","environment":null,"entry":"App.js"}
+{"_e":"metro:bundling:started","_t":1785888740483,"id":"c","platform":"web","environment":null,"entry":"App.js"}
+{"_e":"metro:bundling:started","_t":1785888744496,"id":"d","platform":"web","environment":null,"entry":"App.js"}
+{"_e":"metro:bundling:started","_t":1785888798927,"id":"e","platform":"web","environment":null,"entry":"src\\routes\\StackRoutes.js"}
+{"_e":"metro:bundling:started","_t":1785888803635,"id":"f","platform":"web","environment":null,"entry":"src\\routes\\StackRoutes.js"}
+{"_e":"metro:bundling:started","_t":1785888806840,"id":"g","platform":"web","environment":null,"entry":"src\\routes\\StackRoutes.js"}
+{"_e":"metro:bundling:started","_t":1785888807902,"id":"h","platform":"web","environment":null,"entry":"src\\routes\\StackRoutes.js"}
+{"_e":"metro:bundling:started","_t":1785888811302,"id":"i","platform":"web","environment":null,"entry":"src\\routes\\StackRoutes.js"}
+{"_e":"metro:bundling:started","_t":1785888814038,"id":"j","platform":"web","environment":null,"entry":"src\\routes\\StackRoutes.js"}
+{"_e":"metro:bundling:started","_t":1785888904309,"id":"k","platform":"web","environment":null,"entry":"src\\screens\\Login\\Login.js"}
+{"_e":"metro:bundling:started","_t":1785888911613,"id":"l","platform":"web","environment":null,"entry":"src\\screens\\Login\\Login.js"}
+{"_e":"metro:bundling:started","_t":1785888913311,"id":"m","platform":"web","environment":null,"entry":"src\\screens\\Login\\Login.js"}
+{"_e":"metro:bundling:started","_t":1785888914455,"id":"n","platform":"web","environment":null,"entry":"src\\screens\\Login\\Login.js"}
+{"_e":"metro:bundling:started","_t":1785888993736,"id":"o","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785888998892,"id":"p","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889003931,"id":"q","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889007010,"id":"r","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889009036,"id":"s","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889025977,"id":"t","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889028674,"id":"u","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889030122,"id":"v","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889032720,"id":"w","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889037460,"id":"x","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889040273,"id":"y","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889041973,"id":"z","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889043238,"id":"10","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889044938,"id":"11","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889046269,"id":"12","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889069303,"id":"13","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889074384,"id":"14","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889077684,"id":"15","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889079815,"id":"16","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889082394,"id":"17","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889090203,"id":"19","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889090203,"id":"19","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785889090227,"id":"19","total":1,"ms":23.5869}
+{"_e":"metro:bundling:started","_t":1785889090408,"id":"1a","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1785889090460,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"root:init","_t":1785889096804,"format":"v0-jsonl","version":"57.0.9"}
+{"_e":"env:mode","_t":1785889096805,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1785889096808,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1785889097146,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1785889097545,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"expo:dev-tools-plugin:load","_t":1785889097794,"plugins":[]}
+{"_e":"metro:instantiate","_t":1785889102039,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1785889103199,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889103200,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1785889103203,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1785889103846,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1785889103950,"id":"1","progress":0.04000000000000001,"total":8,"current":2}
+{"_e":"metro:bundling:progress","_t":1785889104052,"id":"1","progress":0.16000000000000003,"total":10,"current":4}
+{"_e":"metro:bundling:progress","_t":1785889104665,"id":"1","progress":0.25,"total":10,"current":5}
+{"_e":"metro:bundling:progress","_t":1785889104765,"id":"1","progress":0.25,"total":35,"current":17}
+{"_e":"metro:bundling:progress","_t":1785889104865,"id":"1","progress":0.25,"total":101,"current":31}
+{"_e":"metro:bundling:progress","_t":1785889104965,"id":"1","progress":0.2718240923369129,"total":117,"current":61}
+{"_e":"metro:bundling:progress","_t":1785889105067,"id":"1","progress":0.2718240923369129,"total":167,"current":86}
+{"_e":"metro:bundling:progress","_t":1785889105169,"id":"1","progress":0.2718240923369129,"total":240,"current":102}
+{"_e":"metro:bundling:progress","_t":1785889105269,"id":"1","progress":0.2718240923369129,"total":283,"current":131}
+{"_e":"metro:bundling:progress","_t":1785889105370,"id":"1","progress":0.2718240923369129,"total":305,"current":152}
+{"_e":"metro:bundling:progress","_t":1785889105471,"id":"1","progress":0.29478903985848165,"total":326,"current":177}
+{"_e":"metro:bundling:progress","_t":1785889105573,"id":"1","progress":0.330148652361039,"total":362,"current":208}
+{"_e":"metro:bundling:progress","_t":1785889105675,"id":"1","progress":0.40247427448259915,"total":372,"current":236}
+{"_e":"metro:bundling:progress","_t":1785889105775,"id":"1","progress":0.41980260758842913,"total":409,"current":265}
+{"_e":"metro:bundling:progress","_t":1785889105876,"id":"1","progress":0.5235357340976331,"total":416,"current":301}
+{"_e":"metro:bundling:progress","_t":1785889105977,"id":"1","progress":0.5878958232216289,"total":433,"current":332}
+{"_e":"metro:bundling:progress","_t":1785889106077,"id":"1","progress":0.6624353998672807,"total":446,"current":363}
+{"_e":"metro:bundling:progress","_t":1785889106177,"id":"1","progress":0.6624353998672807,"total":513,"current":400}
+{"_e":"metro:bundling:progress","_t":1785889106279,"id":"1","progress":0.6624353998672807,"total":536,"current":431}
+{"_e":"metro:bundling:progress","_t":1785889106379,"id":"1","progress":0.7557320298681492,"total":551,"current":479}
+{"_e":"metro:bundling:progress","_t":1785889106480,"id":"1","progress":0.7846649345673543,"total":578,"current":512}
+{"_e":"metro:bundling:progress","_t":1785889106580,"id":"1","progress":0.8542240587695132,"total":594,"current":549}
+{"_e":"metro:bundling:progress","_t":1785889106681,"id":"1","progress":0.9076214376385491,"total":613,"current":584}
+{"_e":"metro:bundling:progress","_t":1785889106781,"id":"1","progress":0.9357478189571145,"total":643,"current":622}
+{"_e":"metro:bundling:progress","_t":1785889106881,"id":"1","progress":0.9789637736055714,"total":662,"current":655}
+{"_e":"metro:bundling:progress","_t":1785889106981,"id":"1","progress":0.9941691086365817,"total":685,"current":683}
+{"_e":"metro:bundling:progress","_t":1785889107092,"id":"1","progress":0.9970824231445468,"total":685,"current":684}
+{"_e":"metro:bundling:progress","_t":1785889107794,"id":"1","progress":0.999,"total":685,"current":685}
+{"_e":"metro:bundling:progress","_t":1785889107897,"id":"1","progress":0.999,"total":687,"current":687}
+{"_e":"metro:bundling:done","_t":1785889108002,"id":"1","total":687,"ms":4802.4757}
+{"_e":"metro:client_log","_t":1785889108209,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1785889108210,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785889109221,"level":"warn","data":["Cannot record touch end without a touch start.\n","Touch End: {\"identifier\":0,\"pageX\":1113,\"pageY\":100,\"timestamp\":6077.400000002235}\n","Touch Bank: []"]}
+{"_e":"metro:bundling:started","_t":1785889110606,"id":"4","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:started","_t":1785889134296,"id":"6","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889134296,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785889134317,"id":"6","total":1,"ms":21.7342}
+{"_e":"metro:bundling:started","_t":1785889134484,"id":"7","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1785889134537,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785889165230,"level":"log","data":["1. Clicou no botão de login"]}
+{"_e":"metro:client_log","_t":1785889166353,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1785889180323,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1785889194968,"id":"e","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889194968,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785889194991,"id":"e","total":1,"ms":23.5043}
+{"_e":"metro:client_log","_t":1785889195136,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1785889195137,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:started","_t":1785889261342,"id":"h","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889261342,"id":"h","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785889261361,"id":"h","total":1,"ms":18.5626}
+{"_e":"metro:client_log","_t":1785889261521,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1785889261521,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:bundling:started","_t":1785889264875,"id":"l","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:started","_t":1785889338179,"id":"m","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:bundling:started","_t":1785889380256,"id":"n","platform":"web","environment":null,"entry":"src\\screens\\CadastroUsuario\\CadastroUsuario.js"}
+{"_e":"metro:client_log","_t":1785889440096,"level":"log","data":["1. Clicou no botão de login"]}
+{"_e":"metro:client_log","_t":1785889441919,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1785889451158,"id":"p","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889454338,"id":"q","platform":"web","environment":null,"entry":"src\\screens\\Home\\Home.js"}
+{"_e":"metro:bundling:started","_t":1785889512545,"id":"r","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889512545,"id":"r","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785889512569,"id":"r","total":1,"ms":23.9717}
+{"_e":"metro:bundling:started","_t":1785889512728,"id":"t","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1785889512780,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785889529485,"level":"log","data":["1. Clicou no botão de login"]}
+{"_e":"metro:client_log","_t":1785889532471,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1785889543150,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1785889551002,"id":"y","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785889551002,"id":"y","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785889551023,"id":"y","total":1,"ms":21.393}
+{"_e":"metro:bundling:started","_t":1785889551181,"id":"z","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1785889551233,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785889561653,"level":"log","data":["1. Clicou no botão de login"]}
+{"_e":"metro:client_log","_t":1785889562696,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1785889572916,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
