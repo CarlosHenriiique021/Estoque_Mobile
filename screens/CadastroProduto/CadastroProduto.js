@@ -10,8 +10,8 @@ export default function CadastroProduto({ navigation }) {
 
     const [nomeProduto, setNomeProduto] = useState('');
     const [categoria, setCategoria] = useState('');
-    const [quantidade, setQuantidade] = useState('');
-    const [valor, setValor] = useState('');
+    const [quantidade, setQuantidade] = useState(0);
+    const [valor, setValor] = useState(0);
 
     async function salvarProduto() {
 
