@@ -130,5 +130,11 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 49,
     borderRadius: 8,
     color: 'white'
+  },
+
+  produtosView: {
+    backgroundColor: 'yellow',
+    width: 300,
+    height: 100
   }
 });

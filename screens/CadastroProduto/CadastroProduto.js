@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput } from 'react-native';
 import { Picker, ScrollView } from 'react-native-web';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from '../../style';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function CadastroProduto({ navigation }) {
 
     const [nomeProduto, setNomeProduto] = useState('');
     const [categoria, setCategoria] = useState('');
     const [quantidade, setQuantidade] = useState('');
-    const [valor, setValor] = useState(0);
+    const [valor, setValor] = useState('');
 
-    async function salvarProduto(){
+    async function salvarProduto() {
+
+        const novoProduto = {
+            id: Date.now(),
+            nomeProduto: nomeProduto,
+            categoria: categoria,
+            quantidade: quantidade,
+            valor: valor
+        };
+
         try {
-            const novoProduto = {
-                id: Date.now().toString,
-                nomeProduto,
-                categoria,
-                quantidade,
-                valor,
-            }
-        } catch {
+            const json = await AsyncStorage.getItem('produtos');
+            const produtos = json ? JSON.parse(json) : [];
+            produtos.push(novoProduto);
 
+            await AsyncStorage.setItem('produtos', JSON.stringify(produtos));
+            alert('Produto Registrado!');
+
+            setNomeProduto('');
+            setCategoria('');
+            setQuantidade('');
+            setValor('');
+        } catch {
+            console.error(Error)
         }
     };
 
@@ -45,28 +60,51 @@ export default function CadastroProduto({ navigation }) {
             <View>
                 <View style={styles.viewContainer}>
                     <Text style={styles.textoPrincipal}>Nome</Text>
-                    <TextInput style={styles.textoInput} placeholder='Nome do produto' placeholderTextColor="rgba(255, 255, 255, 0.3)"></TextInput>
+                    <TextInput style={styles.textoInput}
+                        placeholder='Nome do produto'
+                        placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                        value={nomeProduto}
+                        onChangeText={setNomeProduto}
+                    ></TextInput>
                 </View>
 
                 <View style={styles.viewContainer}>
                     <Text style={styles.textoPrincipal}>Categoria</Text>
-                    <TextInput style={styles.textoInput} placeholder='Digite a categoria...' placeholderTextColor="rgba(255, 255, 255, 0.3)"></TextInput>
+                    <TextInput
+                        style={styles.textoInput}
+                        placeholder='Digite a categoria...'
+                        placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                        value={categoria}
+                        onChangeText={setCategoria}
+                    ></TextInput>
                 </View>
 
                 <View style={styles.viewContainer}>
                     <Text style={styles.textoPrincipal}>Quantidade</Text>
-                    <TextInput style={styles.textoInput} placeholder='Digite a quantidade...' placeholderTextColor="rgba(255, 255, 255, 0.3)"></TextInput>
+                    <TextInput style={styles.textoInput}
+                        placeholder='Digite a quantidade...'
+                        placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                        value={quantidade}
+                        onChangeText={setQuantidade}
+                    ></TextInput>
                 </View>
 
                 <View style={styles.viewContainer}>
                     <Text style={styles.textoPrincipal}>Valor</Text>
                     <View style={{ flexDirection: 'row' }}>
                         <Text style={styles.textoCifrao}>R$</Text>
-                        <TextInput style={styles.textoInputValor} placeholder='Digite o valor...' placeholderTextColor="rgba(255, 255, 255, 0.6)"></TextInput>
+                        <TextInput style={styles.textoInputValor}
+                            placeholder='Digite o valor...'
+                            placeholderTextColor="rgba(255, 255, 255, 0.6)"
+                            value={valor}
+                            onChangeText={setValor}
+                        ></TextInput>
                     </View>
                 </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity
+                    onPress={salvarProduto}
+                >
                     <View style={styles.btn_Salvar}>
                         <Text style={styles.btn_SalvarText}> SALVAR </Text>
                     </View>
