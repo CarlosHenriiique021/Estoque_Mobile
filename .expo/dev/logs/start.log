@@ -1299,3 +1299,26 @@
 {"_e":"metro:config","_t":1785888066047,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
 {"_e":"metro:server_log","_t":1785888067203,"level":"warn","data":["Failed to download the latest version of React Native DevTools. Using a fallback version instead. Connect to the internet or check your network settings."]}
 {"_e":"expo:dev-tools-plugin:load","_t":1785888067486,"plugins":[]}
+{"_e":"metro:instantiate","_t":1785888075336,"atlas":false,"workers":8,"host":"::","port":8082}
+{"_e":"metro:bundling:started","_t":1785888077570,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785888077570,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1785888077573,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1785888077690,"id":"1","progress":0.033822169375082575,"total":87,"current":16}
+{"_e":"metro:bundling:progress","_t":1785888077790,"id":"1","progress":0.10996268356197482,"total":193,"current":64}
+{"_e":"metro:bundling:progress","_t":1785888077890,"id":"1","progress":0.35101566898104714,"total":292,"current":173}
+{"_e":"metro:bundling:progress","_t":1785888077990,"id":"1","progress":0.43525721032214537,"total":385,"current":254}
+{"_e":"metro:bundling:progress","_t":1785888078091,"id":"1","progress":0.624295076969974,"total":486,"current":384}
+{"_e":"metro:bundling:progress","_t":1785888078191,"id":"1","progress":0.8806054400336063,"total":552,"current":518}
+{"_e":"metro:bundling:done","_t":1785888078313,"id":"1","total":552,"ms":743.638}
+{"_e":"metro:client_log","_t":1785888078694,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1785888078694,"level":"log","data":["{}"]}
+{"_e":"metro:client_log","_t":1785888078694,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785888078695,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1785888090696,"id":"3","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1785888090696,"id":"3","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1785888090721,"id":"3","total":1,"ms":24.7981}
+{"_e":"metro:client_log","_t":1785888090902,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1785888090902,"level":"log","data":["{}"]}
+{"_e":"metro:client_log","_t":1785888090902,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1785888090902,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1785888334382,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
