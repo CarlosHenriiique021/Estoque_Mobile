@@ -8,24 +8,24 @@ const colors = {
 
 export const styles = StyleSheet.create({
 
-  container: {
+  CadastroProduto_container: {
     flex: 1,
     backgroundColor: colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
-  container2: {
+  CadastroProduto_container2: {
     marginTop: -110,
     marginBottom: 30
   },
 
-  logo: {
+  CadastroProduto_logo: {
     width: 300,
     height: 300,
   },
 
-  tituloCadastroProduto: {
+  CadastroProduto_tituloCadastroProduto: {
     fontWeight: '700',
     color: 'white',
     fontSize: 33,
@@ -33,12 +33,12 @@ export const styles = StyleSheet.create({
     marginBottom: -20
   },
 
-  viewContainer: {
+  CadastroProduto_viewContainer: {
     width: 320,
     margin: 5,
   },
 
-  textoPrincipal: {
+  CadastroProduto_textoPrincipal: {
     fontSize: 17,
     fontWeight: 500,
     color: 'white',
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
 
 
 
-  textoInput: {
+  CadastroProduto_textoInput: {
     fontSize: 17,
     paddingVertical: 10,
     borderRadius: 5,
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     borderColor: 'black',
   },
 
-  textoCifrao: {
+  CadastroProduto_textoCifrao: {
     fontSize: 17,
     padding: 10,
     backgroundColor: colors.secondary,
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
 
-  textoInputValor: {
+  CadastroProduto_textoInputValor: {
     fontSize: 17,
     paddingVertical: 10,
     borderTopRightRadius: 5,
@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
     borderColor: 'black',
   },
 
-  btn_Salvar: {
+  CadastroProduto_btn_Salvar: {
     backgroundColor: colors.button,
     width: 320,
     margin: 5,
@@ -99,20 +99,20 @@ export const styles = StyleSheet.create({
     marginTop: 50
   },
 
-  btn_SalvarText: {
+  CadastroProduto_btn_SalvarText: {
     fontSize: 15,
     fontWeight: 700,
     textAlign: 'center',
     color: 'white'
   },
 
-  viewEditarELista: {
+  CadastroProduto_viewEditarELista: {
     flexDirection: 'row',
     gap: 5,
     justifyContent: 'center'
   },
 
-  btn_editar: {
+  CadastroProduto_btn_editar: {
     backgroundColor: 'gray',
     fontSize: 15,
     fontWeight: 700,
@@ -122,7 +122,7 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
 
-  btn_lista: {
+  CadastroProduto_btn_lista: {
     backgroundColor: 'gray',
     fontSize: 15,
     fontWeight: 700,
@@ -132,7 +132,7 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
 
-  produtosView: {
+  CadastroProduto_produtosView: {
     backgroundColor: 'yellow',
     width: 300,
     height: 100
