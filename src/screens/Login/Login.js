@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text , View , Image , TouchableOpacity , TextInput , Alert } from 'react-native';
+import { Text, View, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from '../../styles/style';
 
@@ -31,7 +31,7 @@ export default function Login({ navigation }) {
 
             if (usuarioValido) {
                 alert(`Bem-vindo!`);
-                navigation.navigate('Home');
+                navigation.replace('MainTabs');
             } else {
                 alert('E-mail ou senha incorretos!');
             }
