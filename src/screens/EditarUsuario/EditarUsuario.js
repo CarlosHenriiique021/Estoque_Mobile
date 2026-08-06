@@ -1,65 +1,159 @@
 import React, { useState } from 'react';
-// 1. Adicionado TextInput no import do react-native
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native'; 
-// 2. Adicionado import do AsyncStorage
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'; 
 import AsyncStorage from '@react-native-async-storage/async-storage'; 
 import { styles } from '../../styles/style';
 
-export default function EditarUsuario({navigation, route}) {
+// 1. Import do Hook do Tema
+import { useTheme } from '../../contexts/ThemeContext';
 
-console.log("DADOS CHEGANDO:", route.params);
+export default function EditarUsuario({ navigation, route }) {
+    // 2. Resgate de isDark e toggleTheme do contexto
+    const { isDark, toggleTheme } = useTheme();
 
-const usuario = route.params?.usuario || {};
-const index = route.params?.index;
+    const usuario = route.params?.usuario || {};
+    const index = route.params?.index;
 
-const [nome, setNome] = useState(usuario.nome || '');
-const [email, setEmail] = useState(usuario.email || '');
-const [senha, setSenha] = useState(usuario.senha || '');
+    const [nome, setNome] = useState(usuario.nome || '');
+    const [email, setEmail] = useState(usuario.email || '');
+    const [senha, setSenha] = useState(usuario.senha || '');
 
-async function salvarEdicao() {
-    try {
-    const json = await AsyncStorage.getItem('usuarios');
-    const lista = json ? JSON.parse(json) : [];
+    async function salvarEdicao() {
+        if (!nome || !email || !senha) {
+            alert('Todos os campos devem ser preenchidos!');
+            return;
+        }
 
-    lista[index] = { nome, email, senha };
+        try {
+            const json = await AsyncStorage.getItem('usuarios');
+            const lista = json ? JSON.parse(json) : [];
 
-    await AsyncStorage.setItem('usuarios', JSON.stringify(lista));
-    navigation.goBack();
-    } catch (error) {
-        console.error('Erro ao salvar edição:', error);
+            lista[index] = { nome, email, senha };
+
+            await AsyncStorage.setItem('usuarios', JSON.stringify(lista));
+            alert('Usuário atualizado com sucesso!');
+            navigation.goBack();
+        } catch (error) {
+            console.error('Erro ao salvar edição:', error);
+            alert('Erro ao salvar as alterações.');
+        }
     }
-};
+
     return (
-        <View style={styles.viewPrincipal}>
+        <View style={[
+            styles.viewPrincipal, 
+            { backgroundColor: isDark ? '#121212' : '#FFFFFF', paddingHorizontal: 20 }
+        ]}>
+            
+            {/* CABEÇALHO COM BOTÃO VOLTAR E BOTÃO DE TEMA */}
+            <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+                marginTop: 20,
+                marginBottom: 20,
+            }}>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                    style={{
+                        paddingRight: 10,
+                        paddingVertical: 5,
+                        zIndex: 10
+                    }}
+                >
+                    <Text style={[styles.setaVoltar, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                        ‹
+                    </Text>
+                </TouchableOpacity>
 
-    <Text style={styles.texto}>Nome</Text>        
-    <TextInput
-    style={styles.textoLogin1}
-    value={nome}
-    onChangeText={setNome}
-     />
+                <Text style={[
+                    styles.textoCadastro, 
+                    { color: isDark ? '#FFFFFF' : '#000000', flex: 1, textAlign: 'center' }
+                ]}>
+                    Editar Usuário
+                </Text>
 
-<Text style={styles.texto}>E-mail</Text>
-    <TextInput 
-    style={styles.textoLogin1}
-    value={email}
-    onChangeText={setEmail}
-     />
+                {/* BOTÃO DE TEMA (SOL / LUA) */}
+                <TouchableOpacity 
+                    onPress={toggleTheme} 
+                    style={{
+                        paddingVertical: 6,
+                        paddingHorizontal: 12,
+                        borderRadius: 16,
+                        backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0',
+                        zIndex: 10
+                    }}
+                >
+                    <Text style={{ fontSize: 16 }}>
+                        {isDark ? '☀️' : '🌙'}
+                    </Text>
+                </TouchableOpacity>
+            </View>
 
-    <Text style={styles.texto}>Senha</Text>
-        <TextInput 
-        style={styles.textoLogin1}
-        value={senha}
-        onChangeText={setSenha} 
-        secureTextEntry={true}
-         />
+            {/* FORMULÁRIO */}
+            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                Nome
+            </Text>        
+            <TextInput
+                style={[
+                    styles.textoLogin1,
+                    { 
+                        color: isDark ? '#FFFFFF' : '#000000',
+                        borderColor: isDark ? '#444444' : '#CCCCCC',
+                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
+                    }
+                ]}
+                placeholderTextColor={isDark ? '#888888' : 'gray'}
+                value={nome}
+                onChangeText={setNome}
+            />
 
-        <TouchableOpacity onPress={salvarEdicao} 
-        style={styles.button}>
-            <Text style={styles.textoButton}> 
-                Salvar Alterações
+            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                E-mail
             </Text>
-        </TouchableOpacity>
+            <TextInput 
+                style={[
+                    styles.textoLogin1,
+                    { 
+                        color: isDark ? '#FFFFFF' : '#000000',
+                        borderColor: isDark ? '#444444' : '#CCCCCC',
+                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
+                    }
+                ]}
+                placeholderTextColor={isDark ? '#888888' : 'gray'}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                value={email}
+                onChangeText={setEmail}
+            />
+
+            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+                Senha
+            </Text>
+            <TextInput 
+                style={[
+                    styles.textoLogin1,
+                    { 
+                        color: isDark ? '#FFFFFF' : '#000000',
+                        borderColor: isDark ? '#444444' : '#CCCCCC',
+                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
+                    }
+                ]}
+                placeholderTextColor={isDark ? '#888888' : 'gray'}
+                value={senha}
+                onChangeText={setSenha} 
+                secureTextEntry={true}
+            />
+
+            <TouchableOpacity 
+                onPress={salvarEdicao} 
+                style={styles.button}
+            >
+                <Text style={styles.textoButton}> 
+                    Salvar Alterações
+                </Text>
+            </TouchableOpacity>
+
         </View>
     );
 }
