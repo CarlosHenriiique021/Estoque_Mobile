@@ -28,54 +28,58 @@ export default function Produtos({ navigation }) {
     }, []);
 
     return (
-        <View style={{ flex: 1, padding: 20, backgroundColor: '#ffff' }}>
+        <View style={{ flex: 1, padding: 20, backgroundColor: '#ffff'}}>
             <FlatList
                 data={produtos}
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => (
+
                     <View style={{
-                        padding: 15,
-                        borderRadius: 10,
-                        borderColor: '#000000',
-                        marginBottom: 10,
-                        backgroundColor: '#ffffff',
-                        borderWidth: 1,
-                        borderColor: '#d1d5db',
-                        shadowRadius: 2,
-                        shadowOpacity: 1,
-                        shadowColor: '#000000',
-                        shadowOffset: { width: 1, height: 1 },
-                    }}>
+                        backgroundColor: 'yellow',
+                        flexDirection: 'row',
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        paddingVertical: 15,
+                        width: '95%',
+                        marginHorizontal: 10}}>
 
                         <Text style={{
                             color: '#000000',
-                            fontSize: 28,
+                            fontSize: 15,
                             fontFamily: 'Montserrat',
                             fontWeight: 'bold'
                         }}>
-                            {item.nomeProduto} </Text>
+                            Produto: {item.nomeProduto} </Text>
 
                         <Text style={{
                             color: '#6b7280',
-                            fontSize: 20,
+                            fontSize: 15,
                             fontFamily: 'Montserrat'
                         }}>
-                            {item.categoria}</Text>
+                            Categoria: {item.categoria} </Text>
 
-                        <Text style={{
-                            color: '#6b7280',
-                            fontSize: 20,
-                            fontFamily: 'Montserrat'
-                        }}>
-                            {item.quantidade}</Text>
-                        <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 15, marginTop: 10 }}>
-                            <TouchableOpacity onPress={() => navigation.navigate('CadastroProduto')}>
-                                <Ionicons name="pencil" size={24} color="#3b82f6" />
-                            </TouchableOpacity>
+                        <View style={{
+                        backgroundColor: 'Blue',
+                        flexDirection: 'row',
+                        justifyContent: 'space-evenly',
+                        alignItems: 'center',
+                        paddingVertical: 10,
+                    }}> 
+                            <Text style={{
+                                color: '#6b7280',
+                                fontSize: 15,
+                                fontFamily: 'Montserrat'
+                            }}>
+                                {item.quantidade}</Text>
+                            <View style={{ flexDirection: 'row', justifyContent: 'flex-end', gap: 15, marginTop: 10 }}>
+                                <TouchableOpacity onPress={() => navigation.navigate('CadastroProduto')}>
+                                    <Ionicons name="pencil" size={24} color="#3b82f6" />
+                                </TouchableOpacity>
 
-                            <TouchableOpacity onPress={() => apagarProdutos(index)}>
-                                <Ionicons name="trash" size={24} color="#ef4444" />
-                            </TouchableOpacity>
+                                <TouchableOpacity onPress={() => apagarProdutos(index)}>
+                                    <Ionicons name="trash" size={24} color="#ef4444" />
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
                 )}

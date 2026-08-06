@@ -41,26 +41,26 @@ export default function CadastroProduto({ navigation }) {
     };
 
     return (
-        <View style={styles.container}>
+        <View style={styles.CadastroProduto_container}>
 
-            <View style={styles.container2}>
-                <View style={styles.container}>
+            <View style={styles.CadastroProduto_container2}>
+                <View style={styles.CadastroProduto_container}>
 
-                    <View style={styles.CotainerImagem}>
+                    <View style={styles.CadastroProduto_CotainerImagem}>
                         <Image
                             source={require('../../assets/local-logoTextBranco.png')}
-                            style={styles.logo}
+                            style={styles.CadastroProduto_logo}
                         />
                     </View>
 
-                    <Text style={styles.tituloCadastroProduto}>Cadastro de Produto</Text>
+                    <Text style={styles.CadastroProduto_tituloCadastroProduto}>Cadastro de Produto</Text>
                 </View>
             </View>
 
             <View>
-                <View style={styles.viewContainer}>
-                    <Text style={styles.textoPrincipal}>Nome</Text>
-                    <TextInput style={styles.textoInput}
+                <View style={styles.CadastroProduto_viewContainer}>
+                    <Text style={styles.CadastroProduto_textoPrincipal}>Nome</Text>
+                    <TextInput style={styles.CadastroProduto_textoInput}
                         placeholder='Nome do produto'
                         placeholderTextColor="rgba(255, 255, 255, 0.3)"
                         value={nomeProduto}
@@ -68,10 +68,10 @@ export default function CadastroProduto({ navigation }) {
                     ></TextInput>
                 </View>
 
-                <View style={styles.viewContainer}>
-                    <Text style={styles.textoPrincipal}>Categoria</Text>
+                <View style={styles.CadastroProduto_viewContainer}>
+                    <Text style={styles.CadastroProduto_textoPrincipal}>Categoria</Text>
                     <TextInput
-                        style={styles.textoInput}
+                        style={styles.CadastroProduto_textoInput}
                         placeholder='Digite a categoria...'
                         placeholderTextColor="rgba(255, 255, 255, 0.3)"
                         value={categoria}
@@ -79,9 +79,9 @@ export default function CadastroProduto({ navigation }) {
                     ></TextInput>
                 </View>
 
-                <View style={styles.viewContainer}>
-                    <Text style={styles.textoPrincipal}>Quantidade</Text>
-                    <TextInput style={styles.textoInput}
+                <View style={styles.CadastroProduto_viewContainer}>
+                    <Text style={styles.CadastroProduto_textoPrincipal}>Quantidade</Text>
+                    <TextInput style={styles.CadastroProduto_textoInput}
                         placeholder='Digite a quantidade...'
                         placeholderTextColor="rgba(255, 255, 255, 0.3)"
                         value={quantidade}
@@ -89,11 +89,11 @@ export default function CadastroProduto({ navigation }) {
                     ></TextInput>
                 </View>
 
-                <View style={styles.viewContainer}>
-                    <Text style={styles.textoPrincipal}>Valor</Text>
+                <View style={styles.CadastroProduto_viewContainer}>
+                    <Text style={styles.CadastroProduto_textoPrincipal}>Valor</Text>
                     <View style={{ flexDirection: 'row' }}>
-                        <Text style={styles.textoCifrao}>R$</Text>
-                        <TextInput style={styles.textoInputValor}
+                        <Text style={styles.CadastroProduto_textoCifrao}>R$</Text>
+                        <TextInput style={styles.CadastroProduto_textoInputValor}
                             placeholder='Digite o valor...'
                             placeholderTextColor="rgba(255, 255, 255, 0.6)"
                             value={valor}
@@ -105,18 +105,18 @@ export default function CadastroProduto({ navigation }) {
                 <TouchableOpacity
                     onPress={salvarProduto}
                 >
-                    <View style={styles.btn_Salvar}>
-                        <Text style={styles.btn_SalvarText}> SALVAR </Text>
+                    <View style={styles.CadastroProduto_btn_Salvar}>
+                        <Text style={styles.CadastroProduto_btn_SalvarText}> SALVAR </Text>
                     </View>
                 </TouchableOpacity>
 
 
-                <View style={styles.viewEditarELista}>
+                <View style={styles.CadastroProduto_viewEditarELista}>
                     <TouchableOpacity>
-                        <Text style={styles.btn_editar}> EDITAR </Text>
+                        <Text style={styles.CadastroProduto_btn_editar}> EDITAR </Text>
                     </TouchableOpacity>
                     <TouchableOpacity>
-                        <Text style={styles.btn_lista}> LISTAR </Text>
+                        <Text style={styles.CadastroProduto_btn_lista}> LISTAR </Text>
 
                     </TouchableOpacity>
                 </View>
