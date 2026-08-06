@@ -1365,3 +1365,325 @@
 {"_e":"metro:client_log","_t":1785939394238,"level":"log","data":["{}"]}
 {"_e":"metro:client_log","_t":1785939394238,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
 {"_e":"metro:client_log","_t":1785939394239,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"root:init","_t":1786055082733,"format":"v0-jsonl","version":"57.0.9"}
+{"_e":"env:mode","_t":1786055082738,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786055082750,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786055084461,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786055086727,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1786055087694,"level":"warn","data":["Failed to download the latest version of React Native DevTools. Using a fallback version instead. Connect to the internet or check your network settings."]}
+{"_e":"expo:dev-tools-plugin:load","_t":1786055088174,"plugins":[]}
+{"_e":"metro:instantiate","_t":1786055096224,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1786055099531,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055099531,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786055099534,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786055099635,"id":"1","progress":0.011814744801512287,"total":138,"current":15}
+{"_e":"metro:bundling:progress","_t":1786055099735,"id":"1","progress":0.2737453043493743,"total":237,"current":124}
+{"_e":"metro:bundling:progress","_t":1786055099835,"id":"1","progress":0.4398507342478993,"total":386,"current":256}
+{"_e":"metro:bundling:progress","_t":1786055099935,"id":"1","progress":0.595256995129123,"total":569,"current":439}
+{"_e":"metro:bundling:progress","_t":1786055100035,"id":"1","progress":0.8444879312440966,"total":654,"current":601}
+{"_e":"metro:bundling:done","_t":1786055100128,"id":"1","total":654,"ms":596.5222}
+{"_e":"metro:client_log","_t":1786055100559,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055100559,"level":"log","data":["{}"]}
+{"_e":"metro:client_log","_t":1786055100560,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055100560,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1786055115422,"id":"4","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:started","_t":1786055115540,"id":"5","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786055115541,"id":"6","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786055196932,"id":"8","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055196932,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786055196955,"id":"8","total":1,"ms":22.8135}
+{"_e":"metro:bundling:started","_t":1786055197079,"id":"a","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1786055197237,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055197237,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786055197237,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055197237,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786055198220,"level":"warn","data":["An error occurred in the <EditarProduto> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1786055198243,"level":"error","data":["[ReferenceError: TextInput is not defined]","\n\n\u001b[1mCode: EditarProduto.js\u001b[22m\n\u001b[0m \u001b[90m 27 |\u001b[39m                         \u001b[33m<\u001b[39m\u001b[33mView\u001b[39m style\u001b[33m=\u001b[39m{styles\u001b[33m.\u001b[39m\u001b[33mCadastroProduto_viewContainer\u001b[39m}\u001b[33m>\u001b[39m\n \u001b[90m 28 |\u001b[39m                             \u001b[33m<\u001b[39m\u001b[33mText\u001b[39m style\u001b[33m=\u001b[39m{styles\u001b[33m.\u001b[39m\u001b[33mCadastroProduto_textoPrincipal\u001b[39m}\u001b[33m>\u001b[39m\u001b[33mNome\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mText\u001b[39m\u001b[33m>\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m                             \u001b[33m<\u001b[39m\u001b[33mTextInput\u001b[39m style\u001b[33m=\u001b[39m{styles\u001b[33m.\u001b[39m\u001b[33mCadastroProduto_textoInput\u001b[39m}\n \u001b[90m    |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 30 |\u001b[39m                                 placeholder\u001b[33m=\u001b[39m\u001b[32m'Nome do produto'\u001b[39m\n \u001b[90m 31 |\u001b[39m                                 placeholderTextColor\u001b[33m=\u001b[39m\u001b[32m\"rgba(255, 255, 255, 0.3)\"\u001b[39m\n \u001b[90m 32 |\u001b[39m                                 value\u001b[33m=\u001b[39m{nomeProduto}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  EditarProduto (screens\\EditarProduto\\EditarProduto.js:29:30)\u001b[39m","\n\n\u001b[1mCode: App.js\u001b[22m\n\u001b[0m \u001b[90m 29 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mNavigationContainer\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 30 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mNavigator\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 32 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 33 |\u001b[39m           name\u001b[33m=\u001b[39m\u001b[32m'Home'\u001b[39m\n \u001b[90m 34 |\u001b[39m           component\u001b[33m=\u001b[39m{\u001b[33mHome\u001b[39m}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  App (App.js:31:7)\u001b[39m"]}
+{"_e":"metro:bundling:started","_t":1786055206465,"id":"e","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055206465,"id":"e","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786055206488,"id":"e","total":1,"ms":23.0858}
+{"_e":"metro:client_log","_t":1786055206649,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055206650,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786055206650,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055206650,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786055233286,"level":"warn","data":["An error occurred in the <EditarProduto> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1786055233307,"level":"error","data":["[ReferenceError: nomeProduto is not defined]","\n\n\u001b[1mCode: EditarProduto.js\u001b[22m\n\u001b[0m \u001b[90m 31 |\u001b[39m                                 placeholder\u001b[33m=\u001b[39m\u001b[32m'Nome do produto'\u001b[39m\n \u001b[90m 32 |\u001b[39m                                 placeholderTextColor\u001b[33m=\u001b[39m\u001b[32m\"rgba(255, 255, 255, 0.3)\"\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 |\u001b[39m                                 value\u001b[33m=\u001b[39m{nomeProduto}\n \u001b[90m    |\u001b[39m                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 34 |\u001b[39m                                 onChangeText\u001b[33m=\u001b[39m{setNomeProduto}\n \u001b[90m 35 |\u001b[39m                             \u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mTextInput\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 36 |\u001b[39m                         \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  EditarProduto (screens\\EditarProduto\\EditarProduto.js:33:40)\u001b[39m","\n\n\u001b[1mCode: App.js\u001b[22m\n\u001b[0m \u001b[90m 29 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mNavigationContainer\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 30 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mNavigator\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 32 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 33 |\u001b[39m           name\u001b[33m=\u001b[39m\u001b[32m'Home'\u001b[39m\n \u001b[90m 34 |\u001b[39m           component\u001b[33m=\u001b[39m{\u001b[33mHome\u001b[39m}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  App (App.js:31:7)\u001b[39m"]}
+{"_e":"root:init","_t":1786055279427,"format":"v0-jsonl","version":"57.0.9"}
+{"_e":"env:mode","_t":1786055279433,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786055279445,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786055281076,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786055282152,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1786055283105,"level":"warn","data":["Failed to download the latest version of React Native DevTools. Using a fallback version instead. Connect to the internet or check your network settings."]}
+{"_e":"expo:dev-tools-plugin:load","_t":1786055283542,"plugins":[]}
+{"_e":"metro:instantiate","_t":1786055292527,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1786055306296,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055306297,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786055306299,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786055307196,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1786055307295,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1786055307396,"id":"1","progress":0.12456747404844293,"total":17,"current":6}
+{"_e":"metro:bundling:progress","_t":1786055307507,"id":"1","progress":0.15123456790123457,"total":18,"current":7}
+{"_e":"metro:bundling:progress","_t":1786055307629,"id":"1","progress":0.19753086419753085,"total":18,"current":8}
+{"_e":"metro:bundling:progress","_t":1786055307739,"id":"1","progress":0.37345679012345684,"total":18,"current":11}
+{"_e":"metro:bundling:progress","_t":1786055308663,"id":"1","progress":0.4444444444444444,"total":18,"current":12}
+{"_e":"metro:bundling:progress","_t":1786055308767,"id":"1","progress":0.4444444444444444,"total":66,"current":19}
+{"_e":"metro:bundling:progress","_t":1786055308867,"id":"1","progress":0.4444444444444444,"total":165,"current":27}
+{"_e":"metro:bundling:progress","_t":1786055308967,"id":"1","progress":0.4444444444444444,"total":186,"current":57}
+{"_e":"metro:bundling:progress","_t":1786055309067,"id":"1","progress":0.4444444444444444,"total":204,"current":85}
+{"_e":"metro:bundling:progress","_t":1786055309167,"id":"1","progress":0.4444444444444444,"total":220,"current":113}
+{"_e":"metro:bundling:progress","_t":1786055309270,"id":"1","progress":0.4444444444444444,"total":273,"current":142}
+{"_e":"metro:bundling:progress","_t":1786055309371,"id":"1","progress":0.4444444444444444,"total":278,"current":163}
+{"_e":"metro:bundling:progress","_t":1786055309471,"id":"1","progress":0.4444444444444444,"total":297,"current":179}
+{"_e":"metro:bundling:progress","_t":1786055309571,"id":"1","progress":0.4444444444444444,"total":299,"current":190}
+{"_e":"metro:bundling:progress","_t":1786055309671,"id":"1","progress":0.4444444444444444,"total":325,"current":208}
+{"_e":"metro:bundling:progress","_t":1786055309771,"id":"1","progress":0.4444444444444444,"total":340,"current":220}
+{"_e":"metro:bundling:progress","_t":1786055309886,"id":"1","progress":0.4444444444444444,"total":360,"current":239}
+{"_e":"metro:bundling:progress","_t":1786055309987,"id":"1","progress":0.4746466121688332,"total":389,"current":268}
+{"_e":"metro:bundling:progress","_t":1786055310088,"id":"1","progress":0.4746466121688332,"total":452,"current":291}
+{"_e":"metro:bundling:progress","_t":1786055310188,"id":"1","progress":0.4746466121688332,"total":502,"current":324}
+{"_e":"metro:bundling:progress","_t":1786055310289,"id":"1","progress":0.4746466121688332,"total":513,"current":338}
+{"_e":"metro:bundling:progress","_t":1786055310389,"id":"1","progress":0.4746466121688332,"total":525,"current":357}
+{"_e":"metro:bundling:progress","_t":1786055310490,"id":"1","progress":0.5014026762566454,"total":531,"current":376}
+{"_e":"metro:bundling:progress","_t":1786055310590,"id":"1","progress":0.5244694444346666,"total":533,"current":386}
+{"_e":"metro:bundling:progress","_t":1786055310691,"id":"1","progress":0.5555513329003192,"total":538,"current":401}
+{"_e":"metro:bundling:progress","_t":1786055310791,"id":"1","progress":0.5934705075445816,"total":540,"current":416}
+{"_e":"metro:bundling:progress","_t":1786055310891,"id":"1","progress":0.6323477349164636,"total":542,"current":431}
+{"_e":"metro:bundling:progress","_t":1786055310991,"id":"1","progress":0.655328798185941,"total":546,"current":442}
+{"_e":"metro:bundling:progress","_t":1786055311092,"id":"1","progress":0.655328798185941,"total":576,"current":465}
+{"_e":"metro:bundling:progress","_t":1786055311193,"id":"1","progress":0.6589289496213172,"total":579,"current":470}
+{"_e":"metro:bundling:progress","_t":1786055311296,"id":"1","progress":0.7351147246725948,"total":582,"current":499}
+{"_e":"metro:bundling:progress","_t":1786055311397,"id":"1","progress":0.7738035047400172,"total":590,"current":519}
+{"_e":"metro:bundling:progress","_t":1786055311499,"id":"1","progress":0.8206228373702422,"total":595,"current":539}
+{"_e":"metro:bundling:progress","_t":1786055311605,"id":"1","progress":0.8656827012704098,"total":618,"current":575}
+{"_e":"metro:bundling:progress","_t":1786055311705,"id":"1","progress":0.8656827012704098,"total":639,"current":590}
+{"_e":"metro:bundling:progress","_t":1786055311807,"id":"1","progress":0.8656827012704098,"total":639,"current":593}
+{"_e":"metro:bundling:progress","_t":1786055311907,"id":"1","progress":0.8790846266295067,"total":657,"current":616}
+{"_e":"metro:bundling:progress","_t":1786055312007,"id":"1","progress":0.9318218527694173,"total":663,"current":640}
+{"_e":"metro:bundling:progress","_t":1786055312108,"id":"1","progress":0.9700615830506701,"total":663,"current":653}
+{"_e":"metro:bundling:progress","_t":1786055312208,"id":"1","progress":0.9762971386435265,"total":671,"current":663}
+{"_e":"metro:bundling:progress","_t":1786055312373,"id":"1","progress":0.999,"total":680,"current":680}
+{"_e":"metro:bundling:progress","_t":1786055312491,"id":"1","progress":0.999,"total":682,"current":682}
+{"_e":"metro:bundling:done","_t":1786055312737,"id":"1","total":682,"ms":6440.0923}
+{"_e":"metro:client_log","_t":1786055313136,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055313137,"level":"log","data":["{}"]}
+{"_e":"metro:client_log","_t":1786055313137,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055313137,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786055319628,"level":"warn","data":["An error occurred in the <EditarProduto> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1786055319648,"level":"error","data":["[ReferenceError: nomeProduto is not defined]","\n\n\u001b[1mCode: EditarProduto.js\u001b[22m\n\u001b[0m \u001b[90m 31 |\u001b[39m                                 placeholder\u001b[33m=\u001b[39m\u001b[32m'Nome do produto'\u001b[39m\n \u001b[90m 32 |\u001b[39m                                 placeholderTextColor\u001b[33m=\u001b[39m\u001b[32m\"rgba(255, 255, 255, 0.3)\"\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 |\u001b[39m                                 value\u001b[33m=\u001b[39m{nomeProduto}\n \u001b[90m    |\u001b[39m                                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 34 |\u001b[39m                                 onChangeText\u001b[33m=\u001b[39m{setNomeProduto}\n \u001b[90m 35 |\u001b[39m                             \u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mTextInput\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 36 |\u001b[39m                         \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mView\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  EditarProduto (screens\\EditarProduto\\EditarProduto.js:33:40)\u001b[39m","\n\n\u001b[1mCode: App.js\u001b[22m\n\u001b[0m \u001b[90m 29 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mNavigationContainer\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 30 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mNavigator\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 32 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 33 |\u001b[39m           name\u001b[33m=\u001b[39m\u001b[32m'Home'\u001b[39m\n \u001b[90m 34 |\u001b[39m           component\u001b[33m=\u001b[39m{\u001b[33mHome\u001b[39m}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  App (App.js:31:7)\u001b[39m"]}
+{"_e":"metro:bundling:started","_t":1786055363922,"id":"6","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055363923,"id":"6","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786055363952,"id":"6","total":1,"ms":29.9262}
+{"_e":"metro:client_log","_t":1786055364125,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055364125,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786055364125,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055364125,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1786055378249,"id":"8","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:started","_t":1786055378359,"id":"9","platform":"web","environment":null,"entry":"screens\\EditarProduto\\EditarProduto.js"}
+{"_e":"metro:client_log","_t":1786055381628,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1786055448508,"id":"b","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:client_log","_t":1786055448549,"level":"warn","data":["An error occurred in the <Produtos> component.\n\nConsider adding an error boundary to your tree to customize error handling behavior.\nVisit https://react.dev/link/error-boundaries to learn more about error boundaries.\n"]}
+{"_e":"metro:client_log","_t":1786055448575,"level":"error","data":["[ReferenceError: colors is not defined]","\n\n\u001b[1mCode: Produtos.js\u001b[22m\n\u001b[0m \u001b[90m 53 |\u001b[39m             style\u001b[33m=\u001b[39m{{\n \u001b[90m 54 |\u001b[39m                 flex\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m\u001b[33m,\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 55 |\u001b[39m                 backgroundColor\u001b[33m:\u001b[39m colors\u001b[33m.\u001b[39mprimary\u001b[33m,\u001b[39m\n \u001b[90m    |\u001b[39m                                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 56 |\u001b[39m                 padding\u001b[33m:\u001b[39m \u001b[35m12\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 57 |\u001b[39m             }}\n \u001b[90m 58 |\u001b[39m         \u001b[33m>\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  Produtos (screens\\Produtos\\Produtos.js:55:34)\u001b[39m","\n\n\u001b[1mCode: App.js\u001b[22m\n\u001b[0m \u001b[90m 29 |\u001b[39m     \u001b[33m<\u001b[39m\u001b[33mNavigationContainer\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 30 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 31 |\u001b[39m       \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mNavigator\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m    |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 32 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mTab\u001b[39m\u001b[33m.\u001b[39m\u001b[33mScreen\u001b[39m\n \u001b[90m 33 |\u001b[39m           name\u001b[33m=\u001b[39m\u001b[32m'Home'\u001b[39m\n \u001b[90m 34 |\u001b[39m           component\u001b[33m=\u001b[39m{\u001b[33mHome\u001b[39m}\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  App (App.js:31:7)\u001b[39m"]}
+{"_e":"metro:bundling:started","_t":1786055452972,"id":"e","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786055477242,"id":"f","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786055520325,"id":"g","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786055530079,"id":"h","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786055542790,"id":"j","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055542790,"id":"j","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786055542816,"id":"j","total":1,"ms":25.8553}
+{"_e":"metro:bundling:started","_t":1786055542949,"id":"l","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1786055543108,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055543110,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"},{\\\"id\\\":1786055537624,\\\"nomeProduto\\\":\\\"das\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"0sadasd\\\",\\\"valor\\\":\\\"0asdasd\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786055543110,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055543110,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786055544434,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1786055567153,"id":"p","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786055567154,"id":"p","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786055567181,"id":"p","total":1,"ms":27.5741}
+{"_e":"metro:bundling:started","_t":1786055567293,"id":"r","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1786055567449,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786055567450,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"},{\\\"id\\\":1786055537624,\\\"nomeProduto\\\":\\\"das\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"0sadasd\\\",\\\"valor\\\":\\\"0asdasd\\\"},{\\\"id\\\":1786055551912,\\\"nomeProduto\\\":\\\"dasdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"0asdasdas\\\",\\\"valor\\\":\\\"0asdasdas\\\"},{\\\"id\\\":1786055559879,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786055564032,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786055567450,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786055567450,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786055569397,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:client_log","_t":1786055583825,"level":"error","data":["\n\n\u001b[1mCode: Produtos.js\u001b[22m\n\u001b[0m \u001b[90m 197 |\u001b[39m                                     \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mTouchableOpacity\u001b[39m\u001b[33m>\u001b[39m\n \u001b[90m 198 |\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 199 |\u001b[39m                                     \u001b[33m<\u001b[39m\u001b[33mText\u001b[39m\n \u001b[90m     |\u001b[39m                                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 200 |\u001b[39m                                         style\u001b[33m=\u001b[39m{{\n \u001b[90m 201 |\u001b[39m                                             marginHorizontal\u001b[33m:\u001b[39m \u001b[35m20\u001b[39m\u001b[33m,\u001b[39m\n \u001b[90m 202 |\u001b[39m                                             fontSize\u001b[33m:\u001b[39m \u001b[35m22\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[1mCall Stack\u001b[22m\n\u001b[90m  FlatList.props.renderItem (screens\\Produtos\\Produtos.js:199:37)\u001b[39m\n\u001b[90m  Produtos (screens\\Produtos\\Produtos.js:62:17)\u001b[39m\n\u001b[90m  App (App.js:31:7)\u001b[39m"]}
+{"_e":"metro:bundling:started","_t":1786055661852,"id":"x","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786055665457,"id":"y","platform":"web","environment":null,"entry":"screens\\Produtos\\Produtos.js"}
+{"_e":"metro:bundling:started","_t":1786056029295,"id":"z","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786056059838,"id":"10","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786056061233,"id":"11","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786056061233,"id":"11","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786056061266,"id":"11","total":1,"ms":33.2425}
+{"_e":"metro:bundling:started","_t":1786056061378,"id":"13","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1786056061531,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786056061531,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"},{\\\"id\\\":1786055537624,\\\"nomeProduto\\\":\\\"das\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":null,\\\"valor\\\":\\\"0asdasd\\\"},{\\\"id\\\":1786055551912,\\\"nomeProduto\\\":\\\"dasdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"0asdasdas\\\",\\\"valor\\\":\\\"0asdasdas\\\"},{\\\"id\\\":1786055559879,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786055564032,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786056061531,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786056061531,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1786056441689,"id":"16","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786056479424,"id":"17","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786056492432,"id":"18","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786056500785,"id":"19","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786056500785,"id":"19","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786056500813,"id":"19","total":1,"ms":28.0314}
+{"_e":"metro:bundling:started","_t":1786056500927,"id":"1b","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1786056501081,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786056501081,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"},{\\\"id\\\":1786055537624,\\\"nomeProduto\\\":\\\"das\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":null,\\\"valor\\\":\\\"0asdasd\\\"},{\\\"id\\\":1786055551912,\\\"nomeProduto\\\":\\\"dasdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"0asdasdas\\\",\\\"valor\\\":\\\"0asdasdas\\\"},{\\\"id\\\":1786055559879,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786055564032,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786056069448,\\\"nomeProduto\\\":\\\"dsadas\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":0,\\\"valor\\\":0},{\\\"id\\\":1786056434448,\\\"nomeProduto\\\":\\\"213123\\\",\\\"categoria\\\":\\\"213123\\\",\\\"quantidade\\\":\\\"2131\\\",\\\"valor\\\":\\\"123132\\\"},{\\\"id\\\":1786056446287,\\\"nomeProduto\\\":\\\"dasdas\\\",\\\"categoria\\\":\\\"sadasd\\\",\\\"quantidade\\\":\\\"sadasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786056451568,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"123123\\\",\\\"quantidade\\\":\\\"123123\\\",\\\"valor\\\":\\\"12312\\\"},{\\\"id\\\":1786056462128,\\\"nomeProduto\\\":\\\"21312312\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056483791,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"213123\\\",\\\"quantidade\\\":\\\"123123\\\",\\\"valor\\\":\\\"21312\\\"},{\\\"id\\\":1786056497168,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786056501081,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786056501081,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"root:init","_t":1786056567520,"format":"v0-jsonl","version":"57.0.9"}
+{"_e":"env:mode","_t":1786056567525,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786056567536,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786056569329,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786056572108,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1786056573019,"level":"warn","data":["Failed to download the latest version of React Native DevTools. Using a fallback version instead. Connect to the internet or check your network settings."]}
+{"_e":"expo:dev-tools-plugin:load","_t":1786056573473,"plugins":[]}
+{"_e":"metro:instantiate","_t":1786056582861,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:bundling:started","_t":1786056585375,"id":"1","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786056585375,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056585377,"id":"1","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056587198,"id":"1","progress":0.010000000000000002,"total":1,"current":1}
+{"_e":"metro:bundling:progress","_t":1786056587302,"id":"1","progress":0.04000000000000001,"total":3,"current":2}
+{"_e":"metro:bundling:progress","_t":1786056587409,"id":"1","progress":0.12755102040816327,"total":14,"current":5}
+{"_e":"metro:bundling:progress","_t":1786056587507,"id":"1","progress":0.15311909262759926,"total":23,"current":9}
+{"_e":"metro:bundling:progress","_t":1786056587620,"id":"1","progress":0.21301775147928997,"total":26,"current":12}
+{"_e":"metro:bundling:progress","_t":1786056587732,"id":"1","progress":0.25,"total":30,"current":15}
+{"_e":"metro:bundling:started","_t":1786056587834,"id":"2","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786056587834,"id":"1","progress":0.25,"total":30,"current":15}
+{"_e":"metro:bundling:progress","_t":1786056587834,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056587834,"id":"1","progress":0.32653061224489793,"total":35,"current":20}
+{"_e":"metro:bundling:progress","_t":1786056587834,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056587935,"id":"1","progress":0.32653061224489793,"total":48,"current":25}
+{"_e":"metro:bundling:progress","_t":1786056587935,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588064,"id":"1","progress":0.3748438150770512,"total":49,"current":30}
+{"_e":"metro:bundling:progress","_t":1786056588064,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588164,"id":"1","progress":0.4444444444444444,"total":51,"current":34}
+{"_e":"metro:bundling:progress","_t":1786056588164,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588267,"id":"1","progress":0.5340236686390532,"total":52,"current":38}
+{"_e":"metro:bundling:progress","_t":1786056588267,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588378,"id":"1","progress":0.591715976331361,"total":52,"current":40}
+{"_e":"metro:bundling:progress","_t":1786056588378,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588454,"id":"1","progress":0.6216715976331361,"total":52,"current":41}
+{"_e":"metro:bundling:progress","_t":1786056588454,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588559,"id":"1","progress":0.7302479338842974,"total":55,"current":47}
+{"_e":"metro:bundling:progress","_t":1786056588560,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588676,"id":"1","progress":0.7731866825208086,"total":58,"current":51}
+{"_e":"metro:bundling:progress","_t":1786056588676,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056588997,"id":"1","progress":0.8038049940546969,"total":58,"current":52}
+{"_e":"metro:bundling:progress","_t":1786056588997,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589101,"id":"1","progress":0.8038049940546969,"total":92,"current":58}
+{"_e":"metro:bundling:progress","_t":1786056589101,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589204,"id":"1","progress":0.8038049940546969,"total":149,"current":65}
+{"_e":"metro:bundling:progress","_t":1786056589204,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589323,"id":"1","progress":0.8038049940546969,"total":161,"current":68}
+{"_e":"metro:bundling:progress","_t":1786056589323,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589423,"id":"1","progress":0.8038049940546969,"total":225,"current":90}
+{"_e":"metro:bundling:progress","_t":1786056589423,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589525,"id":"1","progress":0.8038049940546969,"total":242,"current":115}
+{"_e":"metro:bundling:progress","_t":1786056589525,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589625,"id":"1","progress":0.8038049940546969,"total":261,"current":141}
+{"_e":"metro:bundling:progress","_t":1786056589625,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589725,"id":"1","progress":0.8038049940546969,"total":307,"current":163}
+{"_e":"metro:bundling:progress","_t":1786056589725,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589826,"id":"1","progress":0.8038049940546969,"total":323,"current":194}
+{"_e":"metro:bundling:progress","_t":1786056589826,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056589926,"id":"1","progress":0.8038049940546969,"total":334,"current":215}
+{"_e":"metro:bundling:progress","_t":1786056589927,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590026,"id":"1","progress":0.8038049940546969,"total":353,"current":218}
+{"_e":"metro:bundling:progress","_t":1786056590027,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590116,"id":"1","progress":0.8038049940546969,"total":353,"current":219}
+{"_e":"metro:bundling:progress","_t":1786056590116,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590216,"id":"1","progress":0.8038049940546969,"total":357,"current":224}
+{"_e":"metro:bundling:progress","_t":1786056590216,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590319,"id":"1","progress":0.8038049940546969,"total":361,"current":235}
+{"_e":"metro:bundling:progress","_t":1786056590319,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590422,"id":"1","progress":0.8038049940546969,"total":401,"current":252}
+{"_e":"metro:bundling:progress","_t":1786056590422,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590523,"id":"1","progress":0.8038049940546969,"total":406,"current":267}
+{"_e":"metro:bundling:progress","_t":1786056590523,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590623,"id":"1","progress":0.8038049940546969,"total":439,"current":281}
+{"_e":"metro:bundling:progress","_t":1786056590623,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590723,"id":"1","progress":0.8038049940546969,"total":462,"current":307}
+{"_e":"metro:bundling:progress","_t":1786056590723,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590826,"id":"1","progress":0.8038049940546969,"total":499,"current":339}
+{"_e":"metro:bundling:progress","_t":1786056590826,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056590927,"id":"1","progress":0.8038049940546969,"total":535,"current":367}
+{"_e":"metro:bundling:progress","_t":1786056590928,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591027,"id":"1","progress":0.8038049940546969,"total":539,"current":384}
+{"_e":"metro:bundling:progress","_t":1786056591027,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591128,"id":"1","progress":0.8038049940546969,"total":568,"current":403}
+{"_e":"metro:bundling:progress","_t":1786056591128,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591228,"id":"1","progress":0.8038049940546969,"total":569,"current":422}
+{"_e":"metro:bundling:progress","_t":1786056591228,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591330,"id":"1","progress":0.8038049940546969,"total":575,"current":442}
+{"_e":"metro:bundling:progress","_t":1786056591330,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591432,"id":"1","progress":0.8038049940546969,"total":587,"current":460}
+{"_e":"metro:bundling:progress","_t":1786056591432,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591535,"id":"1","progress":0.8038049940546969,"total":602,"current":484}
+{"_e":"metro:bundling:progress","_t":1786056591535,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591636,"id":"1","progress":0.8038049940546969,"total":603,"current":498}
+{"_e":"metro:bundling:progress","_t":1786056591636,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591736,"id":"1","progress":0.8038049940546969,"total":603,"current":501}
+{"_e":"metro:bundling:progress","_t":1786056591736,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591785,"id":"1","progress":0.8038049940546969,"total":603,"current":502}
+{"_e":"metro:bundling:progress","_t":1786056591785,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591885,"id":"1","progress":0.8038049940546969,"total":611,"current":535}
+{"_e":"metro:bundling:progress","_t":1786056591885,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056591984,"id":"1","progress":0.8166588943366768,"total":623,"current":563}
+{"_e":"metro:bundling:progress","_t":1786056591984,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592085,"id":"1","progress":0.8748445103444157,"total":634,"current":593}
+{"_e":"metro:bundling:progress","_t":1786056592085,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592185,"id":"1","progress":0.8999900834202043,"total":643,"current":610}
+{"_e":"metro:bundling:progress","_t":1786056592185,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592285,"id":"1","progress":0.8999900834202043,"total":657,"current":622}
+{"_e":"metro:bundling:progress","_t":1786056592285,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592385,"id":"1","progress":0.914178993456483,"total":661,"current":632}
+{"_e":"metro:bundling:progress","_t":1786056592385,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592487,"id":"1","progress":0.964394564165083,"total":668,"current":656}
+{"_e":"metro:bundling:progress","_t":1786056592487,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592589,"id":"1","progress":0.9792751736111112,"total":672,"current":665}
+{"_e":"metro:bundling:progress","_t":1786056592589,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056592709,"id":"1","progress":0.9970609861591696,"total":680,"current":679}
+{"_e":"metro:bundling:progress","_t":1786056592709,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056593239,"id":"1","progress":0.999,"total":680,"current":680}
+{"_e":"metro:bundling:progress","_t":1786056593239,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:progress","_t":1786056593342,"id":"1","progress":0.999,"total":682,"current":682}
+{"_e":"metro:bundling:progress","_t":1786056593342,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786056593667,"id":"1","total":682,"ms":8292.5124}
+{"_e":"metro:bundling:progress","_t":1786056593668,"id":"2","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786056593678,"id":"2","total":1,"ms":5844.3296}
+{"_e":"metro:client_log","_t":1786056593856,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786056593857,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"},{\\\"id\\\":1786055537624,\\\"nomeProduto\\\":\\\"das\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":null,\\\"valor\\\":\\\"0asdasd\\\"},{\\\"id\\\":1786055551912,\\\"nomeProduto\\\":\\\"dasdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"0asdasdas\\\",\\\"valor\\\":\\\"0asdasdas\\\"},{\\\"id\\\":1786055559879,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786055564032,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786056069448,\\\"nomeProduto\\\":\\\"dsadas\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":0,\\\"valor\\\":0},{\\\"id\\\":1786056434448,\\\"nomeProduto\\\":\\\"213123\\\",\\\"categoria\\\":\\\"213123\\\",\\\"quantidade\\\":\\\"2131\\\",\\\"valor\\\":\\\"123132\\\"},{\\\"id\\\":1786056446287,\\\"nomeProduto\\\":\\\"dasdas\\\",\\\"categoria\\\":\\\"sadasd\\\",\\\"quantidade\\\":\\\"sadasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786056451568,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"123123\\\",\\\"quantidade\\\":\\\"123123\\\",\\\"valor\\\":\\\"12312\\\"},{\\\"id\\\":1786056462128,\\\"nomeProduto\\\":\\\"21312312\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056483791,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"213123\\\",\\\"quantidade\\\":\\\"123123\\\",\\\"valor\\\":\\\"21312\\\"},{\\\"id\\\":1786056497168,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056506825,\\\"nomeProduto\\\":\\\"asdasdasd\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":0,\\\"valor\\\":0},{\\\"id\\\":1786056509144,\\\"nomeProduto\\\":\\\"213123123\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786056593857,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786056593857,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:bundling:started","_t":1786056887258,"id":"4","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786056887258,"id":"4","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786056887283,"id":"4","total":1,"ms":24.9996}
+{"_e":"metro:client_log","_t":1786056887444,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786056887445,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786054927382,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":165,\\\"valor\\\":\\\"20\\\"},{\\\"id\\\":1786055537624,\\\"nomeProduto\\\":\\\"das\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":null,\\\"valor\\\":\\\"0asdasd\\\"},{\\\"id\\\":1786055551912,\\\"nomeProduto\\\":\\\"dasdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"0asdasdas\\\",\\\"valor\\\":\\\"0asdasdas\\\"},{\\\"id\\\":1786055559879,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasdas\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786055564032,\\\"nomeProduto\\\":\\\"asdasdas\\\",\\\"categoria\\\":\\\"asdasd\\\",\\\"quantidade\\\":\\\"asdasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786056069448,\\\"nomeProduto\\\":\\\"dsadas\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":0,\\\"valor\\\":0},{\\\"id\\\":1786056434448,\\\"nomeProduto\\\":\\\"213123\\\",\\\"categoria\\\":\\\"213123\\\",\\\"quantidade\\\":\\\"2131\\\",\\\"valor\\\":\\\"123132\\\"},{\\\"id\\\":1786056446287,\\\"nomeProduto\\\":\\\"dasdas\\\",\\\"categoria\\\":\\\"sadasd\\\",\\\"quantidade\\\":\\\"sadasd\\\",\\\"valor\\\":\\\"asdasd\\\"},{\\\"id\\\":1786056451568,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"123123\\\",\\\"quantidade\\\":\\\"123123\\\",\\\"valor\\\":\\\"12312\\\"},{\\\"id\\\":1786056462128,\\\"nomeProduto\\\":\\\"21312312\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056483791,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"213123\\\",\\\"quantidade\\\":\\\"123123\\\",\\\"valor\\\":\\\"21312\\\"},{\\\"id\\\":1786056497168,\\\"nomeProduto\\\":\\\"123123\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056506825,\\\"nomeProduto\\\":\\\"asdasdasd\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":0,\\\"valor\\\":0},{\\\"id\\\":1786056509144,\\\"nomeProduto\\\":\\\"213123123\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056603246,\\\"nomeProduto\\\":\\\"3213\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":0,\\\"valor\\\":0},{\\\"id\\\":1786056656686,\\\"nomeProduto\\\":\\\"213123\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"},{\\\"id\\\":1786056717574,\\\"nomeProduto\\\":\\\"321213\\\",\\\"categoria\\\":\\\"\\\",\\\"quantidade\\\":\\\"\\\",\\\"valor\\\":\\\"\\\"}]\"}"]}
+{"_e":"metro:client_log","_t":1786056887445,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786056887445,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786059473445,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1786059954654,"id":"8","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786059954654,"id":"8","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786059954678,"id":"8","total":1,"ms":23.7766}
+{"_e":"metro:client_log","_t":1786059954837,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786059954838,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786059943174,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":1,\\\"valor\\\":23}]\"}"]}
+{"_e":"metro:client_log","_t":1786059954838,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786059954838,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"metro:client_log","_t":1786059956346,"level":"warn","data":["\"shadow*\" style props are deprecated. Use \"boxShadow\"."]}
+{"_e":"metro:bundling:started","_t":1786060047668,"id":"d","platform":"web","environment":null,"entry":"screens\\CadastroProduto\\CadastroProduto.js"}
+{"_e":"metro:bundling:started","_t":1786060047671,"id":"e","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:started","_t":1786060136553,"id":"f","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:bundling:progress","_t":1786060136554,"id":"f","progress":0,"total":1,"current":0}
+{"_e":"metro:bundling:done","_t":1786060136577,"id":"f","total":1,"ms":23.6181}
+{"_e":"metro:bundling:started","_t":1786060136686,"id":"h","platform":"web","environment":null,"entry":"index.js"}
+{"_e":"metro:client_log","_t":1786060136842,"level":"info","data":["%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools","font-weight:bold"]}
+{"_e":"metro:client_log","_t":1786060136843,"level":"log","data":["{\"produtos\": \"[{\\\"id\\\":1786059943174,\\\"nomeProduto\\\":\\\"Douglas\\\",\\\"categoria\\\":\\\"Emanuel\\\",\\\"quantidade\\\":11,\\\"valor\\\":23}]\"}"]}
+{"_e":"metro:client_log","_t":1786060136843,"level":"log","data":["Running application \"main\" with appParams:\n","{\"hydrate\": undefined, \"rootTag\": \"#root\"}","\nDevelopment-level warnings: ON.\nPerformance optimizations: OFF."]}
+{"_e":"metro:client_log","_t":1786060136843,"level":"warn","data":["props.pointerEvents is deprecated. Use style.pointerEvents"]}
+{"_e":"root:init","_t":1786060159073,"format":"v0-jsonl","version":"57.0.9"}
+{"_e":"env:mode","_t":1786060159078,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1786060159090,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1786060160894,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1786060163124,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:server_log","_t":1786060164005,"level":"warn","data":["Failed to download the latest version of React Native DevTools. Using a fallback version instead. Connect to the internet or check your network settings."]}
+{"_e":"expo:dev-tools-plugin:load","_t":1786060164433,"plugins":[]}

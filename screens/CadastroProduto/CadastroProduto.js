@@ -13,32 +13,65 @@ export default function CadastroProduto({ navigation }) {
     const [quantidade, setQuantidade] = useState(0);
     const [valor, setValor] = useState(0);
 
-    async function salvarProduto() {
+async function salvarProduto() {
 
-        const novoProduto = {
-            id: Date.now(),
-            nomeProduto: nomeProduto,
-            categoria: categoria,
-            quantidade: quantidade,
-            valor: valor
-        };
+    const erros = [];
 
-        try {
-            const json = await AsyncStorage.getItem('produtos');
-            const produtos = json ? JSON.parse(json) : [];
-            produtos.push(novoProduto);
+    const qtd = Number(quantidade);
+    const preco = parseFloat(valor);
 
-            await AsyncStorage.setItem('produtos', JSON.stringify(produtos));
-            alert('Produto Registrado!');
+    if (nomeProduto.trim() === "") {
+        erros.push("• Nome do produto inválido.");
+    }
 
-            setNomeProduto('');
-            setCategoria('');
-            setQuantidade('');
-            setValor('');
-        } catch {
-            console.error(Error)
-        }
+    if (categoria.trim() === "") {
+        erros.push("• Categoria inválida.");
+    }
+
+    if (isNaN(qtd) || qtd <= 0) {
+        erros.push("• Quantidade deve ser um número maior que zero.");
+    }
+
+    if (isNaN(preco) || preco <= 0) {
+        erros.push("• Valor deve ser um número maior que zero.");
+    }
+
+    if (erros.length > 0) {
+        alert(
+            "Foram encontrados os seguintes erros:\n\n" +
+            erros.join("\n")
+        );
+        return;
+    }
+
+    const novoProduto = {
+        id: Date.now(),
+        nomeProduto,
+        categoria,
+        quantidade: qtd,
+        valor: preco
     };
+
+    try {
+        const json = await AsyncStorage.getItem("produtos");
+        const produtos = json ? JSON.parse(json) : [];
+
+        produtos.push(novoProduto);
+
+        await AsyncStorage.setItem("produtos", JSON.stringify(produtos));
+
+        alert("Produto cadastrado com sucesso!");
+
+        setNomeProduto("");
+        setCategoria("");
+        setQuantidade("");
+        setValor("");
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 
     return (
         <View style={styles.CadastroProduto_container}>

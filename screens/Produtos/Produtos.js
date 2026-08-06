@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ScrollView } from 'react-native-web';
 
 export default function Produtos({ navigation }) {
 
@@ -52,10 +53,12 @@ export default function Produtos({ navigation }) {
         <View
             style={{
                 flex: 1,
-                backgroundColor: "#f3f4f6",
+                backgroundColor: "#c6c6c7",
                 padding: 12,
             }}
         >
+
+            <ScrollView>
             <FlatList
                 data={produtos}
                 keyExtractor={(item, index) => index.toString()}
@@ -363,6 +366,8 @@ export default function Produtos({ navigation }) {
 
                 )}
             />
+
+            </ScrollView>
         </View>
     );
 }
