@@ -1,149 +1,273 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { styles } from '../../styles/style';
-
-// 1. Import do Hook do Tema
-import { useTheme } from '../../contexts/ThemeContext';
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { styles } from '../../../style';
 
 export default function EditarProduto({ navigation, route }) {
-    // 2. Resgate de isDark e toggleTheme do contexto
-    const { isDark, toggleTheme } = useTheme();
 
-    // Exemplo de estados para a edição do produto
-    const produto = route?.params?.produto || {};
-    const [nome, setNome] = useState(produto.nome || '');
-    const [quantidade, setQuantidade] = useState(produto.quantidade || '');
-    const [preco, setPreco] = useState(produto.preco || '');
 
-    function salvarEdicao() {
-        if (!nome || !quantidade || !preco) {
-            alert('Preencha todos os campos!');
+    const { index, produto } = route.params;
+
+
+    const [nomeProduto, setNomeProduto] = useState(
+        produto.nomeProduto
+    );
+
+    const [categoria, setCategoria] = useState(
+        produto.categoria
+    );
+
+    const [quantidade, setQuantidade] = useState(
+        String(produto.quantidade)
+    );
+
+    const [valor, setValor] = useState(
+        String(produto.valor)
+    );
+
+
+    async function salvarAlteracao() {
+
+        const erros = [];
+
+        const novaQuantidade = Number(quantidade);
+        const novoValor = parseFloat(valor);
+
+
+        if (nomeProduto.trim() === "") {
+            erros.push("• Nome do produto inválido.");
+        }
+
+
+        if (categoria.trim() === "") {
+            erros.push("• Categoria inválida.");
+        }
+
+
+        if (isNaN(novaQuantidade) || novaQuantidade <= 0) {
+            erros.push("• Quantidade inválida.");
+        }
+
+
+        if (isNaN(novoValor) || novoValor <= 0) {
+            erros.push("• Valor inválido.");
+        }
+
+
+
+        if (erros.length > 0) {
+
+            alert(
+                "Corrija os seguintes campos:\n\n" +
+                erros.join("\n")
+            );
+
             return;
         }
 
-        // Lógica de salvar no AsyncStorage...
-        alert('Produto atualizado com sucesso!');
-        navigation.goBack();
+
+
+        try {
+
+            const json = await AsyncStorage.getItem("produtos");
+
+            const produtos = json
+                ? JSON.parse(json)
+                : [];
+
+
+
+            produtos[index] = {
+
+                ...produtos[index],
+
+                nomeProduto: nomeProduto,
+                categoria: categoria,
+                quantidade: novaQuantidade,
+                valor: novoValor
+
+            };
+
+
+
+            await AsyncStorage.setItem(
+                "produtos",
+                JSON.stringify(produtos)
+            );
+
+
+
+            alert("Produto atualizado com sucesso!");
+
+            navigation.goBack();
+
+
+        } catch (error) {
+
+            console.log(
+                "Erro ao atualizar produto:",
+                error
+            );
+
+        }
+
     }
 
+
+
     return (
-        <View style={[
-            styles.viewPrincipal, 
-            { backgroundColor: isDark ? '#121212' : '#FFFFFF', paddingHorizontal: 20 }
-        ]}>
-            
-            {/* CABEÇALHO COM BOTÃO VOLTAR E BOTÃO DE TEMA */}
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-                marginTop: 20,
-                marginBottom: 20,
-            }}>
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}
-                    style={{
-                        paddingRight: 10,
-                        paddingVertical: 5,
-                        zIndex: 10
-                    }}
-                >
-                    <Text style={[styles.setaVoltar, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                        ‹
-                    </Text>
-                </TouchableOpacity>
 
-                <Text style={[
-                    styles.textoCadastro, 
-                    { color: isDark ? '#FFFFFF' : '#000000', flex: 1, textAlign: 'center' }
-                ]}>
-                    Editar Produto
-                </Text>
+        <View
+            style={{
+                flex: 1,
+                backgroundColor: "#FFFFFF",
+                padding: 20
+            }}
+        >
 
-                {/* BOTÃO DE TEMA (SOL / LUA) */}
-                <TouchableOpacity 
-                    onPress={toggleTheme} 
-                    style={{
-                        paddingVertical: 6,
-                        paddingHorizontal: 12,
-                        borderRadius: 16,
-                        backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0',
-                        zIndex: 10
-                    }}
-                >
-                    <Text style={{ fontSize: 16 }}>
-                        {isDark ? '☀️' : '🌙'}
-                    </Text>
-                </TouchableOpacity>
-            </View>
 
-            {/* FORMULÁRIO */}
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                Nome do Produto
-            </Text>        
+            <Text
+                style={{
+                    fontSize: 25,
+                    fontWeight: "bold",
+                    marginBottom: 30
+                }}
+            >
+                Editar Produto
+            </Text>
+
+
+
+            <Text>
+                Nome
+            </Text>
+
+
             <TextInput
-                style={[
-                    styles.textoLogin1,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder="Ex: Teclado Mecânico"
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                value={nome}
-                onChangeText={setNome}
+
+                style={{
+                    backgroundColor: "#fff",
+                    padding: 12,
+                    borderRadius: 10,
+                    marginBottom: 15
+                }}
+
+                value={nomeProduto}
+
+                onChangeText={setNomeProduto}
+
             />
 
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
+
+
+
+            <Text>
+                Categoria
+            </Text>
+
+
+            <TextInput
+
+                style={{
+                    backgroundColor: "#fff",
+                    padding: 12,
+                    borderRadius: 10,
+                    marginBottom: 15
+                }}
+
+                value={categoria}
+
+                onChangeText={setCategoria}
+
+            />
+
+
+
+
+            <Text>
                 Quantidade
             </Text>
-            <TextInput 
-                style={[
-                    styles.textoLogin1,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder="Ex: 10"
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
+
+
+            <TextInput
+
+                style={{
+                    backgroundColor: "#fff",
+                    padding: 12,
+                    borderRadius: 10,
+                    marginBottom: 15
+                }}
+
                 keyboardType="numeric"
+
                 value={quantidade}
+
                 onChangeText={setQuantidade}
+
             />
 
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                Preço (R$)
+
+
+
+            <Text>
+                Valor
             </Text>
-            <TextInput 
-                style={[
-                    styles.textoLogin1,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder="Ex: 150.00"
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                keyboardType="numeric"
-                value={preco}
-                onChangeText={setPreco}
+
+
+            <TextInput
+
+                style={{
+                    backgroundColor: "#fff",
+                    padding: 12,
+                    borderRadius: 10,
+                    marginBottom: 25
+                }}
+
+                keyboardType="decimal-pad"
+
+                value={valor}
+
+                onChangeText={setValor}
+
             />
 
-            <TouchableOpacity 
-                onPress={salvarEdicao} 
-                style={styles.button}
+
+
+
+            <TouchableOpacity
+
+                onPress={salvarAlteracao}
+
+                style={{
+                    backgroundColor: "#2563EB",
+                    padding: 15,
+                    borderRadius: 10,
+                    alignItems: "center"
+                }}
+
             >
-                <Text style={styles.textoButton}> 
-                    Salvar Alterações
+
+                <Text
+                    style={{
+                        color: "#fff",
+                        fontWeight: "bold",
+                        fontSize: 16
+                    }}
+                >
+                    SALVAR ALTERAÇÕES
                 </Text>
+
+
             </TouchableOpacity>
 
+
         </View>
+
     );
+
 }

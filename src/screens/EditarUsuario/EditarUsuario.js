@@ -1,273 +1,65 @@
 import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity
-} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { styles } from '../../../style';
+// 1. Adicionado TextInput no import do react-native
+import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native'; 
+// 2. Adicionado import do AsyncStorage
+import AsyncStorage from '@react-native-async-storage/async-storage'; 
+import { styles } from '../../styles/style';
 
-export default function EditarProduto({ navigation, route }) {
+export default function EditarUsuario({navigation, route}) {
 
+console.log("DADOS CHEGANDO:", route.params);
 
-    const { index, produto } = route.params;
+const usuario = route.params?.usuario || {};
+const index = route.params?.index;
 
+const [nome, setNome] = useState(usuario.nome || '');
+const [email, setEmail] = useState(usuario.email || '');
+const [senha, setSenha] = useState(usuario.senha || '');
 
-    const [nomeProduto, setNomeProduto] = useState(
-        produto.nomeProduto
-    );
+async function salvarEdicao() {
+    try {
+    const json = await AsyncStorage.getItem('usuarios');
+    const lista = json ? JSON.parse(json) : [];
 
-    const [categoria, setCategoria] = useState(
-        produto.categoria
-    );
+    lista[index] = { nome, email, senha };
 
-    const [quantidade, setQuantidade] = useState(
-        String(produto.quantidade)
-    );
-
-    const [valor, setValor] = useState(
-        String(produto.valor)
-    );
-
-
-    async function salvarAlteracao() {
-
-        const erros = [];
-
-        const novaQuantidade = Number(quantidade);
-        const novoValor = parseFloat(valor);
-
-
-        if (nomeProduto.trim() === "") {
-            erros.push("• Nome do produto inválido.");
-        }
-
-
-        if (categoria.trim() === "") {
-            erros.push("• Categoria inválida.");
-        }
-
-
-        if (isNaN(novaQuantidade) || novaQuantidade <= 0) {
-            erros.push("• Quantidade inválida.");
-        }
-
-
-        if (isNaN(novoValor) || novoValor <= 0) {
-            erros.push("• Valor inválido.");
-        }
-
-
-
-        if (erros.length > 0) {
-
-            alert(
-                "Corrija os seguintes campos:\n\n" +
-                erros.join("\n")
-            );
-
-            return;
-        }
-
-
-
-        try {
-
-            const json = await AsyncStorage.getItem("produtos");
-
-            const produtos = json
-                ? JSON.parse(json)
-                : [];
-
-
-
-            produtos[index] = {
-
-                ...produtos[index],
-
-                nomeProduto: nomeProduto,
-                categoria: categoria,
-                quantidade: novaQuantidade,
-                valor: novoValor
-
-            };
-
-
-
-            await AsyncStorage.setItem(
-                "produtos",
-                JSON.stringify(produtos)
-            );
-
-
-
-            alert("Produto atualizado com sucesso!");
-
-            navigation.goBack();
-
-
-        } catch (error) {
-
-            console.log(
-                "Erro ao atualizar produto:",
-                error
-            );
-
-        }
-
+    await AsyncStorage.setItem('usuarios', JSON.stringify(lista));
+    navigation.goBack();
+    } catch (error) {
+        console.error('Erro ao salvar edição:', error);
     }
-
-
-
+};
     return (
+        <View style={styles.viewPrincipal}>
 
-        <View
-            style={{
-                flex: 1,
-                backgroundColor: "#FFFFFF",
-                padding: 20
-            }}
-        >
+    <Text style={styles.texto}>Nome</Text>        
+    <TextInput
+    style={styles.textoLogin1}
+    value={nome}
+    onChangeText={setNome}
+     />
 
+<Text style={styles.texto}>E-mail</Text>
+    <TextInput 
+    style={styles.textoLogin1}
+    value={email}
+    onChangeText={setEmail}
+     />
 
-            <Text
-                style={{
-                    fontSize: 25,
-                    fontWeight: "bold",
-                    marginBottom: 30
-                }}
-            >
-                Editar Produto
+    <Text style={styles.texto}>Senha</Text>
+        <TextInput 
+        style={styles.textoLogin1}
+        value={senha}
+        onChangeText={setSenha} 
+        secureTextEntry={true}
+         />
+
+        <TouchableOpacity onPress={salvarEdicao} 
+        style={styles.button}>
+            <Text style={styles.textoButton}> 
+                Salvar Alterações
             </Text>
-
-
-
-            <Text>
-                Nome
-            </Text>
-
-
-            <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 15
-                }}
-
-                value={nomeProduto}
-
-                onChangeText={setNomeProduto}
-
-            />
-
-
-
-
-            <Text>
-                Categoria
-            </Text>
-
-
-            <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 15
-                }}
-
-                value={categoria}
-
-                onChangeText={setCategoria}
-
-            />
-
-
-
-
-            <Text>
-                Quantidade
-            </Text>
-
-
-            <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 15
-                }}
-
-                keyboardType="numeric"
-
-                value={quantidade}
-
-                onChangeText={setQuantidade}
-
-            />
-
-
-
-
-            <Text>
-                Valor
-            </Text>
-
-
-            <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 25
-                }}
-
-                keyboardType="decimal-pad"
-
-                value={valor}
-
-                onChangeText={setValor}
-
-            />
-
-
-
-
-            <TouchableOpacity
-
-                onPress={salvarAlteracao}
-
-                style={{
-                    backgroundColor: "#2563EB",
-                    padding: 15,
-                    borderRadius: 10,
-                    alignItems: "center"
-                }}
-
-            >
-
-                <Text
-                    style={{
-                        color: "#fff",
-                        fontWeight: "bold",
-                        fontSize: 16
-                    }}
-                >
-                    SALVAR ALTERAÇÕES
-                </Text>
-
-
-            </TouchableOpacity>
-
-
+        </TouchableOpacity>
         </View>
-
     );
-
 }

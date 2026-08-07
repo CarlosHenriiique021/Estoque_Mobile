@@ -8,6 +8,7 @@ import {
   ScrollView 
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 
 // Import do Estilo na raiz do projeto (3 níveis para fora)
 import { styles } from '../../../style'; 
@@ -71,6 +72,9 @@ export default function CadastroProduto({ navigation }) {
             setQuantidade("");
             setValor("");
 
+            // Retorna automaticamente para a tela de lista de produtos
+            navigation.goBack();
+
         } catch (error) {
             console.error(error);
             alert("Erro ao salvar produto.");
@@ -81,18 +85,33 @@ export default function CadastroProduto({ navigation }) {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <View style={styles.CadastroProduto_container}>
 
+                {/* BOTÃO VOLTAR */}
+                <TouchableOpacity 
+                    onPress={() => navigation.goBack()}
+                    style={{
+                        position: 'absolute',
+                        top: 40,
+                        left: 20,
+                        zIndex: 10,
+                        padding: 8
+                    }}
+                >
+                    <Ionicons name="arrow-back" size={28} color="#FFF" />
+                </TouchableOpacity>
+
                 <View style={styles.CadastroProduto_container2}>
                     <View style={styles.CadastroProduto_container}>
 
                         <View style={styles.CadastroProduto_CotainerImagem}>
                             <Image
-                                /* 3 níveis para fora para alcançar a pasta assets na raiz */
                                 source={require('../../../assets/local-logoTextBranco.png')}
                                 style={styles.CadastroProduto_logo}
                             />
                         </View>
 
-                        <Text style={styles.CadastroProduto_tituloCadastroProduto}>Cadastro de Produto</Text>
+                        <Text style={styles.CadastroProduto_tituloCadastroProduto}>
+                            Cadastro de Produto
+                        </Text>
                     </View>
                 </View>
 
