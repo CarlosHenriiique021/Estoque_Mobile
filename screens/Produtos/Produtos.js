@@ -59,313 +59,317 @@ export default function Produtos({ navigation }) {
         >
 
             <ScrollView>
-            <FlatList
-                data={produtos}
-                keyExtractor={(item, index) => index.toString()}
-                showsVerticalScrollIndicator={false}
-                ListEmptyComponent={() => (
-                    <View
-                        style={{
-                            alignItems: "center",
-                            marginTop: 80,
-                        }}
-                    >
-                        <Ionicons
-                            name="cube-outline"
-                            size={70}
-                            color="#9ca3af"
-                        />
-
-                        <Text
-                            style={{
-                                marginTop: 15,
-                                fontSize: 18,
-                                color: "#6b7280",
-                                fontWeight: "600",
-                            }}
-                        >
-                            Nenhum produto cadastrado
-                        </Text>
-                    </View>
-                )}
-                renderItem={({ item, index }) => (
-
-                    <View
-                        style={{
-                            backgroundColor: "#fff",
-                            borderRadius: 18,
-                            padding: 16,
-                            marginBottom: 15,
-
-                            elevation: 4,
-
-                            shadowColor: "#000",
-                            shadowOpacity: 0.08,
-                            shadowRadius: 6,
-                            shadowOffset: {
-                                width: 0,
-                                height: 3,
-                            },
-                        }}
-                    >
-
-                        {/* Cabeçalho */}
+                <FlatList
+                    data={produtos}
+                    keyExtractor={(item, index) => index.toString()}
+                    showsVerticalScrollIndicator={false}
+                    ListEmptyComponent={() => (
                         <View
                             style={{
-                                flexDirection: "row",
-                                justifyContent: "space-between",
                                 alignItems: "center",
-                                marginBottom: 18,
+                                marginTop: 80,
                             }}
                         >
-
-                            <View style={{ flex: 1 }}>
-                                <Text
-                                    style={{
-                                        fontSize: 20,
-                                        fontWeight: "bold",
-                                        color: "#111827",
-                                    }}
-                                >
-                                    {item.nomeProduto}
-                                </Text>
-                            </View>
-
-                            <View
-                                style={{
-                                    backgroundColor: "#DBEAFE",
-                                    paddingHorizontal: 12,
-                                    paddingVertical: 6,
-                                    borderRadius: 20,
-                                }}
-                            >
-                                <Text
-                                    style={{
-                                        color: "#2563EB",
-                                        fontWeight: "600",
-                                    }}
-                                >
-                                    {item.categoria}
-                                </Text>
-                            </View>
-
-                        </View>
-
-                        {/* Quantidade */}
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                                marginBottom: 18,
-                            }}
-                        >
+                            <Ionicons
+                                name="cube-outline"
+                                size={70}
+                                color="#9ca3af"
+                            />
 
                             <Text
                                 style={{
-                                    fontSize: 16,
+                                    marginTop: 15,
+                                    fontSize: 18,
+                                    color: "#6b7280",
                                     fontWeight: "600",
-                                    color: "#374151",
                                 }}
                             >
-                                Quantidade
+                                Nenhum produto cadastrado
                             </Text>
-
-                            <View
-                                style={{
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                }}
-                            >
-
-                                <TouchableOpacity
-                                    onPress={() => alterarQuantidade(index, "subtrair")}
-                                    style={{
-                                        width: 38,
-                                        height: 38,
-                                        backgroundColor: "#EF4444",
-                                        borderRadius: 19,
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Ionicons
-                                        name="remove"
-                                        size={22}
-                                        color="#fff"
-                                    />
-                                </TouchableOpacity>
-
-                                <Text
-                                    style={{
-                                        marginHorizontal: 20,
-                                        fontSize: 22,
-                                        fontWeight: "bold",
-                                        color: "#111827",
-                                    }}
-                                >
-                                    {item.quantidade}
-                                </Text>
-
-                                <TouchableOpacity
-                                    onPress={() => alterarQuantidade(index, "somar")}
-                                    style={{
-                                        width: 38,
-                                        height: 38,
-                                        backgroundColor: "#22C55E",
-                                        borderRadius: 19,
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                >
-                                    <Ionicons
-                                        name="add"
-                                        size={22}
-                                        color="#fff"
-                                    />
-                                </TouchableOpacity>
-
-                            </View>
-
                         </View>
+                    )}
+                    renderItem={({ item, index }) => (
 
-                        {/* Valores */}
                         <View
                             style={{
-                                borderTopWidth: 1,
-                                borderColor: "#E5E7EB",
-                                paddingTop: 15,
+                                backgroundColor: "#fff",
+                                borderRadius: 18,
+                                padding: 16,
+                                marginBottom: 15,
+
+                                elevation: 4,
+
+                                shadowColor: "#000",
+                                shadowOpacity: 0.08,
+                                shadowRadius: 6,
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 3,
+                                },
                             }}
                         >
 
+                            {/* Cabeçalho */}
                             <View
                                 style={{
                                     flexDirection: "row",
                                     justifyContent: "space-between",
-                                    marginBottom: 10,
+                                    alignItems: "center",
+                                    marginBottom: 18,
                                 }}
                             >
-                                <Text
-                                    style={{
-                                        color: "#6B7280",
-                                        fontSize: 15,
-                                    }}
-                                >
-                                    Valor Unitário
-                                </Text>
 
-                                <Text
+                                <View style={{ flex: 1 }}>
+                                    <Text
+                                        style={{
+                                            fontSize: 20,
+                                            fontWeight: "bold",
+                                            color: "#111827",
+                                        }}
+                                    >
+                                        {item.nomeProduto}
+                                    </Text>
+                                </View>
+
+                                <View
                                     style={{
-                                        fontWeight: "600",
-                                        fontSize: 15,
+                                        backgroundColor: "#DBEAFE",
+                                        paddingHorizontal: 12,
+                                        paddingVertical: 6,
+                                        borderRadius: 20,
                                     }}
                                 >
-                                    R$ {Number(item.valor).toFixed(2)}
-                                </Text>
+                                    <Text
+                                        style={{
+                                            color: "#2563EB",
+                                            fontWeight: "600",
+                                        }}
+                                    >
+                                        {item.categoria}
+                                    </Text>
+                                </View>
+
                             </View>
 
+                            {/* Quantidade */}
                             <View
                                 style={{
                                     flexDirection: "row",
                                     justifyContent: "space-between",
+                                    alignItems: "center",
+                                    marginBottom: 18,
                                 }}
                             >
+
                                 <Text
                                     style={{
                                         fontSize: 16,
-                                        fontWeight: "bold",
+                                        fontWeight: "600",
+                                        color: "#374151",
                                     }}
                                 >
-                                    Valor Total
+                                    Quantidade
                                 </Text>
 
-                                <Text
+                                <View
                                     style={{
-                                        color: "#16A34A",
-                                        fontSize: 18,
-                                        fontWeight: "bold",
+                                        flexDirection: "row",
+                                        alignItems: "center",
                                     }}
                                 >
-                                    R$ {(Number(item.valor) * Number(item.quantidade)).toFixed(2)}
-                                </Text>
+
+                                    <TouchableOpacity
+                                        onPress={() => alterarQuantidade(index, "subtrair")}
+                                        style={{
+                                            width: 38,
+                                            height: 38,
+                                            backgroundColor: "#EF4444",
+                                            borderRadius: 19,
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <Ionicons
+                                            name="remove"
+                                            size={22}
+                                            color="#fff"
+                                        />
+                                    </TouchableOpacity>
+
+                                    <Text
+                                        style={{
+                                            marginHorizontal: 20,
+                                            fontSize: 22,
+                                            fontWeight: "bold",
+                                            color: "#111827",
+                                        }}
+                                    >
+                                        {item.quantidade}
+                                    </Text>
+
+                                    <TouchableOpacity
+                                        onPress={() => alterarQuantidade(index, "somar")}
+                                        style={{
+                                            width: 38,
+                                            height: 38,
+                                            backgroundColor: "#22C55E",
+                                            borderRadius: 19,
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                        }}
+                                    >
+                                        <Ionicons
+                                            name="add"
+                                            size={22}
+                                            color="#fff"
+                                        />
+                                    </TouchableOpacity>
+
+                                </View>
+
+                            </View>
+
+                            {/* Valores */}
+                            <View
+                                style={{
+                                    borderTopWidth: 1,
+                                    borderColor: "#E5E7EB",
+                                    paddingTop: 15,
+                                }}
+                            >
+
+                                <View
+                                    style={{
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
+                                        marginBottom: 10,
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            color: "#6B7280",
+                                            fontSize: 15,
+                                        }}
+                                    >
+                                        Valor Unitário
+                                    </Text>
+
+                                    <Text
+                                        style={{
+                                            fontWeight: "600",
+                                            fontSize: 15,
+                                        }}
+                                    >
+                                        R$ {Number(item.valor).toFixed(2)}
+                                    </Text>
+                                </View>
+
+                                <View
+                                    style={{
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
+                                    }}
+                                >
+                                    <Text
+                                        style={{
+                                            fontSize: 16,
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        Valor Total
+                                    </Text>
+
+                                    <Text
+                                        style={{
+                                            color: "#16A34A",
+                                            fontSize: 18,
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        R$ {(Number(item.valor) * Number(item.quantidade)).toFixed(2)}
+                                    </Text>
+
+                                </View>
+
+                            </View>
+
+                            {/* Botões */}
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    justifyContent: "space-evenly",
+                                    marginTop: 22,
+                                }}
+                            >
+
+                                <TouchableOpacity
+                                    onPress={() =>
+                                        navigation.navigate("EditarProduto", {
+                                            index: index,
+                                            produto: item
+                                        })}
+                                    style={{
+                                        backgroundColor: "#3B82F6",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        paddingVertical: 10,
+                                        paddingHorizontal: 20,
+                                        borderRadius: 10,
+                                    }}
+                                >
+                                    <Ionicons
+                                        name="pencil"
+                                        size={18}
+                                        color="#fff"
+                                    />
+
+                                    <Text
+                                        style={{
+                                            color: "#fff",
+                                            fontWeight: "600",
+                                            marginLeft: 8,
+                                        }}
+                                    >
+                                        Editar
+                                    </Text>
+
+                                </TouchableOpacity>
+
+                                <TouchableOpacity
+                                    onPress={() => apagarProdutos(index)}
+                                    style={{
+                                        backgroundColor: "#EF4444",
+                                        flexDirection: "row",
+                                        alignItems: "center",
+                                        paddingVertical: 10,
+                                        paddingHorizontal: 20,
+                                        borderRadius: 10,
+                                    }}
+                                >
+                                    <Ionicons
+                                        name="trash"
+                                        size={18}
+                                        color="#fff"
+                                    />
+
+                                    <Text
+                                        style={{
+                                            color: "#fff",
+                                            fontWeight: "600",
+                                            marginLeft: 8,
+                                        }}
+                                    >
+                                        Excluir
+                                    </Text>
+
+                                </TouchableOpacity>
 
                             </View>
 
                         </View>
 
-                        {/* Botões */}
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                justifyContent: "space-evenly",
-                                marginTop: 22,
-                            }}
-                        >
-
-                            <TouchableOpacity
-                                onPress={() => navigation.navigate("CadastroProduto")}
-                                style={{
-                                    backgroundColor: "#3B82F6",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    paddingVertical: 10,
-                                    paddingHorizontal: 20,
-                                    borderRadius: 10,
-                                }}
-                            >
-                                <Ionicons
-                                    name="pencil"
-                                    size={18}
-                                    color="#fff"
-                                />
-
-                                <Text
-                                    style={{
-                                        color: "#fff",
-                                        fontWeight: "600",
-                                        marginLeft: 8,
-                                    }}
-                                >
-                                    Editar
-                                </Text>
-
-                            </TouchableOpacity>
-
-                            <TouchableOpacity
-                                onPress={() => apagarProdutos(index)}
-                                style={{
-                                    backgroundColor: "#EF4444",
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                    paddingVertical: 10,
-                                    paddingHorizontal: 20,
-                                    borderRadius: 10,
-                                }}
-                            >
-                                <Ionicons
-                                    name="trash"
-                                    size={18}
-                                    color="#fff"
-                                />
-
-                                <Text
-                                    style={{
-                                        color: "#fff",
-                                        fontWeight: "600",
-                                        marginLeft: 8,
-                                    }}
-                                >
-                                    Excluir
-                                </Text>
-
-                            </TouchableOpacity>
-
-                        </View>
-
-                    </View>
-
-                )}
-            />
+                    )}
+                />
 
             </ScrollView>
         </View>
