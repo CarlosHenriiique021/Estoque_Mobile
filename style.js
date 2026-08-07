@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 const colors = {
   primary: '#0D1b2A',
   secondary: '#364a66',
-  button: '#1E88E5'
+  button: '#1E88E5',
+  text: '#FFFFFF'
 };
 
 export const styles = StyleSheet.create({
