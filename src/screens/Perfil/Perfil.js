@@ -14,7 +14,8 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
-import { useTheme } from '../../contexts/ThemeContext'; // Ajuste o caminho conforme seu projeto
+import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '../../contexts/ThemeContext'; // Ajuste o caminho se necessário
 
 export default function Perfil({ navigation }) {
     const [usuario, setUsuario] = useState(null);
@@ -82,21 +83,16 @@ export default function Perfil({ navigation }) {
         }
     }
 
-    // --- SALVAR ALTERAÇÕES GERAIS NO ASYNCSTORAGE ---
+    // --- SALVAR ALTERAÇÕES ---
     async function salvarAtualizacaoUsuario(usuarioAtualizado) {
         try {
-            // 1. Atualiza no estado local
             setUsuario(usuarioAtualizado);
-
-            // 2. Atualiza a chave usuarioLogado
             await AsyncStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
 
-            // 3. Atualiza a lista geral 'usuarios'
             const jsonUsuarios = await AsyncStorage.getItem('usuarios');
             if (jsonUsuarios) {
                 const listaUsuarios = JSON.parse(jsonUsuarios);
                 const listaAtualizada = listaUsuarios.map((u) => {
-                    // Busca pelo email antigo ou atual para atualizar a conta correta
                     if (u.email.toLowerCase() === usuario.email.toLowerCase()) {
                         return usuarioAtualizado;
                     }
@@ -109,7 +105,6 @@ export default function Perfil({ navigation }) {
         }
     }
 
-    // --- SALVAR EDITAR PERFIL ---
     async function handleSalvarPerfil() {
         if (!novoNome.trim() || !novoEmail.trim()) {
             Alert.alert('Atenção', 'Nome e e-mail não podem ficar vazios.');
@@ -127,7 +122,6 @@ export default function Perfil({ navigation }) {
         Alert.alert('Sucesso', 'Perfil atualizado com sucesso!');
     }
 
-    // --- ALTERAR SENHA ---
     async function handleSalvarSenha() {
         if (!senhaAtual || !novaSenha || !confirmarNovaSenha) {
             Alert.alert('Atenção', 'Preencha todos os campos de senha.');
@@ -156,7 +150,6 @@ export default function Perfil({ navigation }) {
 
         await salvarAtualizacaoUsuario(usuarioAtualizado);
         
-        // Limpa os campos
         setSenhaAtual('');
         setNovaSenha('');
         setConfirmarNovaSenha('');
@@ -165,7 +158,6 @@ export default function Perfil({ navigation }) {
         Alert.alert('Sucesso', 'Senha alterada com sucesso!');
     }
 
-    // --- LOGOUT ---
     async function handleLogout() {
         try {
             await AsyncStorage.removeItem('usuarioLogado');
@@ -178,79 +170,101 @@ export default function Perfil({ navigation }) {
         }
     }
 
+    // Cores dinâmicas para alinhar exatamente com as imagens enviadas
+    const bgColor = isDark ? '#081225' : '#F5F7FB';
+    const cardBgColor = isDark ? '#0F1C36' : '#FFFFFF';
+    const textColor = isDark ? '#FFFFFF' : '#111827';
+    const borderColor = isDark ? '#192A4A' : '#F0F2F5';
+    const iconBlue = '#2563EB';
+
     return (
         <ScrollView 
             contentContainerStyle={{ flexGrow: 1 }}
-            style={[styles.container, { backgroundColor: isDark ? '#121212' : '#FFFFFF' }]}
+            style={[styles.container, { backgroundColor: bgColor }]}
         >
-            {/* Cabeçalho */}
-            <View style={styles.header}>
-                <Text style={[styles.titulo, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                    Meu Perfil
-                </Text>
+            {/* Header com condição: Topo Azul Curvo APENAS no Modo Claro */}
+            <View style={isDark ? styles.headerDark : styles.headerLight}>
                 
-                <TouchableOpacity 
-                    onPress={toggleTheme} 
-                    style={[styles.themeButton, { backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0' }]}
-                >
-                    <Text style={{ fontSize: 16 }}>{isDark ? '☀️' : '🌙'}</Text>
-                </TouchableOpacity>
+                {/* Barra do Topo (Título + Botão de Tema) */}
+                <View style={styles.topBar}>
+                    <Text style={styles.tituloHeader}>Perfil</Text>
+                    <TouchableOpacity onPress={toggleTheme} style={styles.themeButton}>
+                        <Ionicons name={isDark ? 'sunny-outline' : 'moon-outline'} size={22} color="#FFF" />
+                    </TouchableOpacity>
+                </View>
+
+                {loading ? (
+                    <ActivityIndicator size="large" color="#FFFFFF" style={{ marginVertical: 30 }} />
+                ) : usuario ? (
+                    <View style={styles.userInfoArea}>
+                        {/* Avatar com Lápis Azul */}
+                        <TouchableOpacity onPress={selecionarFoto} style={styles.avatarContainer}>
+                            {usuario.foto ? (
+                                <Image source={{ uri: usuario.foto }} style={styles.avatarImage} />
+                            ) : (
+                                <View style={styles.avatarTextContainer}>
+                                    <Text style={styles.avatarText}>
+                                        {usuario.nome ? usuario.nome.charAt(0).toUpperCase() : 'U'}
+                                    </Text>
+                                </View>
+                            )}
+                            <View style={styles.badgeEdit}>
+                                <Ionicons name="pencil" size={12} color="#FFF" />
+                            </View>
+                        </TouchableOpacity>
+
+                        <Text style={styles.nomeUsuario}>{usuario.nome}</Text>
+                        <Text style={styles.emailUsuario}>{usuario.email}</Text>
+                    </View>
+                ) : null}
             </View>
 
-            {loading ? (
-                <View style={styles.center}>
-                    <ActivityIndicator size="large" color="#007AFF" />
-                    <Text style={{ color: isDark ? '#FFFFFF' : '#000000', marginTop: 10 }}>
-                        Carregando dados...
-                    </Text>
-                </View>
-            ) : usuario ? (
-                <View style={styles.infoArea}>
-                    {/* Foto do Perfil */}
-                    <TouchableOpacity onPress={selecionarFoto} style={styles.avatarContainer}>
-                        {usuario.foto ? (
-                            <Image source={{ uri: usuario.foto }} style={styles.avatarImage} />
-                        ) : (
-                            <View style={styles.avatarTextContainer}>
-                                <Text style={styles.avatarText}>
-                                    {usuario.nome ? usuario.nome.charAt(0).toUpperCase() : 'U'}
-                                </Text>
-                            </View>
-                        )}
-                        <View style={styles.badgeEdit}>
-                            <Text style={styles.badgeText}>📷</Text>
-                        </View>
-                    </TouchableOpacity>
+            {/* Menu de Opções estilo Card */}
+            {usuario ? (
+                <View style={styles.menuContainer}>
+                    <View style={[styles.card, { backgroundColor: cardBgColor }]}>
+                        
+                        {/* 1. Editar Perfil */}
+                        <TouchableOpacity 
+                            style={[styles.menuItem, { borderBottomColor: borderColor }]} 
+                            onPress={() => setModalEditarVisible(true)}
+                        >
+                            <Ionicons name="person-outline" size={20} color={iconBlue} style={styles.menuIcon} />
+                            <Text style={[styles.menuItemText, { color: textColor }]}>Editar Perfil</Text>
+                        </TouchableOpacity>
 
-                    <Text style={[styles.dicaFoto, { color: isDark ? '#AAAAAA' : '#666666' }]}>
-                        Toque para alterar a foto
-                    </Text>
+                        {/* 2. Gerenciar Usuários */}
+                        <TouchableOpacity 
+                            style={[styles.menuItem, { borderBottomColor: borderColor }]} 
+                            onPress={() => navigation.navigate('Usuarios')} 
+                        >
+                            <Ionicons name="people-outline" size={20} color={iconBlue} style={styles.menuIcon} />
+                            <Text style={[styles.menuItemText, { color: textColor }]}>Gerenciar Usuários</Text>
+                        </TouchableOpacity>
 
-                    {/* Exibição dos Dados */}
-                    <View style={styles.dadosContainer}>
-                        <Text style={[styles.label, { color: isDark ? '#888888' : '#666666' }]}>Nome</Text>
-                        <Text style={[styles.valor, { color: isDark ? '#FFFFFF' : '#000000' }]}>{usuario.nome}</Text>
+                        {/* 3. Alterar Senha */}
+                        <TouchableOpacity 
+                            style={[styles.menuItem, { borderBottomColor: borderColor }]} 
+                            onPress={() => setModalSenhaVisible(true)}
+                        >
+                            <Ionicons name="lock-closed-outline" size={20} color={iconBlue} style={styles.menuIcon} />
+                            <Text style={[styles.menuItemText, { color: textColor }]}>Alterar Senha</Text>
+                        </TouchableOpacity>
 
-                        <Text style={[styles.label, { color: isDark ? '#888888' : '#666666' }]}>E-mail</Text>
-                        <Text style={[styles.valor, { color: isDark ? '#FFFFFF' : '#000000' }]}>{usuario.email}</Text>
+                        {/* 4. Sair da Conta */}
+                        <TouchableOpacity 
+                            style={[styles.menuItem, { borderBottomWidth: 0 }]} 
+                            onPress={handleLogout}
+                        >
+                            <Ionicons name="log-out-outline" size={20} color="#EF4444" style={styles.menuIcon} />
+                            <Text style={[styles.menuItemText, { color: '#EF4444', fontWeight: 'bold' }]}>
+                                Sair da Conta
+                            </Text>
+                        </TouchableOpacity>
+
                     </View>
-
-                    {/* Botões de Ação */}
-                    <TouchableOpacity 
-                        style={styles.actionButton} 
-                        onPress={() => setModalEditarVisible(true)}
-                    >
-                        <Text style={styles.actionButtonText}>✏️ Editar Perfil</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity 
-                        style={styles.actionButton} 
-                        onPress={() => setModalSenhaVisible(true)}
-                    >
-                        <Text style={styles.actionButtonText}>🔒 Alterar Senha</Text>
-                    </TouchableOpacity>
                 </View>
-            ) : (
+            ) : !loading && (
                 <View style={styles.center}>
                     <Text style={{ color: isDark ? '#FFFFFF' : '#000000', marginBottom: 15 }}>
                         Nenhum usuário conectado.
@@ -264,24 +278,15 @@ export default function Perfil({ navigation }) {
                 </View>
             )}
 
-            {/* Botão Sair */}
-            {usuario && (
-                <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-                    <Text style={styles.logoutText}>Sair da Conta</Text>
-                </TouchableOpacity>
-            )}
-
-            {/* MODAL 1: EDITAR PERFIL */}
+            {/* MODAIS (MANTIDOS COMPLETO) */}
             <Modal visible={modalEditarVisible} animationType="slide" transparent>
                 <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF' }]}>
-                        <Text style={[styles.modalTitle, { color: isDark ? '#FFF' : '#000' }]}>
-                            Editar Perfil
-                        </Text>
+                    <View style={[styles.modalContent, { backgroundColor: cardBgColor }]}>
+                        <Text style={[styles.modalTitle, { color: textColor }]}>Editar Perfil</Text>
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Nome</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: isDark ? '#FFF' : '#000', borderColor: isDark ? '#444' : '#CCC' }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
                             value={novoNome}
                             onChangeText={setNovoNome}
                             placeholder="Seu nome completo"
@@ -290,7 +295,7 @@ export default function Perfil({ navigation }) {
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>E-mail</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: isDark ? '#FFF' : '#000', borderColor: isDark ? '#444' : '#CCC' }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
                             value={novoEmail}
                             onChangeText={setNovoEmail}
                             keyboardType="email-address"
@@ -318,17 +323,14 @@ export default function Perfil({ navigation }) {
                 </View>
             </Modal>
 
-            {/* MODAL 2: ALTERAR SENHA */}
             <Modal visible={modalSenhaVisible} animationType="slide" transparent>
                 <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF' }]}>
-                        <Text style={[styles.modalTitle, { color: isDark ? '#FFF' : '#000' }]}>
-                            Alterar Senha
-                        </Text>
+                    <View style={[styles.modalContent, { backgroundColor: cardBgColor }]}>
+                        <Text style={[styles.modalTitle, { color: textColor }]}>Alterar Senha</Text>
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Senha Atual</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: isDark ? '#FFF' : '#000', borderColor: isDark ? '#444' : '#CCC' }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
                             value={senhaAtual}
                             onChangeText={setSenhaAtual}
                             secureTextEntry
@@ -338,7 +340,7 @@ export default function Perfil({ navigation }) {
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Nova Senha</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: isDark ? '#FFF' : '#000', borderColor: isDark ? '#444' : '#CCC' }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
                             value={novaSenha}
                             onChangeText={setNovaSenha}
                             secureTextEntry
@@ -348,7 +350,7 @@ export default function Perfil({ navigation }) {
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Confirmar Nova Senha</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: isDark ? '#FFF' : '#000', borderColor: isDark ? '#444' : '#CCC' }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
                             value={confirmarNovaSenha}
                             onChangeText={setConfirmarNovaSenha}
                             secureTextEntry
@@ -381,116 +383,124 @@ export default function Perfil({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 20,
+    },
+    // Topo Modo Claro (Azul Redondo)
+    headerLight: {
+        backgroundColor: '#0052CC',
         paddingTop: 50,
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        paddingBottom: 40,
+        paddingHorizontal: 20,
+        borderBottomLeftRadius: 160,
+        borderBottomRightRadius: 160,
         alignItems: 'center',
-        marginBottom: 20,
     },
-    titulo: {
-        fontSize: 24,
-        fontWeight: 'bold',
+    // Topo Modo Escuro (Sem fundo azul, plano)
+    headerDark: {
+        paddingTop: 50,
+        paddingBottom: 10,
+        paddingHorizontal: 20,
+        alignItems: 'center',
     },
-    themeButton: {
-        paddingVertical: 6,
-        paddingHorizontal: 12,
-        borderRadius: 16,
-    },
-    center: {
-        flex: 1,
+    topBar: {
+        width: '100%',
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'relative',
+        marginBottom: 15,
     },
-    infoArea: {
+    tituloHeader: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#FFFFFF',
+    },
+    themeButton: {
+        position: 'absolute',
+        right: 0,
+        padding: 5,
+    },
+    userInfoArea: {
         alignItems: 'center',
-        marginTop: 10,
     },
     avatarContainer: {
         position: 'relative',
-        marginBottom: 8,
+        marginBottom: 12,
     },
     avatarImage: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
+        width: 90,
+        height: 90,
+        borderRadius: 45,
     },
     avatarTextContainer: {
-        width: 100,
-        height: 100,
-        borderRadius: 50,
-        backgroundColor: '#007AFF',
+        width: 90,
+        height: 90,
+        borderRadius: 45,
+        backgroundColor: '#2563EB',
         justifyContent: 'center',
         alignItems: 'center',
     },
     avatarText: {
-        fontSize: 40,
+        fontSize: 36,
         color: '#FFFFFF',
         fontWeight: 'bold',
     },
     badgeEdit: {
         position: 'absolute',
-        bottom: 0,
-        right: 0,
-        backgroundColor: '#2C2C2C',
+        bottom: 2,
+        right: 2,
+        backgroundColor: '#2563EB',
         padding: 6,
-        borderRadius: 15,
+        borderRadius: 12,
         borderWidth: 2,
-        borderColor: '#FFFFFF',
+        borderColor: '#081225',
     },
-    badgeText: {
-        fontSize: 12,
-    },
-    dicaFoto: {
-        fontSize: 12,
-        marginBottom: 15,
-    },
-    dadosContainer: {
-        width: '100%',
-        alignItems: 'center',
-        marginBottom: 20,
-    },
-    label: {
-        fontSize: 13,
-        marginTop: 10,
-    },
-    valor: {
-        fontSize: 18,
+    nomeUsuario: {
+        fontSize: 20,
         fontWeight: 'bold',
+        color: '#FFFFFF',
+    },
+    emailUsuario: {
+        fontSize: 13,
+        color: '#A0AEC0',
         marginTop: 2,
     },
-    actionButton: {
-        width: '100%',
-        backgroundColor: '#007AFF',
-        paddingVertical: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginBottom: 10,
+    menuContainer: {
+        paddingHorizontal: 20,
+        marginTop: 25,
     },
-    actionButtonText: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
+    card: {
+        borderRadius: 16,
+        paddingVertical: 4,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        elevation: 5,
+    },
+    menuItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 18,
+        paddingHorizontal: 20,
+        borderBottomWidth: 1,
+    },
+    menuIcon: {
+        marginRight: 16,
+    },
+    menuItemText: {
         fontSize: 15,
+        fontWeight: '600',
     },
-    logoutButton: {
-        backgroundColor: '#FF3B30',
-        paddingVertical: 14,
-        borderRadius: 8,
+    center: {
+        flex: 1,
+        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 20,
-        marginBottom: 30,
-    },
-    logoutText: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-        fontSize: 16,
+        paddingTop: 50,
     },
     loginRedirButton: {
-        backgroundColor: '#007AFF',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
+        backgroundColor: '#0052CC',
+        paddingVertical: 12,
+        paddingHorizontal: 24,
         borderRadius: 8,
     },
     loginRedirText: {
@@ -501,23 +511,23 @@ const styles = StyleSheet.create({
     /* Estilos dos Modais */
     modalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,0,0,0.6)',
         justifyContent: 'center',
         paddingHorizontal: 20,
     },
     modalContent: {
-        borderRadius: 12,
+        borderRadius: 16,
         padding: 20,
         elevation: 5,
     },
     modalTitle: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 15,
         textAlign: 'center',
     },
     inputLabel: {
-        fontSize: 14,
+        fontSize: 13,
         marginTop: 10,
         marginBottom: 4,
     },
@@ -526,7 +536,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         paddingHorizontal: 12,
         paddingVertical: 10,
-        fontSize: 16,
+        fontSize: 15,
     },
     modalButtonsRow: {
         flexDirection: 'row',
@@ -544,7 +554,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#E0E0E0',
     },
     modalBtnSalvar: {
-        backgroundColor: '#007AFF',
+        backgroundColor: '#0052CC',
     },
     modalBtnTextCancelar: {
         color: '#333333',
