@@ -61,12 +61,10 @@ export default function Produtos({ navigation }) {
                     keyExtractor={(item, index) => index.toString()}
                     showsVerticalScrollIndicator={false}
                     ListEmptyComponent={() => (
-                        <View
-                            style={{
-                                alignItems: "center",
-                                marginTop: 80,
-                            }}
-                        >
+                        <View style={{
+                            alignItems: "center",
+                            marginTop: 80,
+                        }}>
                             <Ionicons
                                 name="cube-outline"
                                 size={70}
@@ -92,7 +90,7 @@ export default function Produtos({ navigation }) {
                                 </View>
 
                                 <View style={styles.produtos_CabecalhoCategoriaView}>
-                                
+
                                     <Text
                                         style={{
                                             color: "#2563EB",
@@ -106,22 +104,9 @@ export default function Produtos({ navigation }) {
                             </View>
 
                             {/* Quantidade */}
-                            <View
-                                style={{
-                                    flexDirection: "row",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    marginBottom: 18,
-                                }}
-                            >
+                            <View style={styles.produtos_QuantidadeView}>
 
-                                <Text
-                                    style={{
-                                        fontSize: 16,
-                                        fontWeight: "600",
-                                        color: "#374151",
-                                    }}
-                                >
+                                <Text style={styles.produtos_QuantidadeTexto}>
                                     Quantidade
                                 </Text>
 
@@ -134,14 +119,7 @@ export default function Produtos({ navigation }) {
 
                                     <TouchableOpacity
                                         onPress={() => alterarQuantidade(index, "subtrair")}
-                                        style={{
-                                            width: 38,
-                                            height: 38,
-                                            backgroundColor: "#EF4444",
-                                            borderRadius: 19,
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                        }}
+                                        style={styles.produtos_TouchableSubtrair}
                                     >
                                         <Ionicons
                                             name="remove"
@@ -150,27 +128,13 @@ export default function Produtos({ navigation }) {
                                         />
                                     </TouchableOpacity>
 
-                                    <Text
-                                        style={{
-                                            marginHorizontal: 20,
-                                            fontSize: 22,
-                                            fontWeight: "bold",
-                                            color: "#111827",
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_TouchableSubtrairTexto}>
                                         {item.quantidade}
                                     </Text>
 
                                     <TouchableOpacity
                                         onPress={() => alterarQuantidade(index, "somar")}
-                                        style={{
-                                            width: 38,
-                                            height: 38,
-                                            backgroundColor: "#22C55E",
-                                            borderRadius: 19,
-                                            justifyContent: "center",
-                                            alignItems: "center",
-                                        }}
+                                        style={styles.produtos_TouchableSomar}
                                     >
                                         <Ionicons
                                             name="add"
@@ -184,36 +148,15 @@ export default function Produtos({ navigation }) {
                             </View>
 
                             {/* Valores */}
-                            <View
-                                style={{
-                                    borderTopWidth: 1,
-                                    borderColor: "#E5E7EB",
-                                    paddingTop: 15,
-                                }}
-                            >
+                            <View style={styles.produtos_ValoresCotainer}>
 
-                                <View
-                                    style={{
-                                        flexDirection: "row",
-                                        justifyContent: "space-between",
-                                        marginBottom: 10,
-                                    }}
-                                >
-                                    <Text
-                                        style={{
-                                            color: "#6B7280",
-                                            fontSize: 15,
-                                        }}
-                                    >
+                                <View style={styles.produtos_ValoresView}>
+
+                                    <Text style={styles.produtos_ValoresTextoUnitario}>
                                         Valor Unitário
                                     </Text>
 
-                                    <Text
-                                        style={{
-                                            fontWeight: "600",
-                                            fontSize: 15,
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_ValoresCifrao}>
                                         R$ {Number(item.valor).toFixed(2)}
                                     </Text>
                                 </View>
@@ -224,22 +167,11 @@ export default function Produtos({ navigation }) {
                                         justifyContent: "space-between",
                                     }}
                                 >
-                                    <Text
-                                        style={{
-                                            fontSize: 16,
-                                            fontWeight: "bold",
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_ValoresTextoTotal}>
                                         Valor Total
                                     </Text>
 
-                                    <Text
-                                        style={{
-                                            color: "#16A34A",
-                                            fontSize: 18,
-                                            fontWeight: "bold",
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_ValoresCifraoTotal}>
                                         R$ {(Number(item.valor) * Number(item.quantidade)).toFixed(2)}
                                     </Text>
 
@@ -249,11 +181,7 @@ export default function Produtos({ navigation }) {
 
                             {/* Botões */}
                             <View
-                                style={{
-                                    flexDirection: "row",
-                                    justifyContent: "space-evenly",
-                                    marginTop: 22,
-                                }}
+                                style={styles.produtos_BotaoView}
                             >
 
                                 <TouchableOpacity
@@ -262,14 +190,7 @@ export default function Produtos({ navigation }) {
                                             index: index,
                                             produto: item
                                         })}
-                                    style={{
-                                        backgroundColor: "#3B82F6",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        paddingVertical: 10,
-                                        paddingHorizontal: 20,
-                                        borderRadius: 10,
-                                    }}
+                                    style={styles.produtos_BotaoEditar}
                                 >
                                     <Ionicons
                                         name="pencil"
@@ -277,13 +198,7 @@ export default function Produtos({ navigation }) {
                                         color="#fff"
                                     />
 
-                                    <Text
-                                        style={{
-                                            color: "#fff",
-                                            fontWeight: "600",
-                                            marginLeft: 8,
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_BotaoTextoEditarExcluir}>
                                         Editar
                                     </Text>
 
@@ -291,14 +206,7 @@ export default function Produtos({ navigation }) {
 
                                 <TouchableOpacity
                                     onPress={() => apagarProdutos(index)}
-                                    style={{
-                                        backgroundColor: "#EF4444",
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        paddingVertical: 10,
-                                        paddingHorizontal: 20,
-                                        borderRadius: 10,
-                                    }}
+                                    style={styles.produtos_BotaoExcluir}
                                 >
                                     <Ionicons
                                         name="trash"
@@ -306,13 +214,7 @@ export default function Produtos({ navigation }) {
                                         color="#fff"
                                     />
 
-                                    <Text
-                                        style={{
-                                            color: "#fff",
-                                            fontWeight: "600",
-                                            marginLeft: 8,
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_BotaoTextoEditarExcluir}>
                                         Excluir
                                     </Text>
 

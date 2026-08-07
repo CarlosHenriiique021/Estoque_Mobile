@@ -218,5 +218,106 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 20,
+  },
+
+  produtos_QuantidadeView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 18,
+  },
+
+  produtos_QuantidadeTexto: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#374151"
+  },
+
+  produtos_TouchableSubtrair: {
+    width: 38,
+    height: 38,
+    backgroundColor: "#EF4444",
+    borderRadius: 19,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  produtos_TouchableSubtrairTexto: {
+    marginHorizontal: 20,
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#111827",
+  },
+
+  produtos_TouchableSomar: {
+    width: 38,
+    height: 38,
+    backgroundColor: "#22C55E",
+    borderRadius: 19,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  produtos_ValoresCotainer: {
+    borderTopWidth: 1,
+    borderColor: "#E5E7EB",
+    paddingTop: 15,
+  },
+
+  produtos_ValoresView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+
+  produtos_ValoresTextoUnitario: {
+    color: "#6B7280",
+    fontSize: 15,
+  },
+
+  produtos_ValoresCifrao: {
+    fontWeight: "600",
+    fontSize: 15,
+  },
+
+  produtos_ValoresTextoTotal: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+
+  produtos_ValoresCifraoTotal: {
+    color: "#16A34A",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  produtos_BotaoView: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 22,
+  },
+
+  produtos_BotaoEditar: {
+    backgroundColor: "#3B82F6",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+
+  produtos_BotaoExcluir: {
+    backgroundColor: "#EF4444",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+
+  produtos_BotaoTextoEditarExcluir: {
+    color: "#fff",
+    fontWeight: "600",
+    marginLeft: 8,
   }
 });
