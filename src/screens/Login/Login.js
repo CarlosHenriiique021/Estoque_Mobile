@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { styles } from '../../styles/style';
-
 import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Login({ navigation }) {
@@ -12,8 +11,6 @@ export default function Login({ navigation }) {
     const { isDark, toggleTheme } = useTheme();
 
     async function trataLogin() {
-        console.log("1. Clicou no botão de login");
-
         if (!email || !senha) {
             alert('Preencha todos os campos!');
             return;
@@ -34,7 +31,10 @@ export default function Login({ navigation }) {
             );
 
             if (usuarioValido) {
-                alert(`Bem-vindo!`);
+                // 🔑 GUARDA O USUÁRIO QUE ESTÁ LOGADO AGORA
+                await AsyncStorage.setItem('usuarioLogado', JSON.stringify(usuarioValido));
+
+                alert('Bem-vindo!');
                 navigation.replace('MainTabs');
             } else {
                 alert('E-mail ou senha incorretos!');
@@ -46,13 +46,12 @@ export default function Login({ navigation }) {
     }
 
     return (
-        // 3. Aplica cor de fundo dinâmica na View principal
         <View style={[
             styles.viewPrincipal, 
             { backgroundColor: isDark ? '#121212' : '#FFFFFF' }
         ]}>
 
-            {/* 4. Botão Flutuante de Tema no topo */}
+            {/* Botão de Tema no topo */}
             <TouchableOpacity 
                 onPress={toggleTheme} 
                 style={{
@@ -75,7 +74,6 @@ export default function Login({ navigation }) {
                 style={styles.logotipo}
             />
             
-            {/* Ajuste de cores dos textos para garantir legibilidade */}
             <Text style={[styles.textoLogo, { color: isDark ? '#FFFFFF' : '#000000' }]}>
                 Estoque Mobile
             </Text>
