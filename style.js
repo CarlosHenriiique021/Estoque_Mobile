@@ -1,25 +1,25 @@
 import { StyleSheet } from 'react-native';
+import EditarProduto from './screens/EditarProduto/EditarProduto';
 
 const colors = {
   primary: '#0D1b2A',
-  secondary: '#364a66',
-  button: '#1E88E5',
-  text: '#FFFFFF'
+  secondary: '#FFFFFF',
+  botaoFundo: '#1E88E5',
+  botaoTexto: '#FFFFFF',
+  text: '#000000',
+  background: '#FFFFFF',
+  backgroundInput: '#FFFFFF'
 };
 
 export const styles = StyleSheet.create({
 
   CadastroProduto_container: {
     flex: 1,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.background,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
-  CadastroProduto_container2: {
-    marginTop: -110,
-    marginBottom: 30
-  },
 
   CadastroProduto_logo: {
     width: 300,
@@ -28,10 +28,10 @@ export const styles = StyleSheet.create({
 
   CadastroProduto_tituloCadastroProduto: {
     fontWeight: '700',
-    color: 'white',
+    color: colors.text,
     fontSize: 33,
-    marginTop: -90,
-    marginBottom: -20
+    marginTop: -110,
+
   },
 
   CadastroProduto_viewContainer: {
@@ -42,13 +42,11 @@ export const styles = StyleSheet.create({
   CadastroProduto_textoPrincipal: {
     fontSize: 17,
     fontWeight: 500,
-    color: 'white',
+    color: colors.text,
     paddingLeft: 2,
     marginBottom: 3,
     paddingTop: 10
   },
-
-
 
   CadastroProduto_textoInput: {
     fontSize: 17,
@@ -56,7 +54,7 @@ export const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 2,
     marginTop: 2,
-    color: 'white',
+    color: colors.text,
     backgroundColor: colors.secondary,
     borderWidth: 1,
     borderColor: 'black',
@@ -74,7 +72,7 @@ export const styles = StyleSheet.create({
     borderLeftWidth: 1,
     borderRightWidth: 0,
     borderColor: 'black',
-    color: 'white'
+    color: colors.text
   },
 
   CadastroProduto_textoInputValor: {
@@ -85,236 +83,226 @@ export const styles = StyleSheet.create({
     paddingLeft: 2,
     paddingRight: 80,
     marginTop: 2,
-    color: 'white',
+    color: colors.text,
     backgroundColor: colors.secondary,
     borderWidth: 1,
     borderColor: 'black',
   },
 
   CadastroProduto_btn_Salvar: {
-    backgroundColor: colors.button,
+    backgroundColor: colors.botaoFundo,
     width: 320,
     margin: 5,
     paddingVertical: 10,
     borderRadius: 8,
-    marginTop: 50
+    marginTop: 20
   },
 
-  CadastroProduto_btn_SalvarText: {
+  CadastroProduto_btn_textoSalvarProdutos: {
     fontSize: 15,
     fontWeight: 700,
     textAlign: 'center',
-    color: 'white'
+    color: colors.botaoTexto
   },
 
-  CadastroProduto_viewEditarELista: {
-    flexDirection: 'row',
-    gap: 5,
-    justifyContent: 'center'
-  },
-
-  CadastroProduto_btn_editar: {
+  CadastroProduto_btn_produtos: {
     backgroundColor: 'gray',
-    fontSize: 15,
-    fontWeight: 700,
+    width: 320,
+    margin: 5,
     paddingVertical: 10,
-    paddingHorizontal: 49,
     borderRadius: 8,
-    color: 'white'
   },
 
-  CadastroProduto_btn_lista: {
-    backgroundColor: 'gray',
-    fontSize: 15,
-    fontWeight: 700,
-    paddingVertical: 10,
-    paddingHorizontal: 49,
-    borderRadius: 8,
-    color: 'white'
-  },
-
-  CadastroProduto_produtosView: {
-    backgroundColor: 'yellow',
-    width: 300,
-    height: 100
-  },
-
-   viewPrincipal: {
+  editarProduto_View: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingHorizontal: 30,
-    justifyContent: 'flex-start',
-    paddingTop: 20,
+    backgroundColor: colors.background,
+    padding: 20
   },
 
-  logotipo: {
-    width: 180,
-    height: 180,
-    alignSelf: 'center',
-    marginBottom: 5,
-  },
-
-  textoLogo: {
+  editarProduto_Titulo: {
     fontSize: 30,
-    color: '#0057b8',
+    fontWeight: "bold",
+    marginBottom: 30,
+    textAlign: 'center'
+  },
+
+  editarProduto_InputBox: {
+    backgroundColor: colors.background,
+    padding: 12,
+    borderRadius: 10,
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: 'black',
+  },
+
+  editarProduto_Text: {
+    fontFamily: 'Montserrat',
+    fontWeight: '400',
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 5,
+    fontSize: 20,
+    marginBottom: 10,
   },
 
-  textoLogin: {
-    fontSize: 16,
-    color: '#6b7280',
-    fontWeight: '600',
-    textAlign: 'center',
-    marginBottom: 25,
-  },
-
-  textoLogin1: {
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#d1d5db',
+  editarProduto_Salvar: {
+    backgroundColor: colors.botaoFundo,
+    padding: 15,
     borderRadius: 10,
-    paddingHorizontal: 15,
+    alignItems: "center",
+    marginTop: 15,
+  },
+
+  editarProduto_TextoSalvar: {
+    color: colors.botaoTexto,
+    fontWeight: "bold",
     fontSize: 16,
-    color: '#000000',
-    backgroundColor: '#ffffff',
-    marginBottom: 15,
   },
 
-  textoCadastro: {
-    fontSize: 22,
-    color: 'black',
-    fontWeight: '600',
-    textAlign: 'center',
+  produtos_Container: {
+    flex: 1,
+    backgroundColor: "#c6c6c7",
+    padding: 12,
   },
 
-  textoCadastroInput: {
-    height: 50,
-    borderWidth: 1,
-    borderColor: '#d1d5db',
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    fontSize: 16,
-    color: '#000000',
-    backgroundColor: '#ffffff',
-    marginBottom: 15,
-  },
-
-  texto: {
-    color: '#111827',
-    fontSize: 15,
-    fontWeight: '600',
-    marginBottom: 6,
-  },
-
-  input: {
-    color: '#000',
-    backgroundColor: colors.primary,
-    height: 50,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    borderWidth: 1,
-    borderColor: '#6b6b6be1',
-    marginTop: 5,
-  },
-
-  button: {
-    width: '65%',
-    backgroundColor: '#2563eb',
-    height: 50,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
-    alignSelf: 'center',
-  },
-
-  textoButton: {
-    color: '#ffffff',
-    fontWeight: 'bold',
+  produtos_Texto: {
+    marginTop: 15,
     fontSize: 18,
+    color: "#6b7280",
+    fontWeight: "600",
   },
 
-  areaCadastro: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 25,
-    gap: 5,
+  produtos_View: {
+    backgroundColor: "#fff",
+    borderRadius: 18,
+    padding: 16,
+    marginBottom: 15,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
   },
 
-  arealogin: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 25,
-    gap: 5,
+  produtos_CabecalhoView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 18,
   },
 
-  textoConta: {
-    color: '#6b7280',
+  produtos_CabecalhoTexto: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#111827",
   },
 
-  cadastro: {
-    color: '#2563eb',
-    fontWeight: 'bold',
+  produtos_CabecalhoCategoriaView: {
+    backgroundColor: "#DBEAFE",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
   },
 
-  login: {
-    color: '#2563eb',
-    fontWeight: 'bold',
+  produtos_QuantidadeView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 18,
   },
 
-  subtitulo: {
-    marginTop: -10,
-    paddingHorizontal: 20,
-  },
-  headerCadastro: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    height: 50,
-    position: 'relative',
-    marginTop: 10,
-    marginBottom: 20,
+  produtos_QuantidadeTexto: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#374151"
   },
 
-  containerTextoHeader: {
-    justifyContent: 'center',
-    alignItems: 'center',
+  produtos_TouchableSubtrair: {
+    width: 38,
+    height: 38,
+    backgroundColor: "#EF4444",
+    borderRadius: 19,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
-  textoCadastro: {
-    fontSize: 24,
-    color: '#000000',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
-  botaoVoltar: {
-    position: 'absolute',
-    left: 0,
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 10,
-  },
-
-  setaVoltar: {
-    fontSize: 38,
-    color: '#000000',
-    fontWeight: '300',
-    fontFamily: 'sans-serif',
-    textAlignVertical: 'center',
-    lineHeight: 40,
-  },
-
-  textoCadastro: {
+  produtos_TouchableSubtrairTexto: {
+    marginHorizontal: 20,
     fontSize: 22,
-    color: 'black',
-    fontWeight: '600',
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#111827",
   },
 
+  produtos_TouchableSomar: {
+    width: 38,
+    height: 38,
+    backgroundColor: "#22C55E",
+    borderRadius: 19,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  produtos_ValoresCotainer: {
+    borderTopWidth: 1,
+    borderColor: "#E5E7EB",
+    paddingTop: 15,
+  },
+
+  produtos_ValoresView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+
+  produtos_ValoresTextoUnitario: {
+    color: "#6B7280",
+    fontSize: 15,
+  },
+
+  produtos_ValoresCifrao: {
+    fontWeight: "600",
+    fontSize: 15,
+  },
+
+  produtos_ValoresTextoTotal: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+
+  produtos_ValoresCifraoTotal: {
+    color: "#16A34A",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+
+  produtos_BotaoView: {
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    marginTop: 22,
+  },
+
+  produtos_BotaoEditar: {
+    backgroundColor: "#3B82F6",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+
+  produtos_BotaoExcluir: {
+    backgroundColor: "#EF4444",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+
+  produtos_BotaoTextoEditarExcluir: {
+    color: "#fff",
+    fontWeight: "600",
+    marginLeft: 8,
+  }
 });
