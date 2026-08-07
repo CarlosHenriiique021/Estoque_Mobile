@@ -15,27 +15,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from '../../contexts/ThemeContext'; // Ajuste o caminho se necessário
+import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Perfil({ navigation }) {
     const [usuario, setUsuario] = useState(null);
     const [loading, setLoading] = useState(true);
     const { isDark, toggleTheme } = useTheme();
 
-    // Modais
     const [modalEditarVisible, setModalEditarVisible] = useState(false);
     const [modalSenhaVisible, setModalSenhaVisible] = useState(false);
 
-    // Estados do Formulário - Editar Perfil
     const [novoNome, setNovoNome] = useState('');
     const [novoEmail, setNovoEmail] = useState('');
 
-    // Estados do Formulário - Alterar Senha
     const [senhaAtual, setSenhaAtual] = useState('');
     const [novaSenha, setNovaSenha] = useState('');
     const [confirmarNovaSenha, setConfirmarNovaSenha] = useState('');
 
-    // Carrega o usuário ao entrar na tela
     useFocusEffect(
         useCallback(() => {
             carregarDadosUsuario();
@@ -61,7 +57,27 @@ export default function Perfil({ navigation }) {
         }
     }
 
-    // --- SELEÇÃO DE FOTO ---
+    async function salvarAtualizacaoUsuario(usuarioAtualizado) {
+        try {
+            setUsuario(usuarioAtualizado);
+            await AsyncStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
+
+            const jsonUsuarios = await AsyncStorage.getItem('usuarios');
+            if (jsonUsuarios) {
+                const listaUsuarios = JSON.parse(jsonUsuarios);
+                const listaAtualizada = listaUsuarios.map((u) => {
+                    if (u.email?.toLowerCase() === usuarioAtualizado.email?.toLowerCase()) {
+                        return usuarioAtualizado;
+                    }
+                    return u;
+                });
+                await AsyncStorage.setItem('usuarios', JSON.stringify(listaAtualizada));
+            }
+        } catch (error) {
+            Alert.alert('Erro', 'Não foi possível atualizar os dados.');
+        }
+    }
+
     async function selecionarFoto() {
         const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
 
@@ -74,34 +90,22 @@ export default function Perfil({ navigation }) {
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [1, 1],
-            quality: 0.5,
+            quality: 0.3, // Qualidade reduzida para otimizar o armazenamento no AsyncStorage
+            base64: true,  // Habilita a conversão da imagem para string Base64
         });
 
         if (!result.canceled && result.assets && result.assets.length > 0) {
-            const uriFoto = result.assets[0].uri;
-            await salvarAtualizacaoUsuario({ ...usuario, foto: uriFoto });
-        }
-    }
+            try {
+                const asset = result.assets[0];
+                // Cria a URI no formato Data Base64
+                const fotoBase64 = `data:image/jpeg;base64,${asset.base64}`;
 
-    // --- SALVAR ALTERAÇÕES ---
-    async function salvarAtualizacaoUsuario(usuarioAtualizado) {
-        try {
-            setUsuario(usuarioAtualizado);
-            await AsyncStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
-
-            const jsonUsuarios = await AsyncStorage.getItem('usuarios');
-            if (jsonUsuarios) {
-                const listaUsuarios = JSON.parse(jsonUsuarios);
-                const listaAtualizada = listaUsuarios.map((u) => {
-                    if (u.email.toLowerCase() === usuario.email.toLowerCase()) {
-                        return usuarioAtualizado;
-                    }
-                    return u;
-                });
-                await AsyncStorage.setItem('usuarios', JSON.stringify(listaAtualizada));
+                const usuarioComNovaFoto = { ...usuario, foto: fotoBase64 };
+                await salvarAtualizacaoUsuario(usuarioComNovaFoto);
+                Alert.alert('Sucesso', 'Foto de perfil atualizada com sucesso!');
+            } catch (error) {
+                Alert.alert('Erro', 'Falha ao processar a foto.');
             }
-        } catch (error) {
-            Alert.alert('Erro', 'Não foi possível atualizar os dados.');
         }
     }
 
@@ -170,7 +174,6 @@ export default function Perfil({ navigation }) {
         }
     }
 
-    // Cores dinâmicas para alinhar exatamente com as imagens enviadas
     const bgColor = isDark ? '#081225' : '#F5F7FB';
     const cardBgColor = isDark ? '#0F1C36' : '#FFFFFF';
     const textColor = isDark ? '#FFFFFF' : '#111827';
@@ -182,10 +185,7 @@ export default function Perfil({ navigation }) {
             contentContainerStyle={{ flexGrow: 1 }}
             style={[styles.container, { backgroundColor: bgColor }]}
         >
-            {/* Header com condição: Topo Azul Curvo APENAS no Modo Claro */}
             <View style={isDark ? styles.headerDark : styles.headerLight}>
-                
-                {/* Barra do Topo (Título + Botão de Tema) */}
                 <View style={styles.topBar}>
                     <Text style={styles.tituloHeader}>Perfil</Text>
                     <TouchableOpacity onPress={toggleTheme} style={styles.themeButton}>
@@ -197,7 +197,6 @@ export default function Perfil({ navigation }) {
                     <ActivityIndicator size="large" color="#FFFFFF" style={{ marginVertical: 30 }} />
                 ) : usuario ? (
                     <View style={styles.userInfoArea}>
-                        {/* Avatar com Lápis Azul */}
                         <TouchableOpacity onPress={selecionarFoto} style={styles.avatarContainer}>
                             {usuario.foto ? (
                                 <Image source={{ uri: usuario.foto }} style={styles.avatarImage} />
@@ -209,7 +208,7 @@ export default function Perfil({ navigation }) {
                                 </View>
                             )}
                             <View style={styles.badgeEdit}>
-                                <Ionicons name="pencil" size={12} color="#FFF" />
+                                <Ionicons name="camera" size={14} color="#FFF" />
                             </View>
                         </TouchableOpacity>
 
@@ -219,12 +218,9 @@ export default function Perfil({ navigation }) {
                 ) : null}
             </View>
 
-            {/* Menu de Opções estilo Card */}
             {usuario ? (
                 <View style={styles.menuContainer}>
                     <View style={[styles.card, { backgroundColor: cardBgColor }]}>
-                        
-                        {/* 1. Editar Perfil */}
                         <TouchableOpacity 
                             style={[styles.menuItem, { borderBottomColor: borderColor }]} 
                             onPress={() => setModalEditarVisible(true)}
@@ -233,16 +229,6 @@ export default function Perfil({ navigation }) {
                             <Text style={[styles.menuItemText, { color: textColor }]}>Editar Perfil</Text>
                         </TouchableOpacity>
 
-                        {/* 2. Gerenciar Usuários */}
-                        <TouchableOpacity 
-                            style={[styles.menuItem, { borderBottomColor: borderColor }]} 
-                            onPress={() => navigation.navigate('Usuarios')} 
-                        >
-                            <Ionicons name="people-outline" size={20} color={iconBlue} style={styles.menuIcon} />
-                            <Text style={[styles.menuItemText, { color: textColor }]}>Gerenciar Usuários</Text>
-                        </TouchableOpacity>
-
-                        {/* 3. Alterar Senha */}
                         <TouchableOpacity 
                             style={[styles.menuItem, { borderBottomColor: borderColor }]} 
                             onPress={() => setModalSenhaVisible(true)}
@@ -251,7 +237,6 @@ export default function Perfil({ navigation }) {
                             <Text style={[styles.menuItemText, { color: textColor }]}>Alterar Senha</Text>
                         </TouchableOpacity>
 
-                        {/* 4. Sair da Conta */}
                         <TouchableOpacity 
                             style={[styles.menuItem, { borderBottomWidth: 0 }]} 
                             onPress={handleLogout}
@@ -261,7 +246,6 @@ export default function Perfil({ navigation }) {
                                 Sair da Conta
                             </Text>
                         </TouchableOpacity>
-
                     </View>
                 </View>
             ) : !loading && (
@@ -278,7 +262,6 @@ export default function Perfil({ navigation }) {
                 </View>
             )}
 
-            {/* MODAIS (MANTIDOS COMPLETO) */}
             <Modal visible={modalEditarVisible} animationType="slide" transparent>
                 <View style={styles.modalOverlay}>
                     <View style={[styles.modalContent, { backgroundColor: cardBgColor }]}>
@@ -384,7 +367,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    // Topo Modo Claro (Azul Redondo)
     headerLight: {
         backgroundColor: '#0052CC',
         paddingTop: 50,
@@ -394,7 +376,6 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 160,
         alignItems: 'center',
     },
-    // Topo Modo Escuro (Sem fundo azul, plano)
     headerDark: {
         paddingTop: 50,
         paddingBottom: 10,
@@ -446,13 +427,18 @@ const styles = StyleSheet.create({
     },
     badgeEdit: {
         position: 'absolute',
-        bottom: 2,
-        right: 2,
+        bottom: 0,
+        right: 0,
         backgroundColor: '#2563EB',
-        padding: 6,
-        borderRadius: 12,
+        padding: 7,
+        borderRadius: 16,
         borderWidth: 2,
-        borderColor: '#081225',
+        borderColor: '#FFFFFF',
+        elevation: 3,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
     },
     nomeUsuario: {
         fontSize: 20,
@@ -507,8 +493,6 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
     },
-
-    /* Estilos dos Modais */
     modalOverlay: {
         flex: 1,
         backgroundColor: 'rgba(0,0,0,0.6)',
