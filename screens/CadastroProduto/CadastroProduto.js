@@ -145,13 +145,12 @@ export default function CadastroProduto({ navigation }) {
                     </TouchableOpacity>
 
 
-                    <View style={styles.CadastroProduto_viewEditarELista}>
-                        <TouchableOpacity>
-                            <Text style={styles.CadastroProduto_btn_editar}> EDITAR </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text style={styles.CadastroProduto_btn_lista}> LISTAR </Text>
-
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => { navigation.navigate('Produtos')}}>
+                            <View style={styles.CadastroProduto_btn_editar}>
+                                <Text style={styles.CadastroProduto_btn_SalvarText}> PRODUTOS </Text>
+                            </View>
                         </TouchableOpacity>
                     </View>
 

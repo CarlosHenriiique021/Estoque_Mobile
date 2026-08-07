@@ -11,24 +11,12 @@ import { styles } from '../../style';
 
 export default function EditarProduto({ navigation, route }) {
 
-    const { index, produto } = route.params;
+    const { index, produto, onAtualizar } = route.params;
 
-    const [nomeProduto, setNomeProduto] = useState(
-        produto.nomeProduto
-    );
-
-    const [categoria, setCategoria] = useState(
-        produto.categoria
-    );
-
-    const [quantidade, setQuantidade] = useState(
-        String(produto.quantidade)
-    );
-
-    const [valor, setValor] = useState(
-        String(produto.valor)
-    );
-
+    const [nomeProduto, setNomeProduto] = useState(produto.nomeProduto);
+    const [categoria, setCategoria] = useState(produto.categoria);
+    const [quantidade, setQuantidade] = useState(String(produto.quantidade));
+    const [valor, setValor] = useState(String(produto.valor));
 
     async function salvarAlteracao() {
 
@@ -62,7 +50,6 @@ export default function EditarProduto({ navigation, route }) {
 
         try {
             const json = await AsyncStorage.getItem("produtos");
-
             const produtos = json ? JSON.parse(json) : [];
 
             produtos[index] = {
@@ -75,7 +62,7 @@ export default function EditarProduto({ navigation, route }) {
 
             await AsyncStorage.setItem("produtos", JSON.stringify(produtos));
             alert("Produto atualizado com sucesso!");
-            navigation.goBack();
+            navigation.navigate('Produtos')
 
         } catch (error) {
 

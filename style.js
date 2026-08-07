@@ -104,20 +104,12 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
 
-  CadastroProduto_viewEditarELista: {
-    flexDirection: 'row',
-    gap: 5,
-    justifyContent: 'center'
-  },
-
   CadastroProduto_btn_editar: {
     backgroundColor: 'gray',
-    fontSize: 15,
-    fontWeight: 700,
+    width: 320,
+    margin: 5,
     paddingVertical: 10,
-    paddingHorizontal: 49,
     borderRadius: 8,
-    color: 'white'
   },
 
   CadastroProduto_btn_lista: {
@@ -178,5 +170,53 @@ export const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     fontSize: 16,
+  },
+
+  produtos_Container: {
+    flex: 1,
+    backgroundColor: "#c6c6c7",
+    padding: 12,
+  },
+
+  produtos_Texto: {
+    marginTop: 15,
+    fontSize: 18,
+    color: "#6b7280",
+    fontWeight: "600",
+  },
+
+  produtos_View: {
+    backgroundColor: "#fff",
+    borderRadius: 18,
+    padding: 16,
+    marginBottom: 15,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+  },
+
+  produtos_CabecalhoView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 18,
+  },
+
+  produtos_CabecalhoTexto: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#111827",
+  },
+
+  produtos_CabecalhoCategoriaView: {
+    backgroundColor: "#DBEAFE",
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
   }
 });

@@ -8,6 +8,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native-web';
+import { styles } from '../../style';
 
 export default function Produtos({ navigation }) {
 
@@ -51,11 +52,7 @@ export default function Produtos({ navigation }) {
 
     return (
         <View
-            style={{
-                flex: 1,
-                backgroundColor: "#c6c6c7",
-                padding: 12,
-            }}
+            style={styles.produtos_Container}
         >
 
             <ScrollView>
@@ -76,69 +73,26 @@ export default function Produtos({ navigation }) {
                                 color="#9ca3af"
                             />
 
-                            <Text
-                                style={{
-                                    marginTop: 15,
-                                    fontSize: 18,
-                                    color: "#6b7280",
-                                    fontWeight: "600",
-                                }}
-                            >
-                                Nenhum produto cadastrado
-                            </Text>
+                            <Text style={styles.produtos_Texto}>Nenhum produto cadastrado</Text>
                         </View>
                     )}
                     renderItem={({ item, index }) => (
 
                         <View
-                            style={{
-                                backgroundColor: "#fff",
-                                borderRadius: 18,
-                                padding: 16,
-                                marginBottom: 15,
-
-                                elevation: 4,
-
-                                shadowColor: "#000",
-                                shadowOpacity: 0.08,
-                                shadowRadius: 6,
-                                shadowOffset: {
-                                    width: 0,
-                                    height: 3,
-                                },
-                            }}
+                            style={styles.produtos_View}
                         >
 
                             {/* Cabeçalho */}
-                            <View
-                                style={{
-                                    flexDirection: "row",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    marginBottom: 18,
-                                }}
-                            >
+                            <View style={styles.produtos_CabecalhoView}>
 
                                 <View style={{ flex: 1 }}>
-                                    <Text
-                                        style={{
-                                            fontSize: 20,
-                                            fontWeight: "bold",
-                                            color: "#111827",
-                                        }}
-                                    >
+                                    <Text style={styles.produtos_CabecalhoTexto}>
                                         {item.nomeProduto}
                                     </Text>
                                 </View>
 
-                                <View
-                                    style={{
-                                        backgroundColor: "#DBEAFE",
-                                        paddingHorizontal: 12,
-                                        paddingVertical: 6,
-                                        borderRadius: 20,
-                                    }}
-                                >
+                                <View style={styles.produtos_CabecalhoCategoriaView}>
+                                
                                     <Text
                                         style={{
                                             color: "#2563EB",
