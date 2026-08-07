@@ -4,7 +4,8 @@ import EditarProduto from './screens/EditarProduto/EditarProduto';
 const colors = {
   primary: '#0D1b2A',
   secondary: '#FFFFFF',
-  button: '#1E88E5',
+  botaoFundo: '#1E88E5',
+  botaoTexto: '#FFFFFF',
   text: '#000000',
   background: '#FFFFFF',
   backgroundInput: '#FFFFFF'
@@ -89,7 +90,7 @@ export const styles = StyleSheet.create({
   },
 
   CadastroProduto_btn_Salvar: {
-    backgroundColor: colors.button,
+    backgroundColor: colors.botaoFundo,
     width: 320,
     margin: 5,
     paddingVertical: 10,
@@ -97,35 +98,19 @@ export const styles = StyleSheet.create({
     marginTop: 20
   },
 
-  CadastroProduto_btn_SalvarText: {
+  CadastroProduto_btn_textoSalvarProdutos: {
     fontSize: 15,
     fontWeight: 700,
     textAlign: 'center',
-    color: 'white'
+    color: colors.botaoTexto
   },
 
-  CadastroProduto_btn_editar: {
+  CadastroProduto_btn_produtos: {
     backgroundColor: 'gray',
     width: 320,
     margin: 5,
     paddingVertical: 10,
     borderRadius: 8,
-  },
-
-  CadastroProduto_btn_lista: {
-    backgroundColor: 'gray',
-    fontSize: 15,
-    fontWeight: 700,
-    paddingVertical: 10,
-    paddingHorizontal: 49,
-    borderRadius: 8,
-    color: 'white'
-  },
-
-  CadastroProduto_produtosView: {
-    backgroundColor: 'yellow',
-    width: 300,
-    height: 100
   },
 
   editarProduto_View: {
@@ -159,7 +144,7 @@ export const styles = StyleSheet.create({
   },
 
   editarProduto_Salvar: {
-    backgroundColor: colors.button,
+    backgroundColor: colors.botaoFundo,
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
@@ -167,7 +152,7 @@ export const styles = StyleSheet.create({
   },
 
   editarProduto_TextoSalvar: {
-    color: "#fff",
+    color: colors.botaoTexto,
     fontWeight: "bold",
     fontSize: 16,
   },

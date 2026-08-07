@@ -140,7 +140,7 @@ export default function CadastroProduto({ navigation }) {
                         onPress={salvarProduto}
                     >
                         <View style={styles.CadastroProduto_btn_Salvar}>
-                            <Text style={styles.CadastroProduto_btn_SalvarText}> SALVAR </Text>
+                            <Text style={styles.CadastroProduto_btn_textoSalvarProdutos}> SALVAR </Text>
                         </View>
                     </TouchableOpacity>
 
@@ -148,8 +148,8 @@ export default function CadastroProduto({ navigation }) {
                     <View>
                         <TouchableOpacity
                             onPress={() => { navigation.navigate('Produtos')}}>
-                            <View style={styles.CadastroProduto_btn_editar}>
-                                <Text style={styles.CadastroProduto_btn_SalvarText}> PRODUTOS </Text>
+                            <View style={styles.CadastroProduto_btn_produtos}>
+                                <Text style={styles.CadastroProduto_btn_textoSalvarProdutos}> PRODUTOS </Text>
                             </View>
                         </TouchableOpacity>
                     </View>
