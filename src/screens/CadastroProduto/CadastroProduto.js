@@ -1,27 +1,24 @@
-import { useState } from 'react';
-import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput } from 'react-native';
-import { Picker, ScrollView } from 'react-native-web';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 
-
-// Import do Estilo na raiz do projeto (3 níveis para fora)
 import { styles } from '../../styles/style';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export default function CadastroProduto({ navigation }) {
-
     const [nomeProduto, setNomeProduto] = useState('');
     const [categoria, setCategoria] = useState('');
-    const [quantidade, setQuantidade] = useState(0);
-    const [valor, setValor] = useState(0);
+    const [quantidade, setQuantidade] = useState('');
+    const [valor, setValor] = useState('');
+
+    const { isDark, toggleTheme } = useTheme();
 
     async function salvarProduto() {
-
         const erros = [];
 
         const qtd = Number(quantidade);
-        const preco = parseFloat(valor);
+        const preco = parseFloat(valor?.toString().replace(',', '.'));
 
         if (nomeProduto.trim() === "") {
             erros.push("• Nome do produto inválido.");
@@ -40,17 +37,14 @@ export default function CadastroProduto({ navigation }) {
         }
 
         if (erros.length > 0) {
-            alert(
-                "Foram encontrados os seguintes erros:\n\n" +
-                erros.join("\n")
-            );
+            alert("Foram encontrados os seguintes erros:\n\n" + erros.join("\n"));
             return;
         }
 
         const novoProduto = {
             id: Date.now(),
-            nomeProduto,
-            categoria,
+            nomeProduto: nomeProduto.trim(),
+            categoria: categoria.trim(),
             quantidade: qtd,
             valor: preco
         };
@@ -70,95 +64,104 @@ export default function CadastroProduto({ navigation }) {
             setQuantidade("");
             setValor("");
 
+            navigation.navigate('Produtos');
+
         } catch (error) {
             console.error(error);
         }
     }
 
+    const bgColor = isDark ? '#000000' : '#FFFFFF';
+    const textColor = isDark ? '#FFFFFF' : '#111827';
+    const inputBgColor = isDark ? '#121212' : '#FFFFFF';
+    const borderColor = isDark ? '#222222' : '#CCCCCC';
 
     return (
-        <View style={styles.CadastroProduto_container}>
+        <View style={[styles.CadastroProduto_container, { backgroundColor: bgColor }]}>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 20 }}>
+                
+                {/* CABEÇALHO DE CADASTRO */}
+                <View style={[styles.headerSimplesTop, { marginBottom: 10 }]}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.btnVoltarTop}>
+                        <Ionicons name="chevron-back" size={26} color={textColor} />
+                    </TouchableOpacity>
 
-            <ScrollView>
-                <View style={styles.CadastroProduto_container2}>
-                    <View style={styles.CadastroProduto_container}>
+                    <Text style={[styles.tituloCadastroTop, { color: textColor }]}>
+                        Cadastro de Produto
+                    </Text>
 
-                        <View style={styles.CadastroProduto_CotainerImagem}>
-                            <Image
-                                source={require('../../../assets/images/logo.png')}
-                                style={styles.CadastroProduto_logo}
-                            />
-                        </View>
-
-                        <Text style={styles.CadastroProduto_tituloCadastroProduto}>Cadastro de Produto</Text>
-                    </View>
+                    <TouchableOpacity onPress={toggleTheme} style={styles.btnThemeTop}>
+                        <Ionicons name={isDark ? 'sunny-outline' : 'moon-outline'} size={22} color={textColor} />
+                    </TouchableOpacity>
                 </View>
 
-                <View>
-                    <View style={styles.CadastroProduto_viewContainer}>
-                        <Text style={styles.CadastroProduto_textoPrincipal}>Nome</Text>
-                        <TextInput style={styles.CadastroProduto_textoInput}
+                {/* LOGO COMPACTA */}
+                <View style={[styles.CadastroProduto_CotainerImagem, { marginVertical: 0 }]}>
+                    <Image
+                        source={require('../../../assets/images/logo.png')}
+                        style={[styles.CadastroProduto_logo, { width: 100, height: 100 }]}
+                    />
+                </View>
+
+                <View style={{ paddingHorizontal: 20 }}>
+                    <View style={[styles.CadastroProduto_viewContainer, { marginBottom: 8 }]}>
+                        <Text style={[styles.CadastroProduto_textoPrincipal, { color: textColor }]}>Nome</Text>
+                        <TextInput 
+                            style={[styles.CadastroProduto_textoInput, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             placeholder='Nome do produto'
-                            placeholderTextColor="rgba(0, 0, 0, 0.3)"
+                            placeholderTextColor={isDark ? '#666666' : 'rgba(0, 0, 0, 0.3)'}
                             value={nomeProduto}
                             onChangeText={setNomeProduto}
-                        ></TextInput>
+                        />
                     </View>
 
-                    <View style={styles.CadastroProduto_viewContainer}>
-                        <Text style={styles.CadastroProduto_textoPrincipal}>Categoria</Text>
+                    <View style={[styles.CadastroProduto_viewContainer, { marginBottom: 8 }]}>
+                        <Text style={[styles.CadastroProduto_textoPrincipal, { color: textColor }]}>Categoria</Text>
                         <TextInput
-                            style={styles.CadastroProduto_textoInput}
+                            style={[styles.CadastroProduto_textoInput, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             placeholder='Digite a categoria...'
-                            placeholderTextColor="rgba(0, 0, 0, 0.3)"
+                            placeholderTextColor={isDark ? '#666666' : 'rgba(0, 0, 0, 0.3)'}
                             value={categoria}
                             onChangeText={setCategoria}
-                        ></TextInput>
+                        />
                     </View>
 
-                    <View style={styles.CadastroProduto_viewContainer}>
-                        <Text style={styles.CadastroProduto_textoPrincipal}>Quantidade</Text>
-                        <TextInput style={styles.CadastroProduto_textoInput}
+                    <View style={[styles.CadastroProduto_viewContainer, { marginBottom: 8 }]}>
+                        <Text style={[styles.CadastroProduto_textoPrincipal, { color: textColor }]}>Quantidade</Text>
+                        <TextInput 
+                            style={[styles.CadastroProduto_textoInput, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             placeholder='Digite a quantidade...'
-                            placeholderTextColor="rgba(0, 0, 0, 0.3)"
+                            placeholderTextColor={isDark ? '#666666' : 'rgba(0, 0, 0, 0.3)'}
+                            keyboardType="numeric"
                             value={quantidade}
                             onChangeText={setQuantidade}
-                        ></TextInput>
+                        />
                     </View>
 
-                    <View style={styles.CadastroProduto_viewContainer}>
-                        <Text style={styles.CadastroProduto_textoPrincipal}>Valor</Text>
+                    <View style={[styles.CadastroProduto_viewContainer, { marginBottom: 8 }]}>
+                        <Text style={[styles.CadastroProduto_textoPrincipal, { color: textColor }]}>Valor</Text>
                         <View style={{ flexDirection: 'row' }}>
-                            <Text style={styles.CadastroProduto_textoCifrao}>R$</Text>
-                            <TextInput style={styles.CadastroProduto_textoInputValor}
+                            <Text style={[styles.CadastroProduto_textoCifrao, { color: textColor, borderColor, backgroundColor: isDark ? '#1E1E1E' : '#E0E0E0' }]}>R$</Text>
+                            <TextInput 
+                                style={[styles.CadastroProduto_textoInputValor, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                                 placeholder='Digite o valor...'
-                                placeholderTextColor="rgba(0, 0, 0, 0.3)"
+                                placeholderTextColor={isDark ? '#666666' : 'rgba(0, 0, 0, 0.3)'}
+                                keyboardType="numeric"
                                 value={valor}
                                 onChangeText={setValor}
-                            ></TextInput>
+                            />
                         </View>
                     </View>
 
-                    <TouchableOpacity
-                        onPress={salvarProduto}
-                    >
+                    {/* BOTÃO SALVAR */}
+                    <TouchableOpacity onPress={salvarProduto} style={{ marginTop: 15, marginBottom: 20 }}>
                         <View style={styles.CadastroProduto_btn_Salvar}>
                             <Text style={styles.CadastroProduto_btn_textoSalvarProdutos}> SALVAR </Text>
                         </View>
                     </TouchableOpacity>
 
-
-                    <View>
-                        <TouchableOpacity
-                            onPress={() => { navigation.navigate('Produtos')}}>
-                            <View style={styles.CadastroProduto_btn_produtos}>
-                                <Text style={styles.CadastroProduto_btn_textoSalvarProdutos}> PRODUTOS </Text>
-                            </View>
-                        </TouchableOpacity>
-                    </View>
-
                 </View>
             </ScrollView>
         </View>
     );
-};
+}

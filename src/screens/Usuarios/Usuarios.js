@@ -6,16 +6,19 @@ import {
   TouchableOpacity, 
   TextInput, 
   Image, 
-  StyleSheet, 
   SafeAreaView 
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
+import { styles } from '../../styles/style';
+import { useTheme } from '../../contexts/ThemeContext';
+
 export default function Usuarios({ navigation }) {
   const [usuarios, setUsuarios] = useState([]);
   const [busca, setBusca] = useState('');
+  const { isDark, toggleTheme } = useTheme();
 
   async function carregarUsuarios() {
     try {
@@ -30,96 +33,128 @@ export default function Usuarios({ navigation }) {
     }
   }
 
- 
   useFocusEffect(
     useCallback(() => {
       carregarUsuarios();
     }, [])
   );
 
- 
   async function apagarUsuario(indexParaRemover) {
     const novaLista = usuarios.filter((_, index) => index !== indexParaRemover);
     setUsuarios(novaLista);
     await AsyncStorage.setItem('usuarios', JSON.stringify(novaLista));
   }
 
-  
   const usuariosFiltrados = usuarios.filter(user => 
     user.nome?.toLowerCase().includes(busca.toLowerCase()) ||
     user.email?.toLowerCase().includes(busca.toLowerCase())
   );
 
+  const bgColor = isDark ? '#000000' : '#FFFFFF';
+  const textColor = isDark ? '#FFFFFF' : '#111827';
+  const cardBgColor = isDark ? '#121212' : '#F5F5F5';
+  const subTextColor = isDark ? '#A0AEC0' : '#6B7280';
+  const borderColor = isDark ? '#222222' : '#E5E7EB';
+  const inputBg = isDark ? '#121212' : '#FFFFFF';
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: bgColor }]}>
       
-      
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="chevron-back" size={24} color="#111827" />
+      {/* CABEÇALHO SUPERIOR */}
+      <View style={styles.headerSimplesTop}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.btnVoltarTop}>
+          <Ionicons name="chevron-back" size={26} color={textColor} />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Usuários</Text>
-        <View style={{ width: 24 }} /> {/* Espaçador para centralizar o título */}
+
+        <Text style={[styles.tituloHeaderProdutos, { color: textColor }]}>
+          Usuários
+        </Text>
+
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          <TouchableOpacity onPress={toggleTheme} style={styles.btnThemeTop}>
+            <Ionicons 
+              name={isDark ? 'sunny-outline' : 'moon-outline'} 
+              size={22} 
+              color={textColor} 
+            />
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.btnAdicionarProdutoHeader}
+            onPress={() => navigation.navigate('CadastroUsuario')}
+          >
+            <Ionicons name="add" size={20} color="#FFFFFF" />
+            <Text style={styles.btnAdicionarProdutoTexto}>Novo</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
-     
-      <View style={styles.searchRow}>
-        <View style={styles.searchContainer}>
-          <Ionicons name="search-outline" size={20} color="#9CA3AF" style={{ marginRight: 8 }} />
+      {/* CAMPO DE PESQUISA */}
+      <View style={{ paddingHorizontal: 20, marginBottom: 15 }}>
+        <View style={[styles.searchContainerUsuarios, { backgroundColor: inputBg, borderColor }]}>
+          <Ionicons name="search-outline" size={20} color={subTextColor} style={{ marginRight: 8 }} />
           <TextInput
-            style={styles.searchInput}
+            style={[styles.searchInputUsuarios, { color: textColor }]}
             placeholder="Buscar usuários..."
-            placeholderTextColor="#9CA3AF"
+            placeholderTextColor={isDark ? '#666666' : '#9CA3AF'}
             value={busca}
             onChangeText={setBusca}
           />
         </View>
       </View>
 
-    
+      {/* LISTAGEM */}
       <FlatList
         data={usuariosFiltrados}
         keyExtractor={(_, index) => index.toString()}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 30 }}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={
-          <Text style={styles.emptyText}>Nenhum usuário encontrado.</Text>
+          <View style={{ alignItems: 'center', marginTop: 60 }}>
+            <Ionicons name="people-outline" size={60} color={subTextColor} />
+            <Text style={[styles.emptyTextUsuarios, { color: subTextColor }]}>
+              Nenhum usuário encontrado.
+            </Text>
+          </View>
         }
         renderItem={({ item, index }) => (
-          <View style={styles.card}>
+          <View style={[styles.cardUsuario, { backgroundColor: cardBgColor, borderColor }]}>
             
-          
-            <View style={styles.avatarContainer}>
+            <View style={styles.avatarContainerUsuario}>
               {item.foto ? (
-                <Image source={{ uri: item.foto }} style={styles.avatarImage} />
+                <Image source={{ uri: item.foto }} style={styles.avatarImageUsuario} />
               ) : (
-                <View style={styles.avatarPlaceholder}>
-                  <Text style={styles.avatarText}>
+                <View style={[styles.avatarPlaceholderUsuario, { backgroundColor: isDark ? '#222222' : '#E5E7EB' }]}>
+                  <Text style={[styles.avatarTextUsuario, { color: isDark ? '#FFFFFF' : '#4B5563' }]}>
                     {item.nome ? item.nome.charAt(0).toUpperCase() : 'U'}
                   </Text>
                 </View>
               )}
             </View>
 
-           
-            <View style={styles.infoContainer}>
-              <Text style={styles.nomeText}>{item.nome || 'Sem Nome'}</Text>
-              <Text style={styles.emailText}>{item.email || 'sem-email@exemplo.com'}</Text>
-              <Text style={styles.cargoText}>{item.cargo || 'Usuário'}</Text>
+            <View style={styles.infoContainerUsuario}>
+              <Text style={[styles.nomeTextUsuario, { color: textColor }]}>
+                {item.nome || 'Sem Nome'}
+              </Text>
+              <Text style={[styles.emailTextUsuario, { color: subTextColor }]}>
+                {item.email || 'sem-email@exemplo.com'}
+              </Text>
+              <Text style={styles.cargoTextUsuario}>
+                {item.cargo || 'Usuário'}
+              </Text>
             </View>
 
-            
-            <View style={styles.actionsContainer}>
+            <View style={styles.actionsContainerUsuario}>
               <TouchableOpacity 
                 onPress={() => navigation.navigate('EditarUsuario', { usuario: item, index })}
-                style={styles.actionBtn}
+                style={styles.actionBtnUsuario}
               >
                 <Ionicons name="pencil-outline" size={20} color="#0052CC" />
               </TouchableOpacity>
 
               <TouchableOpacity 
                 onPress={() => apagarUsuario(index)}
-                style={styles.actionBtn}
+                style={styles.actionBtnUsuario}
               >
                 <Ionicons name="trash-outline" size={20} color="#EF4444" />
               </TouchableOpacity>
@@ -131,122 +166,3 @@ export default function Usuarios({ navigation }) {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F9FAFB',
-    paddingHorizontal: 20,
-    paddingTop: 10,
-  },
-
-  // Header
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginVertical: 15,
-  },
-  backButton: {
-    padding: 4,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#111827',
-  },
-
-  // Pesquisa
-  searchRow: {
-    marginBottom: 20,
-  },
-  searchContainer: {
-    width: '100%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    height: 48,
-  },
-  searchInput: {
-    flex: 1,
-    fontSize: 15,
-    color: '#111827',
-  },
-
-  // Card de Usuário
-  card: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    padding: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-    borderWidth: 1,
-    borderColor: '#F3F4F6',
-    elevation: 2,
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-  },
-  avatarContainer: {
-    marginRight: 14,
-  },
-  avatarImage: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
-  },
-  avatarPlaceholder: {
-    width: 54,
-    height: 54,
-    borderRadius: 27,
-    backgroundColor: '#E5E7EB',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  avatarText: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#4B5563',
-  },
-
-  infoContainer: {
-    flex: 1,
-  },
-  nomeText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#111827',
-  },
-  emailText: {
-    fontSize: 13,
-    color: '#6B7280',
-    marginTop: 2,
-  },
-  cargoText: {
-    fontSize: 12,
-    color: '#9CA3AF',
-    marginTop: 4,
-    fontWeight: '500',
-  },
-
-  actionsContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  actionBtn: {
-    padding: 6,
-  },
-  emptyText: {
-    textAlign: 'center',
-    marginTop: 40,
-    color: '#9CA3AF',
-    fontSize: 15,
-  },
-});

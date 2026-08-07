@@ -4,7 +4,6 @@ import {
     Text, 
     TouchableOpacity, 
     Alert, 
-    StyleSheet, 
     ActivityIndicator, 
     Image, 
     Modal, 
@@ -15,6 +14,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { Ionicons } from '@expo/vector-icons';
+
+import { styles, colors } from '../../styles/style';
 import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Perfil({ navigation }) {
@@ -173,57 +174,76 @@ export default function Perfil({ navigation }) {
         }
     }
 
-    // Preto Puro no Modo Dark
-    const bgColor = isDark ? '#000000' : '#F5F7FB';
-    const cardBgColor = isDark ? '#121212' : '#FFFFFF';
-    const textColor = isDark ? '#FFFFFF' : '#111827';
-    const borderColor = isDark ? '#222222' : '#F0F2F5';
-    const iconBlue = '#2563EB';
+    const bgColor = isDark ? colors.black : colors.lightBg;
+    const cardBgColor = isDark ? colors.darkCard : colors.lightCard;
+    const textColor = isDark ? colors.textLight : colors.textDark;
+    const borderColor = isDark ? colors.darkBorder : colors.lightBorder;
+    const inputBgColor = isDark ? colors.darkCard : colors.lightCard;
+    const iconBlue = '#0052CC';
 
     return (
         <ScrollView 
             contentContainerStyle={{ flexGrow: 1 }}
             style={[styles.container, { backgroundColor: bgColor }]}
+            showsVerticalScrollIndicator={false}
         >
-            {/* CABEÇALHO AZUL FIXO COM ARCO EM AMBOS OS TEMAS */}
-            <View style={styles.header}>
-                <View style={styles.topBar}>
-                    <Text style={styles.tituloHeader}>Perfil</Text>
-                    <TouchableOpacity onPress={toggleTheme} style={styles.themeButton}>
-                        <Ionicons name={isDark ? 'sunny-outline' : 'moon-outline'} size={22} color="#FFF" />
+            {/* CABEÇALHO COMPACTO */}
+            <View style={{
+                backgroundColor: isDark ? '#001D4A' : '#0052CC',
+                paddingTop: 45,
+                paddingBottom: 20,
+                paddingHorizontal: 20,
+                borderBottomLeftRadius: 25,
+                borderBottomRightRadius: 25,
+            }}>
+                <View style={styles.topBarHome}>
+                    <Text style={[styles.saudacaoHome, { fontSize: 20 }]}>Perfil</Text>
+
+                    <TouchableOpacity onPress={toggleTheme} style={styles.btnThemeHome}>
+                        <Ionicons name={isDark ? 'sunny-outline' : 'moon-outline'} size={22} color="#FFFFFF" />
                     </TouchableOpacity>
                 </View>
 
                 {loading ? (
-                    <ActivityIndicator size="large" color="#FFFFFF" style={{ marginVertical: 30 }} />
+                    <ActivityIndicator size="small" color="#FFFFFF" style={{ marginVertical: 10 }} />
                 ) : usuario ? (
-                    <View style={styles.userInfoArea}>
-                        <TouchableOpacity onPress={selecionarFoto} style={styles.avatarContainer}>
+                    <View style={{ alignItems: 'center', marginTop: 10 }}>
+                        <TouchableOpacity onPress={selecionarFoto} style={{ position: 'relative', marginBottom: 6 }}>
                             {usuario.foto ? (
-                                <Image source={{ uri: usuario.foto }} style={styles.avatarImage} />
+                                <Image source={{ uri: usuario.foto }} style={{ width: 64, height: 64, borderRadius: 32 }} />
                             ) : (
-                                <View style={styles.avatarTextContainer}>
-                                    <Text style={styles.avatarText}>
+                                <View style={{ width: 64, height: 64, borderRadius: 32, backgroundColor: '#2563EB', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ fontSize: 26, color: '#FFFFFF', fontWeight: 'bold' }}>
                                         {usuario.nome ? usuario.nome.charAt(0).toUpperCase() : 'U'}
                                     </Text>
                                 </View>
                             )}
-                            <View style={styles.badgeEdit}>
-                                <Ionicons name="camera" size={14} color="#FFF" />
+                            <View style={{
+                                position: 'absolute',
+                                bottom: 0,
+                                right: 0,
+                                backgroundColor: '#2563EB',
+                                padding: 4,
+                                borderRadius: 12,
+                                borderWidth: 2,
+                                borderColor: '#FFFFFF',
+                            }}>
+                                <Ionicons name="camera" size={10} color="#FFF" />
                             </View>
                         </TouchableOpacity>
 
-                        <Text style={styles.nomeUsuario}>{usuario.nome}</Text>
-                        <Text style={styles.emailUsuario}>{usuario.email}</Text>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#FFFFFF' }}>{usuario.nome}</Text>
+                        <Text style={{ fontSize: 12, color: '#E0E7FF', marginTop: 1 }}>{usuario.email}</Text>
                     </View>
                 ) : null}
             </View>
 
+            {/* OPÇÕES DO MENU */}
             {usuario ? (
-                <View style={styles.menuContainer}>
-                    <View style={[styles.card, { backgroundColor: cardBgColor, borderColor: isDark ? '#222222' : 'transparent', borderWidth: isDark ? 1 : 0 }]}>
+                <View style={{ paddingHorizontal: 20, marginTop: 15 }}>
+                    <View style={[styles.card, { backgroundColor: cardBgColor, borderColor, borderWidth: isDark ? 1 : 0 }]}>
                         <TouchableOpacity 
-                            style={[styles.menuItem, { borderBottomColor: borderColor }]} 
+                            style={[styles.menuItem, { borderBottomColor: borderColor, paddingVertical: 14 }]} 
                             onPress={() => setModalEditarVisible(true)}
                         >
                             <Ionicons name="person-outline" size={20} color={iconBlue} style={styles.menuIcon} />
@@ -231,7 +251,7 @@ export default function Perfil({ navigation }) {
                         </TouchableOpacity>
 
                         <TouchableOpacity 
-                            style={[styles.menuItem, { borderBottomColor: borderColor }]} 
+                            style={[styles.menuItem, { borderBottomColor: borderColor, paddingVertical: 14 }]} 
                             onPress={() => setModalSenhaVisible(true)}
                         >
                             <Ionicons name="lock-closed-outline" size={20} color={iconBlue} style={styles.menuIcon} />
@@ -239,7 +259,7 @@ export default function Perfil({ navigation }) {
                         </TouchableOpacity>
 
                         <TouchableOpacity 
-                            style={[styles.menuItem, { borderBottomWidth: 0 }]} 
+                            style={[styles.menuItem, { borderBottomWidth: 0, paddingVertical: 14 }]} 
                             onPress={handleLogout}
                         >
                             <Ionicons name="log-out-outline" size={20} color="#EF4444" style={styles.menuIcon} />
@@ -251,36 +271,38 @@ export default function Perfil({ navigation }) {
                 </View>
             ) : !loading && (
                 <View style={styles.center}>
-                    <Text style={{ color: isDark ? '#FFFFFF' : '#000000', marginBottom: 15 }}>
+                    <Text style={{ color: textColor, marginBottom: 15 }}>
                         Nenhum usuário conectado.
                     </Text>
                     <TouchableOpacity 
-                        style={styles.loginRedirButton} 
+                        style={styles.button} 
                         onPress={() => navigation.navigate('Login')}
                     >
-                        <Text style={styles.loginRedirText}>Ir para o Login</Text>
+                        <Text style={styles.textoButton}>Ir para o Login</Text>
                     </TouchableOpacity>
                 </View>
             )}
 
             {/* MODAL EDITAR PERFIL */}
             <Modal visible={modalEditarVisible} animationType="slide" transparent>
-                <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { backgroundColor: cardBgColor, borderColor: isDark ? '#333' : 'transparent', borderWidth: isDark ? 1 : 0 }]}>
-                        <Text style={[styles.modalTitle, { color: textColor }]}>Editar Perfil</Text>
+                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingHorizontal: 20 }}>
+                    <View style={[styles.card, { backgroundColor: cardBgColor, padding: 20, borderColor, borderWidth: isDark ? 1 : 0 }]}>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 15, textAlign: 'center', color: textColor }}>
+                            Editar Perfil
+                        </Text>
 
-                        <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Nome</Text>
+                        <Text style={[styles.label, { color: textColor }]}>Nome</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
+                            style={[styles.input, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             value={novoNome}
                             onChangeText={setNovoNome}
                             placeholder="Seu nome completo"
                             placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
-                        <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>E-mail</Text>
+                        <Text style={[styles.label, { color: textColor }]}>E-mail</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
+                            style={[styles.input, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             value={novoEmail}
                             onChangeText={setNovoEmail}
                             keyboardType="email-address"
@@ -289,19 +311,19 @@ export default function Perfil({ navigation }) {
                             placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
-                        <View style={styles.modalButtonsRow}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, gap: 10 }}>
                             <TouchableOpacity 
-                                style={[styles.modalBtn, { backgroundColor: isDark ? '#333333' : '#E0E0E0' }]} 
+                                style={[styles.button, { flex: 1, backgroundColor: isDark ? '#333333' : '#E0E0E0' }]} 
                                 onPress={() => setModalEditarVisible(false)}
                             >
-                                <Text style={[styles.modalBtnTextCancelar, { color: isDark ? '#FFF' : '#333' }]}>Cancelar</Text>
+                                <Text style={{ color: isDark ? '#FFFFFF' : '#333333', fontWeight: 'bold' }}>Cancelar</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity 
-                                style={[styles.modalBtn, styles.modalBtnSalvar]} 
+                                style={[styles.button, { flex: 1 }]} 
                                 onPress={handleSalvarPerfil}
                             >
-                                <Text style={styles.modalBtnTextSalvar}>Salvar</Text>
+                                <Text style={styles.textoButton}>Salvar</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -310,13 +332,15 @@ export default function Perfil({ navigation }) {
 
             {/* MODAL ALTERAR SENHA */}
             <Modal visible={modalSenhaVisible} animationType="slide" transparent>
-                <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { backgroundColor: cardBgColor, borderColor: isDark ? '#333' : 'transparent', borderWidth: isDark ? 1 : 0 }]}>
-                        <Text style={[styles.modalTitle, { color: textColor }]}>Alterar Senha</Text>
+                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center', paddingHorizontal: 20 }}>
+                    <View style={[styles.card, { backgroundColor: cardBgColor, padding: 20, borderColor, borderWidth: isDark ? 1 : 0 }]}>
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', marginBottom: 15, textAlign: 'center', color: textColor }}>
+                            Alterar Senha
+                        </Text>
 
-                        <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Senha Atual</Text>
+                        <Text style={[styles.label, { color: textColor }]}>Senha Atual</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
+                            style={[styles.input, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             value={senhaAtual}
                             onChangeText={setSenhaAtual}
                             secureTextEntry
@@ -324,9 +348,9 @@ export default function Perfil({ navigation }) {
                             placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
-                        <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Nova Senha</Text>
+                        <Text style={[styles.label, { color: textColor }]}>Nova Senha</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
+                            style={[styles.input, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             value={novaSenha}
                             onChangeText={setNovaSenha}
                             secureTextEntry
@@ -334,9 +358,9 @@ export default function Perfil({ navigation }) {
                             placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
-                        <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Confirmar Nova Senha</Text>
+                        <Text style={[styles.label, { color: textColor }]}>Confirmar Nova Senha</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
+                            style={[styles.input, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
                             value={confirmarNovaSenha}
                             onChangeText={setConfirmarNovaSenha}
                             secureTextEntry
@@ -344,19 +368,19 @@ export default function Perfil({ navigation }) {
                             placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
-                        <View style={styles.modalButtonsRow}>
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10, gap: 10 }}>
                             <TouchableOpacity 
-                                style={[styles.modalBtn, { backgroundColor: isDark ? '#333333' : '#E0E0E0' }]} 
+                                style={[styles.button, { flex: 1, backgroundColor: isDark ? '#333333' : '#E0E0E0' }]} 
                                 onPress={() => setModalSenhaVisible(false)}
                             >
-                                <Text style={[styles.modalBtnTextCancelar, { color: isDark ? '#FFF' : '#333' }]}>Cancelar</Text>
+                                <Text style={{ color: isDark ? '#FFFFFF' : '#333333', fontWeight: 'bold' }}>Cancelar</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity 
-                                style={[styles.modalBtn, styles.modalBtnSalvar]} 
+                                style={[styles.button, { flex: 1 }]} 
                                 onPress={handleSalvarSenha}
                             >
-                                <Text style={styles.modalBtnTextSalvar}>Salvar Senha</Text>
+                                <Text style={styles.textoButton}>Salvar Senha</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -365,181 +389,3 @@ export default function Perfil({ navigation }) {
         </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    // Cabeçalho fixo com fundo Azul e bordas arrendondadas em ambos os temas
-    header: {
-        backgroundColor: '#0052CC',
-        paddingTop: 50,
-        paddingBottom: 40,
-        paddingHorizontal: 20,
-        borderBottomLeftRadius: 160,
-        borderBottomRightRadius: 160,
-        alignItems: 'center',
-    },
-    topBar: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        marginBottom: 15,
-    },
-    tituloHeader: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#FFFFFF',
-    },
-    themeButton: {
-        position: 'absolute',
-        right: 0,
-        padding: 5,
-    },
-    userInfoArea: {
-        alignItems: 'center',
-    },
-    avatarContainer: {
-        position: 'relative',
-        marginBottom: 12,
-    },
-    avatarImage: {
-        width: 90,
-        height: 90,
-        borderRadius: 45,
-    },
-    avatarTextContainer: {
-        width: 90,
-        height: 90,
-        borderRadius: 45,
-        backgroundColor: '#2563EB',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    avatarText: {
-        fontSize: 36,
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-    },
-    badgeEdit: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        backgroundColor: '#2563EB',
-        padding: 7,
-        borderRadius: 16,
-        borderWidth: 2,
-        borderColor: '#FFFFFF',
-        elevation: 3,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.2,
-        shadowRadius: 2,
-    },
-    nomeUsuario: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#FFFFFF',
-    },
-    emailUsuario: {
-        fontSize: 13,
-        color: '#E0E7FF',
-        marginTop: 2,
-    },
-    menuContainer: {
-        paddingHorizontal: 20,
-        marginTop: 25,
-    },
-    card: {
-        borderRadius: 16,
-        paddingVertical: 4,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 10,
-        elevation: 5,
-    },
-    menuItem: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingVertical: 18,
-        paddingHorizontal: 20,
-        borderBottomWidth: 1,
-    },
-    menuIcon: {
-        marginRight: 16,
-    },
-    menuItemText: {
-        fontSize: 15,
-        fontWeight: '600',
-    },
-    center: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 50,
-    },
-    loginRedirButton: {
-        backgroundColor: '#0052CC',
-        paddingVertical: 12,
-        paddingHorizontal: 24,
-        borderRadius: 8,
-    },
-    loginRedirText: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-    },
-    modalOverlay: {
-        flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        justifyContent: 'center',
-        paddingHorizontal: 20,
-    },
-    modalContent: {
-        borderRadius: 16,
-        padding: 20,
-        elevation: 5,
-    },
-    modalTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 15,
-        textAlign: 'center',
-    },
-    inputLabel: {
-        fontSize: 13,
-        marginTop: 10,
-        marginBottom: 4,
-    },
-    modalInput: {
-        borderWidth: 1,
-        borderRadius: 8,
-        paddingHorizontal: 12,
-        paddingVertical: 10,
-        fontSize: 15,
-    },
-    modalButtonsRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 20,
-    },
-    modalBtn: {
-        flex: 1,
-        paddingVertical: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-        marginHorizontal: 5,
-    },
-    modalBtnSalvar: {
-        backgroundColor: '#0052CC',
-    },
-    modalBtnTextCancelar: {
-        fontWeight: 'bold',
-    },
-    modalBtnTextSalvar: {
-        color: '#FFFFFF',
-        fontWeight: 'bold',
-    },
-});

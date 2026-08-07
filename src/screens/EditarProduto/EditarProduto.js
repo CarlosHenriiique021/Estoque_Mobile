@@ -1,26 +1,25 @@
 import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity
-} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
+
 import { styles } from '../../styles/style';
+import { useTheme } from '../../contexts/ThemeContext';
+
 export default function EditarProduto({ navigation, route }) {
+    const { index, produto } = route.params;
 
-    const { index, produto, onAtualizar } = route.params;
+    const [nomeProduto, setNomeProduto] = useState(produto.nomeProduto || produto.nome || '');
+    const [categoria, setCategoria] = useState(produto.categoria || '');
+    const [quantidade, setQuantidade] = useState(String(produto.quantidade || produto.qtd || 0));
+    const [valor, setValor] = useState(String(produto.valor || produto.preco || 0));
 
-    const [nomeProduto, setNomeProduto] = useState(produto.nomeProduto);
-    const [categoria, setCategoria] = useState(produto.categoria);
-    const [quantidade, setQuantidade] = useState(String(produto.quantidade));
-    const [valor, setValor] = useState(String(produto.valor));
+    const { isDark, toggleTheme } = useTheme();
 
     async function salvarAlteracao() {
-
         const erros = [];
         const novaQuantidade = Number(quantidade);
-        const novoValor = parseFloat(valor);
+        const novoValor = parseFloat(valor?.toString().replace(',', '.'));
 
         if (nomeProduto.trim() === "") {
             erros.push("• Nome do produto inválido.");
@@ -39,10 +38,7 @@ export default function EditarProduto({ navigation, route }) {
         }
 
         if (erros.length > 0) {
-            alert(
-                "Corrija os seguintes campos:\n\n" +
-                erros.join("\n")
-            );
+            alert("Corrija os seguintes campos:\n\n" + erros.join("\n"));
             return;
         }
 
@@ -52,78 +48,79 @@ export default function EditarProduto({ navigation, route }) {
 
             produtos[index] = {
                 ...produtos[index],
-                nomeProduto: nomeProduto,
-                categoria: categoria,
+                nomeProduto: nomeProduto.trim(),
+                categoria: categoria.trim(),
                 quantidade: novaQuantidade,
                 valor: novoValor
             };
 
             await AsyncStorage.setItem("produtos", JSON.stringify(produtos));
             alert("Produto atualizado com sucesso!");
-            navigation.navigate('Produtos')
+            navigation.navigate('Produtos');
 
         } catch (error) {
-
-            console.log(
-                "Erro ao atualizar produto:",
-                error
-            );
-
+            console.log("Erro ao atualizar produto:", error);
         }
-
     }
 
+    const bgColor = isDark ? '#000000' : '#FFFFFF';
+    const textColor = isDark ? '#FFFFFF' : '#111827';
+    const inputBgColor = isDark ? '#121212' : '#FFFFFF';
+    const borderColor = isDark ? '#222222' : '#CCCCCC';
+
     return (
+        <ScrollView style={[styles.editarProduto_View, { backgroundColor: bgColor }]}>
+            
+            {/* CABEÇALHO */}
+            <View style={styles.headerSimplesTop}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.btnVoltarTop}>
+                    <Ionicons name="chevron-back" size={26} color={textColor} />
+                </TouchableOpacity>
 
-        <View style={styles.editarProduto_View}>
+                <Text style={[styles.tituloCadastroTop, { color: textColor }]}>
+                    Editar Produto
+                </Text>
 
-            <Text style={styles.editarProduto_Titulo}>Editar Produto</Text>
+                <TouchableOpacity onPress={toggleTheme} style={styles.btnThemeTop}>
+                    <Ionicons name={isDark ? 'sunny-outline' : 'moon-outline'} size={22} color={textColor} />
+                </TouchableOpacity>
+            </View>
 
-            <Text style={styles.editarProduto_Text}>Nome</Text>
+            <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
+                <Text style={[styles.editarProduto_Text, { color: textColor }]}>Nome</Text>
+                <TextInput
+                    style={[styles.editarProduto_InputBox, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
+                    value={nomeProduto}
+                    onChangeText={setNomeProduto}
+                />
 
-            <TextInput
-                style={styles.editarProduto_InputBox}
-                value={nomeProduto}
-                onChangeText={setNomeProduto}
-            />
+                <Text style={[styles.editarProduto_Text, { color: textColor }]}>Categoria</Text>
+                <TextInput
+                    style={[styles.editarProduto_InputBox, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
+                    value={categoria}
+                    onChangeText={setCategoria}
+                />
 
-            <Text style={styles.editarProduto_Text}>Categoria</Text>
+                <Text style={[styles.editarProduto_Text, { color: textColor }]}>Quantidade</Text>
+                <TextInput
+                    style={[styles.editarProduto_InputBox, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
+                    keyboardType="numeric"
+                    value={quantidade}
+                    onChangeText={setQuantidade}
+                />
 
-            <TextInput
-                style={styles.editarProduto_InputBox}
-                value={categoria}
-                onChangeText={setCategoria}
-            />
+                <Text style={[styles.editarProduto_Text, { color: textColor }]}>Valor</Text>
+                <TextInput
+                    style={[styles.editarProduto_InputBox, { color: textColor, borderColor, backgroundColor: inputBgColor }]}
+                    keyboardType="numeric"
+                    value={valor}
+                    onChangeText={setValor}
+                />
 
-            <Text style={styles.editarProduto_Text}>Quantidade</Text>
-
-
-            <TextInput
-                style={styles.editarProduto_InputBox}
-                keyboardType="numeric"
-                value={quantidade}
-                onChangeText={setQuantidade}
-            />
-
-            <Text style={styles.editarProduto_Text}>Valor</Text>
-
-            <TextInput
-                style={styles.editarProduto_InputBox}
-                keyboardType="decimal-pad"
-                value={valor}
-                onChangeText={setValor}
-            />
-
-            <TouchableOpacity
-                onPress={salvarAlteracao}
-                style={styles.editarProduto_Salvar}>
-
-                <Text style={styles.editarProduto_TextoSalvar}>SALVAR ALTERAÇÕES</Text>
-
-            </TouchableOpacity>
-
-        </View>
-
+                <TouchableOpacity onPress={salvarAlteracao} style={styles.editarProduto_Salvar}>
+                    <Text style={styles.editarProduto_TextoSalvar}>SALVAR ALTERAÇÕES</Text>
+                </TouchableOpacity>
+            </View>
+        </ScrollView>
     );
-
 }
