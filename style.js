@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import EditarProduto from './screens/EditarProduto/EditarProduto';
 
 const colors = {
   primary: '#0D1b2A',
