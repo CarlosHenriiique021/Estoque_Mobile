@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons';
 import { styles } from '../../styles/style';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -31,9 +32,7 @@ export default function Login({ navigation }) {
             );
 
             if (usuarioValido) {
-                // 🔑 GUARDA O USUÁRIO QUE ESTÁ LOGADO AGORA
                 await AsyncStorage.setItem('usuarioLogado', JSON.stringify(usuarioValido));
-
                 alert('Bem-vindo!');
                 navigation.replace('MainTabs');
             } else {
@@ -45,100 +44,97 @@ export default function Login({ navigation }) {
         }
     }
 
-    return (
-        <View style={[
-            styles.viewPrincipal, 
-            { backgroundColor: isDark ? '#121212' : '#FFFFFF' }
-        ]}>
+    // Variações dinâmicas de cores de acordo com o tema
+    const bgColor = isDark ? '#000000' : '#FFFFFF';
+    const inputBgColor = isDark ? '#121212' : '#F9FAFB';
+    const textColor = isDark ? '#FFFFFF' : '#111827';
+    const subTextColor = isDark ? '#A0AEC0' : '#6B7280';
+    const borderColor = isDark ? '#222222' : '#E5E7EB';
 
-            {/* Botão de Tema no topo */}
+    return (
+        <View style={[styles.container, styles.viewPrincipalLogin, { backgroundColor: bgColor }]}>
+
+            {/* Botão de Tema no topo direito */}
             <TouchableOpacity 
                 onPress={toggleTheme} 
-                style={{
-                    position: 'absolute',
-                    top: 40,
-                    right: 20,
-                    padding: 8,
-                    borderRadius: 20,
-                    backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0',
-                    zIndex: 10
-                }}
+                style={styles.themeButtonTopRight}
             >
-                <Text style={{ fontSize: 16 }}>
-                    {isDark ? '☀️' : '🌙'}
-                </Text>
+                <Ionicons 
+                    name={isDark ? 'sunny-outline' : 'moon-outline'} 
+                    size={22} 
+                    color={textColor} 
+                />
             </TouchableOpacity>
 
-            <Image
-                source={require('../../../assets/images/logo.png')}
-                style={styles.logotipo}
-            />
-            
-            <Text style={[styles.textoLogo, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                Estoque Mobile
-            </Text>
-
-            <Text style={[styles.textoLogin, { color: isDark ? '#AAAAAA' : '#666666' }]}>
-                Faça login para continuar
-            </Text>
-
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                E-mail
-            </Text>
-
-            <TextInput
-                style={[
-                    styles.textoLogin1, 
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder="seuemail@exemplo.com"
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-            />
-
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>
-                Senha
-            </Text>
-
-            <TextInput
-                style={[
-                    styles.textoLogin1, 
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder="Digite sua senha"
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                value={senha}
-                onChangeText={setSenha}
-                secureTextEntry
-            />
-
-            <TouchableOpacity style={styles.button} onPress={trataLogin}>
-                <Text style={styles.textoButton}>
-                    Entrar
-                </Text>
-            </TouchableOpacity>
-
-            <View style={styles.areaCadastro}>
-                <Text style={[styles.textoConta, { color: isDark ? '#CCCCCC' : '#333333' }]}>
-                    Não tem uma conta?
+            <View style={styles.contentCenter}>
+                <Image
+                    source={require('../../../assets/images/logo.png')}
+                    style={styles.logotipoLogin}
+                />
+                
+                <Text style={[styles.textoLogo, { color: textColor }]}>
+                    Estoque Mobile
                 </Text>
 
-                <TouchableOpacity onPress={() => navigation.navigate('CadastroUsuario')}>
-                    <Text style={styles.cadastro}>
-                        Criar conta
-                    </Text>
+                <Text style={[styles.textoLogin, { color: subTextColor }]}>
+                    Faça login para continuar
+                </Text>
+
+                {/* Campo E-mail */}
+                <View style={styles.inputContainer}>
+                    <Text style={[styles.label, { color: textColor }]}>E-mail</Text>
+                    <TextInput
+                        style={[
+                            styles.input, 
+                            { 
+                                color: textColor,
+                                borderColor: borderColor,
+                                backgroundColor: inputBgColor
+                            }
+                        ]}
+                        placeholder="seu@email.com"
+                        placeholderTextColor={isDark ? '#666666' : '#9CA3AF'}
+                        value={email}
+                        onChangeText={setEmail}
+                        keyboardType="email-address"
+                        autoCapitalize="none"
+                    />
+                </View>
+
+                {/* Campo Senha */}
+                <View style={styles.inputContainer}>
+                    <Text style={[styles.label, { color: textColor }]}>Senha</Text>
+                    <TextInput
+                        style={[
+                            styles.input, 
+                            { 
+                                color: textColor,
+                                borderColor: borderColor,
+                                backgroundColor: inputBgColor
+                            }
+                        ]}
+                        placeholder="Digite sua senha"
+                        placeholderTextColor={isDark ? '#666666' : '#9CA3AF'}
+                        value={senha}
+                        onChangeText={setSenha}
+                        secureTextEntry
+                    />
+                </View>
+
+                {/* Botão Entrar */}
+                <TouchableOpacity style={styles.button} onPress={trataLogin}>
+                    <Text style={styles.textoButton}>Entrar</Text>
                 </TouchableOpacity>
+
+                {/* Footer Criar Conta */}
+                <View style={styles.areaCadastro}>
+                    <Text style={[styles.textoConta, { color: subTextColor }]}>
+                        Não tem uma conta?{' '}
+                    </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('CadastroUsuario')}>
+                        <Text style={styles.cadastro}>Criar conta</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
 
         </View>

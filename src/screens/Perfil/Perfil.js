@@ -90,14 +90,13 @@ export default function Perfil({ navigation }) {
             mediaTypes: ImagePicker.MediaTypeOptions.Images,
             allowsEditing: true,
             aspect: [1, 1],
-            quality: 0.3, // Qualidade reduzida para otimizar o armazenamento no AsyncStorage
-            base64: true,  // Habilita a conversão da imagem para string Base64
+            quality: 0.3,
+            base64: true,
         });
 
         if (!result.canceled && result.assets && result.assets.length > 0) {
             try {
                 const asset = result.assets[0];
-                // Cria a URI no formato Data Base64
                 const fotoBase64 = `data:image/jpeg;base64,${asset.base64}`;
 
                 const usuarioComNovaFoto = { ...usuario, foto: fotoBase64 };
@@ -174,10 +173,11 @@ export default function Perfil({ navigation }) {
         }
     }
 
-    const bgColor = isDark ? '#081225' : '#F5F7FB';
-    const cardBgColor = isDark ? '#0F1C36' : '#FFFFFF';
+    // Preto Puro no Modo Dark
+    const bgColor = isDark ? '#000000' : '#F5F7FB';
+    const cardBgColor = isDark ? '#121212' : '#FFFFFF';
     const textColor = isDark ? '#FFFFFF' : '#111827';
-    const borderColor = isDark ? '#192A4A' : '#F0F2F5';
+    const borderColor = isDark ? '#222222' : '#F0F2F5';
     const iconBlue = '#2563EB';
 
     return (
@@ -185,7 +185,8 @@ export default function Perfil({ navigation }) {
             contentContainerStyle={{ flexGrow: 1 }}
             style={[styles.container, { backgroundColor: bgColor }]}
         >
-            <View style={isDark ? styles.headerDark : styles.headerLight}>
+            {/* CABEÇALHO AZUL FIXO COM ARCO EM AMBOS OS TEMAS */}
+            <View style={styles.header}>
                 <View style={styles.topBar}>
                     <Text style={styles.tituloHeader}>Perfil</Text>
                     <TouchableOpacity onPress={toggleTheme} style={styles.themeButton}>
@@ -220,7 +221,7 @@ export default function Perfil({ navigation }) {
 
             {usuario ? (
                 <View style={styles.menuContainer}>
-                    <View style={[styles.card, { backgroundColor: cardBgColor }]}>
+                    <View style={[styles.card, { backgroundColor: cardBgColor, borderColor: isDark ? '#222222' : 'transparent', borderWidth: isDark ? 1 : 0 }]}>
                         <TouchableOpacity 
                             style={[styles.menuItem, { borderBottomColor: borderColor }]} 
                             onPress={() => setModalEditarVisible(true)}
@@ -262,37 +263,38 @@ export default function Perfil({ navigation }) {
                 </View>
             )}
 
+            {/* MODAL EDITAR PERFIL */}
             <Modal visible={modalEditarVisible} animationType="slide" transparent>
                 <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { backgroundColor: cardBgColor }]}>
+                    <View style={[styles.modalContent, { backgroundColor: cardBgColor, borderColor: isDark ? '#333' : 'transparent', borderWidth: isDark ? 1 : 0 }]}>
                         <Text style={[styles.modalTitle, { color: textColor }]}>Editar Perfil</Text>
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Nome</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
                             value={novoNome}
                             onChangeText={setNovoNome}
                             placeholder="Seu nome completo"
-                            placeholderTextColor={isDark ? '#888' : '#AAA'}
+                            placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>E-mail</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
                             value={novoEmail}
                             onChangeText={setNovoEmail}
                             keyboardType="email-address"
                             autoCapitalize="none"
                             placeholder="Seu e-mail"
-                            placeholderTextColor={isDark ? '#888' : '#AAA'}
+                            placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
                         <View style={styles.modalButtonsRow}>
                             <TouchableOpacity 
-                                style={[styles.modalBtn, styles.modalBtnCancelar]} 
+                                style={[styles.modalBtn, { backgroundColor: isDark ? '#333333' : '#E0E0E0' }]} 
                                 onPress={() => setModalEditarVisible(false)}
                             >
-                                <Text style={styles.modalBtnTextCancelar}>Cancelar</Text>
+                                <Text style={[styles.modalBtnTextCancelar, { color: isDark ? '#FFF' : '#333' }]}>Cancelar</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity 
@@ -306,47 +308,48 @@ export default function Perfil({ navigation }) {
                 </View>
             </Modal>
 
+            {/* MODAL ALTERAR SENHA */}
             <Modal visible={modalSenhaVisible} animationType="slide" transparent>
                 <View style={styles.modalOverlay}>
-                    <View style={[styles.modalContent, { backgroundColor: cardBgColor }]}>
+                    <View style={[styles.modalContent, { backgroundColor: cardBgColor, borderColor: isDark ? '#333' : 'transparent', borderWidth: isDark ? 1 : 0 }]}>
                         <Text style={[styles.modalTitle, { color: textColor }]}>Alterar Senha</Text>
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Senha Atual</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
                             value={senhaAtual}
                             onChangeText={setSenhaAtual}
                             secureTextEntry
                             placeholder="Sua senha atual"
-                            placeholderTextColor={isDark ? '#888' : '#AAA'}
+                            placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Nova Senha</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
                             value={novaSenha}
                             onChangeText={setNovaSenha}
                             secureTextEntry
                             placeholder="Mínimo 6 caracteres"
-                            placeholderTextColor={isDark ? '#888' : '#AAA'}
+                            placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
                         <Text style={[styles.inputLabel, { color: isDark ? '#CCC' : '#333' }]}>Confirmar Nova Senha</Text>
                         <TextInput
-                            style={[styles.modalInput, { color: textColor, borderColor: borderColor }]}
+                            style={[styles.modalInput, { color: textColor, borderColor: borderColor, backgroundColor: isDark ? '#000' : '#FFF' }]}
                             value={confirmarNovaSenha}
                             onChangeText={setConfirmarNovaSenha}
                             secureTextEntry
                             placeholder="Repita a nova senha"
-                            placeholderTextColor={isDark ? '#888' : '#AAA'}
+                            placeholderTextColor={isDark ? '#666' : '#AAA'}
                         />
 
                         <View style={styles.modalButtonsRow}>
                             <TouchableOpacity 
-                                style={[styles.modalBtn, styles.modalBtnCancelar]} 
+                                style={[styles.modalBtn, { backgroundColor: isDark ? '#333333' : '#E0E0E0' }]} 
                                 onPress={() => setModalSenhaVisible(false)}
                             >
-                                <Text style={styles.modalBtnTextCancelar}>Cancelar</Text>
+                                <Text style={[styles.modalBtnTextCancelar, { color: isDark ? '#FFF' : '#333' }]}>Cancelar</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity 
@@ -367,19 +370,14 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    headerLight: {
+    // Cabeçalho fixo com fundo Azul e bordas arrendondadas em ambos os temas
+    header: {
         backgroundColor: '#0052CC',
         paddingTop: 50,
         paddingBottom: 40,
         paddingHorizontal: 20,
         borderBottomLeftRadius: 160,
         borderBottomRightRadius: 160,
-        alignItems: 'center',
-    },
-    headerDark: {
-        paddingTop: 50,
-        paddingBottom: 10,
-        paddingHorizontal: 20,
         alignItems: 'center',
     },
     topBar: {
@@ -447,7 +445,7 @@ const styles = StyleSheet.create({
     },
     emailUsuario: {
         fontSize: 13,
-        color: '#A0AEC0',
+        color: '#E0E7FF',
         marginTop: 2,
     },
     menuContainer: {
@@ -495,7 +493,7 @@ const styles = StyleSheet.create({
     },
     modalOverlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.6)',
+        backgroundColor: 'rgba(0,0,0,0.7)',
         justifyContent: 'center',
         paddingHorizontal: 20,
     },
@@ -534,14 +532,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 5,
     },
-    modalBtnCancelar: {
-        backgroundColor: '#E0E0E0',
-    },
     modalBtnSalvar: {
         backgroundColor: '#0052CC',
     },
     modalBtnTextCancelar: {
-        color: '#333333',
         fontWeight: 'bold',
     },
     modalBtnTextSalvar: {
