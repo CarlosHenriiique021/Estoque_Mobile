@@ -24,20 +24,17 @@ export default function Home({ navigation }) {
         try {
             setLoading(true);
 
-            // Usuario Logado
             const userJson = await AsyncStorage.getItem('usuarioLogado');
             if (userJson) {
                 setUsuario(JSON.parse(userJson));
             }
 
-            // Total de Usuarios
             const usuariosJson = await AsyncStorage.getItem('usuarios');
             if (usuariosJson) {
                 const listaU = JSON.parse(usuariosJson);
                 setTotalUsuarios(Array.isArray(listaU) ? listaU.length : 0);
             }
 
-            // Lista de Produtos
             const produtosJson = await AsyncStorage.getItem('produtos');
             if (produtosJson) {
                 const listaP = JSON.parse(produtosJson);
@@ -53,7 +50,6 @@ export default function Home({ navigation }) {
         }
     }
 
-    // Cálculo seguro do valor total em estoque (Trata tanto números quanto strings)
     const valorTotalEstoque = (produtos || []).reduce((acc, item) => {
         const rawValor = item.valor ?? item.preco ?? 0;
         let preco = 0;
@@ -82,7 +78,6 @@ export default function Home({ navigation }) {
             style={[styles.container, { backgroundColor: bgColor }]}
             showsVerticalScrollIndicator={false}
         >
-            {/* CABEÇALHO AZUL CURVO */}
             <View style={[styles.headerHomeCurvo, { backgroundColor: isDark ? '#001D4A' : '#0052CC' }]}>
                 <View style={styles.topBarHome}>
                     <View>
@@ -104,10 +99,7 @@ export default function Home({ navigation }) {
                 </View>
             </View>
 
-            {/* PAINEL E MÉTRICAS */}
             <View style={styles.contentContainerHome}>
-
-                {/* METRICAS */}
                 <View style={styles.metricsRow}>
                     <View style={[styles.metricCardDark, { backgroundColor: cardBgColor, borderColor, borderWidth: isDark ? 1 : 0 }]}>
                         <Text style={[styles.metricNumber, { color: bluePrimary }]}>
@@ -128,17 +120,18 @@ export default function Home({ navigation }) {
                     </View>
                 </View>
 
-                {/* VALOR TOTAL DO ESTOQUE */}
                 <View style={[styles.totalCardDark, { backgroundColor: cardBgColor, borderColor, borderWidth: isDark ? 1 : 0 }]}>
                     <Text style={[styles.totalValue, { color: bluePrimary }]}>
-                        R$ {valorTotalEstoque.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        R$ {valorTotalEstoque.toLocaleString('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}
                     </Text>
                     <Text style={[styles.totalLabel, { color: subTextColor }]}>
                         Valor total do estoque
                     </Text>
                 </View>
 
-                {/* ULTIMOS PRODUTOS */}
                 <View style={styles.sectionHeaderHome}>
                     <Text style={[styles.sectionTitleHome, { color: textColor }]}>
                         Últimos produtos
@@ -151,10 +144,28 @@ export default function Home({ navigation }) {
                 </View>
 
                 {loading ? (
-                    <ActivityIndicator size="large" color={bluePrimary} style={{ marginTop: 20 }} />
+                    <ActivityIndicator
+                        size="large"
+                        color={bluePrimary}
+                        style={{ marginTop: 20 }}
+                    />
                 ) : produtos.length === 0 ? (
-                    <View style={[styles.card, { backgroundColor: cardBgColor, borderColor, borderWidth: 1, padding: 20, alignItems: 'center' }]}>
-                        <Ionicons name="cube-outline" size={38} color={subTextColor} style={{ marginBottom: 8 }} />
+                    <View style={[
+                        styles.card,
+                        {
+                            backgroundColor: cardBgColor,
+                            borderColor,
+                            borderWidth: 1,
+                            padding: 20,
+                            alignItems: 'center'
+                        }
+                    ]}>
+                        <Ionicons
+                            name="cube-outline"
+                            size={38}
+                            color={subTextColor}
+                            style={{ marginBottom: 8 }}
+                        />
                         <Text style={{ color: subTextColor, textAlign: 'center' }}>
                             Nenhum produto cadastrado no momento.
                         </Text>
@@ -178,7 +189,11 @@ export default function Home({ navigation }) {
                                 ]}
                             >
                                 <View style={styles.iconBgHome}>
-                                    <Ionicons name="cube-outline" size={22} color={bluePrimary} />
+                                    <Ionicons
+                                        name="cube-outline"
+                                        size={22}
+                                        color={bluePrimary}
+                                    />
                                 </View>
 
                                 <View style={{ flex: 1 }}>
@@ -201,7 +216,6 @@ export default function Home({ navigation }) {
                         );
                     })
                 )}
-
             </View>
         </ScrollView>
     );
