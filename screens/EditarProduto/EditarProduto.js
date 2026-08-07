@@ -11,9 +11,7 @@ import { styles } from '../../style';
 
 export default function EditarProduto({ navigation, route }) {
 
-
     const { index, produto } = route.params;
-
 
     const [nomeProduto, setNomeProduto] = useState(
         produto.nomeProduto
@@ -35,78 +33,49 @@ export default function EditarProduto({ navigation, route }) {
     async function salvarAlteracao() {
 
         const erros = [];
-
         const novaQuantidade = Number(quantidade);
         const novoValor = parseFloat(valor);
-
 
         if (nomeProduto.trim() === "") {
             erros.push("• Nome do produto inválido.");
         }
 
-
         if (categoria.trim() === "") {
             erros.push("• Categoria inválida.");
         }
-
 
         if (isNaN(novaQuantidade) || novaQuantidade <= 0) {
             erros.push("• Quantidade inválida.");
         }
 
-
         if (isNaN(novoValor) || novoValor <= 0) {
             erros.push("• Valor inválido.");
         }
 
-
-
         if (erros.length > 0) {
-
             alert(
                 "Corrija os seguintes campos:\n\n" +
                 erros.join("\n")
             );
-
             return;
         }
 
-
-
         try {
-
             const json = await AsyncStorage.getItem("produtos");
 
-            const produtos = json
-                ? JSON.parse(json)
-                : [];
-
-
+            const produtos = json ? JSON.parse(json) : [];
 
             produtos[index] = {
-
                 ...produtos[index],
-
                 nomeProduto: nomeProduto,
                 categoria: categoria,
                 quantidade: novaQuantidade,
                 valor: novoValor
-
             };
 
-
-
-            await AsyncStorage.setItem(
-                "produtos",
-                JSON.stringify(produtos)
-            );
-
-
-
+            await AsyncStorage.setItem("produtos", JSON.stringify(produtos));
             alert("Produto atualizado com sucesso!");
-
             navigation.goBack();
-
 
         } catch (error) {
 
@@ -119,153 +88,54 @@ export default function EditarProduto({ navigation, route }) {
 
     }
 
-
-
     return (
 
-        <View
-            style={{
-                flex: 1,
-                backgroundColor: "#FFFFFF",
-                padding: 20
-            }}
-        >
+        <View style={styles.editarProduto_View}>
 
+            <Text style={styles.editarProduto_Titulo}>Editar Produto</Text>
 
-            <Text
-                style={{
-                    fontSize: 25,
-                    fontWeight: "bold",
-                    marginBottom: 30
-                }}
-            >
-                Editar Produto
-            </Text>
-
-
-
-            <Text>
-                Nome
-            </Text>
-
+            <Text style={styles.editarProduto_Text}>Nome</Text>
 
             <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 15
-                }}
-
+                style={styles.editarProduto_InputBox}
                 value={nomeProduto}
-
                 onChangeText={setNomeProduto}
-
             />
 
-
-
-
-            <Text>
-                Categoria
-            </Text>
-
+            <Text style={styles.editarProduto_Text}>Categoria</Text>
 
             <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 15
-                }}
-
+                style={styles.editarProduto_InputBox}
                 value={categoria}
-
                 onChangeText={setCategoria}
-
             />
 
-
-
-
-            <Text>
-                Quantidade
-            </Text>
+            <Text style={styles.editarProduto_Text}>Quantidade</Text>
 
 
             <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 15
-                }}
-
+                style={styles.editarProduto_InputBox}
                 keyboardType="numeric"
-
                 value={quantidade}
-
                 onChangeText={setQuantidade}
-
             />
 
-
-
-
-            <Text>
-                Valor
-            </Text>
-
+            <Text style={styles.editarProduto_Text}>Valor</Text>
 
             <TextInput
-
-                style={{
-                    backgroundColor: "#fff",
-                    padding: 12,
-                    borderRadius: 10,
-                    marginBottom: 25
-                }}
-
+                style={styles.editarProduto_InputBox}
                 keyboardType="decimal-pad"
-
                 value={valor}
-
                 onChangeText={setValor}
-
             />
-
-
-
 
             <TouchableOpacity
-
                 onPress={salvarAlteracao}
+                style={styles.editarProduto_Salvar}>
 
-                style={{
-                    backgroundColor: "#2563EB",
-                    padding: 15,
-                    borderRadius: 10,
-                    alignItems: "center"
-                }}
-
-            >
-
-                <Text
-                    style={{
-                        color: "#fff",
-                        fontWeight: "bold",
-                        fontSize: 16
-                    }}
-                >
-                    SALVAR ALTERAÇÕES
-                </Text>
-
+                <Text style={styles.editarProduto_TextoSalvar}>SALVAR ALTERAÇÕES</Text>
 
             </TouchableOpacity>
-
 
         </View>
 
