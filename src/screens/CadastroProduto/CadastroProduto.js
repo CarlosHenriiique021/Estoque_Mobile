@@ -1,29 +1,27 @@
 import { useState } from 'react';
-import { 
-  Text, 
-  View, 
-  Image, 
-  TouchableOpacity, 
-  TextInput, 
-  ScrollView 
-} from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, FlatListComponent, Button, TouchableOpacity, TextInput } from 'react-native';
+import { Picker, ScrollView } from 'react-native-web';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
 
 // Import do Estilo na raiz do projeto (3 níveis para fora)
-import { styles } from '../../../style'; 
+import { styles } from '../../styles/style';
 
 export default function CadastroProduto({ navigation }) {
+
     const [nomeProduto, setNomeProduto] = useState('');
     const [categoria, setCategoria] = useState('');
-    const [quantidade, setQuantidade] = useState('');
-    const [valor, setValor] = useState('');
+    const [quantidade, setQuantidade] = useState(0);
+    const [valor, setValor] = useState(0);
 
     async function salvarProduto() {
+
         const erros = [];
 
         const qtd = Number(quantidade);
-        const preco = parseFloat(valor.replace(',', '.'));
+        const preco = parseFloat(valor);
 
         if (nomeProduto.trim() === "") {
             erros.push("• Nome do produto inválido.");
@@ -51,8 +49,8 @@ export default function CadastroProduto({ navigation }) {
 
         const novoProduto = {
             id: Date.now(),
-            nomeProduto: nomeProduto.trim(),
-            categoria: categoria.trim(),
+            nomeProduto,
+            categoria,
             quantidade: qtd,
             valor: preco
         };
@@ -72,59 +70,39 @@ export default function CadastroProduto({ navigation }) {
             setQuantidade("");
             setValor("");
 
-            // Retorna automaticamente para a tela de lista de produtos
-            navigation.goBack();
-
         } catch (error) {
             console.error(error);
-            alert("Erro ao salvar produto.");
         }
     }
 
+
     return (
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <View style={styles.CadastroProduto_container}>
+        <View style={styles.CadastroProduto_container}>
 
-                {/* BOTÃO VOLTAR */}
-                <TouchableOpacity 
-                    onPress={() => navigation.goBack()}
-                    style={{
-                        position: 'absolute',
-                        top: 40,
-                        left: 20,
-                        zIndex: 10,
-                        padding: 8
-                    }}
-                >
-                    <Ionicons name="arrow-back" size={28} color="#FFF" />
-                </TouchableOpacity>
-
+            <ScrollView>
                 <View style={styles.CadastroProduto_container2}>
                     <View style={styles.CadastroProduto_container}>
 
                         <View style={styles.CadastroProduto_CotainerImagem}>
                             <Image
-                                source={require('../../../assets/local-logoTextBranco.png')}
+                                source={require('../../../assets/images/logo.png')}
                                 style={styles.CadastroProduto_logo}
                             />
                         </View>
 
-                        <Text style={styles.CadastroProduto_tituloCadastroProduto}>
-                            Cadastro de Produto
-                        </Text>
+                        <Text style={styles.CadastroProduto_tituloCadastroProduto}>Cadastro de Produto</Text>
                     </View>
                 </View>
 
-                <View style={{ width: '100%' }}>
+                <View>
                     <View style={styles.CadastroProduto_viewContainer}>
                         <Text style={styles.CadastroProduto_textoPrincipal}>Nome</Text>
-                        <TextInput 
-                            style={styles.CadastroProduto_textoInput}
+                        <TextInput style={styles.CadastroProduto_textoInput}
                             placeholder='Nome do produto'
-                            placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                            placeholderTextColor="rgba(0, 0, 0, 0.3)"
                             value={nomeProduto}
                             onChangeText={setNomeProduto}
-                        />
+                        ></TextInput>
                     </View>
 
                     <View style={styles.CadastroProduto_viewContainer}>
@@ -132,57 +110,55 @@ export default function CadastroProduto({ navigation }) {
                         <TextInput
                             style={styles.CadastroProduto_textoInput}
                             placeholder='Digite a categoria...'
-                            placeholderTextColor="rgba(255, 255, 255, 0.3)"
+                            placeholderTextColor="rgba(0, 0, 0, 0.3)"
                             value={categoria}
                             onChangeText={setCategoria}
-                        />
+                        ></TextInput>
                     </View>
 
                     <View style={styles.CadastroProduto_viewContainer}>
                         <Text style={styles.CadastroProduto_textoPrincipal}>Quantidade</Text>
-                        <TextInput 
-                            style={styles.CadastroProduto_textoInput}
+                        <TextInput style={styles.CadastroProduto_textoInput}
                             placeholder='Digite a quantidade...'
-                            placeholderTextColor="rgba(255, 255, 255, 0.3)"
-                            keyboardType="numeric"
+                            placeholderTextColor="rgba(0, 0, 0, 0.3)"
                             value={quantidade}
                             onChangeText={setQuantidade}
-                        />
+                        ></TextInput>
                     </View>
 
                     <View style={styles.CadastroProduto_viewContainer}>
                         <Text style={styles.CadastroProduto_textoPrincipal}>Valor</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <View style={{ flexDirection: 'row' }}>
                             <Text style={styles.CadastroProduto_textoCifrao}>R$</Text>
-                            <TextInput 
-                                style={[styles.CadastroProduto_textoInputValor, { flex: 1 }]}
+                            <TextInput style={styles.CadastroProduto_textoInputValor}
                                 placeholder='Digite o valor...'
-                                placeholderTextColor="rgba(255, 255, 255, 0.6)"
-                                keyboardType="decimal-pad"
+                                placeholderTextColor="rgba(0, 0, 0, 0.3)"
                                 value={valor}
                                 onChangeText={setValor}
-                            />
+                            ></TextInput>
                         </View>
                     </View>
 
-                    <TouchableOpacity onPress={salvarProduto}>
+                    <TouchableOpacity
+                        onPress={salvarProduto}
+                    >
                         <View style={styles.CadastroProduto_btn_Salvar}>
-                            <Text style={styles.CadastroProduto_btn_SalvarText}> SALVAR </Text>
+                            <Text style={styles.CadastroProduto_btn_textoSalvarProdutos}> SALVAR </Text>
                         </View>
                     </TouchableOpacity>
 
-                    <View style={styles.CadastroProduto_viewEditarELista}>
-                        <TouchableOpacity onPress={() => navigation.navigate('EditarProduto')}>
-                            <Text style={styles.CadastroProduto_btn_editar}> EDITAR </Text>
-                        </TouchableOpacity>
-                        
-                        <TouchableOpacity onPress={() => navigation.navigate('ListaProdutos')}>
-                            <Text style={styles.CadastroProduto_btn_lista}> LISTAR </Text>
+
+                    <View>
+                        <TouchableOpacity
+                            onPress={() => { navigation.navigate('Produtos')}}>
+                            <View style={styles.CadastroProduto_btn_produtos}>
+                                <Text style={styles.CadastroProduto_btn_textoSalvarProdutos}> PRODUTOS </Text>
+                            </View>
                         </TouchableOpacity>
                     </View>
 
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
     );
-}
+};

@@ -6,8 +6,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { styles } from '../../../style';
-
+import { styles } from '../../styles/style';
 export default function EditarProduto({ navigation, route }) {
 
     const { index, produto, onAtualizar } = route.params;
