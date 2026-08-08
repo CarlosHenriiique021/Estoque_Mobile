@@ -1,6 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Ionicons } from '@expo/vector-icons';
+
+// Contexto do Tema para alterar as cores da barra no Modo Dark (True Black)
+import { useTheme } from '../contexts/ThemeContext'; 
 
 import Home from '../screens/Home/Home';
 import Produtos from '../screens/Produtos/Produtos';
@@ -35,13 +39,43 @@ function StackUsuarios() {
   );
 }
 
-
 export default function TabRoutes() {
+  const { isDark } = useTheme();
+
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({ route }) => ({
         headerShown: false,
-      }}
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          // Associa cada aba ao seu ícone correspondente
+          if (route.name === 'Home') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'ProdutosTab') {
+            iconName = focused ? 'cube' : 'cube-outline';
+          } else if (route.name === 'UsuariosTab') {
+            iconName = focused ? 'people' : 'people-outline';
+          } else if (route.name === 'Perfil') {
+            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'Desenvolvedores') {
+            iconName = focused ? 'code-slash' : 'code-slash-outline';
+          } else if (route.name === 'FaleConosco') {
+            iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#0052CC',
+        tabBarInactiveTintColor: isDark ? '#A0AEC0' : '#6B7280',
+        tabBarStyle: {
+          backgroundColor: isDark ? '#000000' : '#FFFFFF',
+          borderTopColor: isDark ? '#222222' : '#E5E7EB',
+          height: 60,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+      })}
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="ProdutosTab" component={StackProdutos} options={{ title: 'Produtos' }} />
