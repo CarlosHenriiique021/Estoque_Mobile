@@ -39,7 +39,7 @@ O projeto foi construído utilizando as seguintes tecnologias e bibliotecas obri
 A arquitetura do código segue rigorosamente o padrão solicitado:
 ```text
 src
-├── components
+├── contexts
 ├── screens
 │   ├── Login
 │   ├── CadastroUsuario
@@ -59,3 +59,53 @@ src
 │   └── storage.js
 └── styles
 App.js
+
+---
+
+## ⚙️ Como Executar o Projeto
+
+### Pré-requisitos
+
+Antes de iniciar, certifique-se de ter instalado em sua máquina:
+
+* **Node.js**
+* **npm**
+* **Expo CLI** (caso necessário)
+* **Expo Go** no celular, caso queira executar o aplicativo em um dispositivo físico
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/CarlosHenriiique021/Estoque_Mobile.git
+```
+
+### 2. Acesse a pasta do projeto
+
+```bash
+cd Estoque_Mobile
+```
+
+### 3. Instale as dependências
+
+```bash
+npm install
+```
+
+### 4. Inicie a aplicação
+
+```bash
+npx expo start
+```
+
+Após executar o comando, o Expo exibirá um **QR Code** no terminal.
+
+### 5. Execute o aplicativo
+
+Você pode executar o projeto de diferentes formas:
+
+* **Dispositivo físico:** abra o aplicativo **Expo Go** no celular e escaneie o QR Code exibido no terminal.
+* **Emulador Android:** pressione `a` no terminal para abrir a aplicação no emulador Android.
+* **Navegador:** pressione `w` no terminal para executar a aplicação pelo navegador.
+
+> **Dica:** Para executar pelo celular utilizando o Expo Go, certifique-se de que o computador e o dispositivo estejam conectados à mesma rede Wi-Fi.
+
