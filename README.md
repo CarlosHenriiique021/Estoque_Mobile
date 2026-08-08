@@ -59,7 +59,7 @@ src
 │   └── storage.js
 └── styles
 App.js
-
+```
 ---
 
 ## ⚙️ Como Executar o Projeto
