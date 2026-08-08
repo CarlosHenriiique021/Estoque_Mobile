@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { styles } from '../../styles/style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTheme } from '../../contexts/ThemeContext';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function CadastroUsuario({ navigation }) {
     const [nome, setNome] = useState('');
@@ -54,152 +55,149 @@ export default function CadastroUsuario({ navigation }) {
         }
     }
 
+    const bgColor = isDark ? '#000000' : '#FFFFFF';
+    const textColor = isDark ? '#FFFFFF' : '#000000';
+    const inputBgColor = isDark ? '#121212' : '#FFFFFF';
+    const borderColor = isDark ? '#222222' : '#CCCCCC';
+    const placeholderColor = isDark ? '#666666' : 'gray';
+
     return (
-        <View style={[
-            styles.viewPrincipal, 
-            { backgroundColor: isDark ? '#121212' : '#FFFFFF', paddingHorizontal: 20 }
-        ]}>
-            {/* CABEÇALHO COM 3 COLUNAS ALINHADAS */}
-            <View style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-                marginTop: 40,
-                marginBottom: 20,
-            }}>
-                {/* 1. Botão Voltar */}
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('Login')}
-                    style={{
-                        paddingRight: 10,
-                        paddingVertical: 5,
-                        zIndex: 10
-                    }}
-                >
-                    <Text style={{ 
-                        fontSize: 32, 
-                        fontWeight: 'bold', 
-                        lineHeight: 32,
-                        color: isDark ? '#FFFFFF' : '#000000' 
-                    }}>
-                        ‹
-                    </Text>
-                </TouchableOpacity>
-
-                {/* 2. Título Centralizado */}
-                <Text style={{
-                    fontSize: 22,
-                    fontWeight: 'bold',
-                    color: isDark ? '#FFFFFF' : '#000000',
-                    textAlign: 'center',
-                    flex: 1
+        <ScrollView 
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ flexGrow: 1 }}
+            style={{ backgroundColor: bgColor }}
+        >
+            <View style={[styles.viewPrincipal, { backgroundColor: bgColor, paddingHorizontal: 20 }]}>
+                
+                {/* CABEÇALHO RECUADO COM 3 COLUNAS */}
+                <View style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    width: '100%',
+                    paddingTop: 50,
+                    marginBottom: 20,
                 }}>
-                    Criar conta
-                </Text>
+                    {/* 1. Botão Voltar */}
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate('Login')}
+                        style={{ paddingRight: 10, paddingVertical: 5, zIndex: 10 }}
+                    >
+                        <Ionicons name="chevron-back" size={28} color={textColor} />
+                    </TouchableOpacity>
 
-                {/* 3. Botão do Tema */}
-                <TouchableOpacity 
-                    onPress={toggleTheme} 
-                    style={{
-                        paddingVertical: 6,
-                        paddingHorizontal: 12,
-                        borderRadius: 16,
-                        backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0',
-                        zIndex: 10
-                    }}
-                >
-                    <Text style={{ fontSize: 16 }}>
-                        {isDark ? '☀️' : '🌙'}
+                    {/* 2. Título Centralizado */}
+                    <Text style={{
+                        fontSize: 22,
+                        fontWeight: 'bold',
+                        color: textColor,
+                        textAlign: 'center',
+                        flex: 1
+                    }}>
+                        Criar conta
                     </Text>
+
+                    {/* 3. Botão do Tema */}
+                    <TouchableOpacity 
+                        onPress={toggleTheme} 
+                        style={{ padding: 5, zIndex: 10 }}
+                    >
+                        <Ionicons 
+                            name={isDark ? 'sunny-outline' : 'moon-outline'} 
+                            size={22} 
+                            color={textColor} 
+                        />
+                    </TouchableOpacity>
+                </View>
+
+                {/* FORMULÁRIO */}
+                <Text style={[styles.texto, { color: textColor }]}>Nome</Text>
+                <TextInput
+                    style={[
+                        styles.textoCadastroInput,
+                        { 
+                            color: textColor,
+                            borderColor: borderColor,
+                            backgroundColor: inputBgColor
+                        }
+                    ]}
+                    placeholder='Digite seu nome completo'
+                    placeholderTextColor={placeholderColor}
+                    value={nome}
+                    onChangeText={setNome}
+                />
+
+                <Text style={[styles.texto, { color: textColor }]}>E-mail</Text>
+                <TextInput
+                    style={[
+                        styles.textoCadastroInput,
+                        { 
+                            color: textColor,
+                            borderColor: borderColor,
+                            backgroundColor: inputBgColor
+                        }
+                    ]}
+                    placeholder='Digite seu e-mail'
+                    placeholderTextColor={placeholderColor}
+                    keyboardType='email-address'
+                    autoCapitalize="none"
+                    value={email}
+                    onChangeText={setEmail}
+                />
+
+                <Text style={[styles.texto, { color: textColor }]}>Senha</Text>
+                <TextInput
+                    style={[
+                        styles.textoCadastroInput,
+                        { 
+                            color: textColor,
+                            borderColor: borderColor,
+                            backgroundColor: inputBgColor
+                        }
+                    ]}
+                    placeholder='Mínimo 6 caracteres'
+                    placeholderTextColor={placeholderColor}
+                    secureTextEntry={true}
+                    value={senha}
+                    onChangeText={setSenha}
+                />
+
+                <Text style={[styles.texto, { color: textColor }]}>Confirmar senha</Text>
+                <TextInput
+                    style={[
+                        styles.textoCadastroInput,
+                        { 
+                            color: textColor,
+                            borderColor: borderColor,
+                            backgroundColor: inputBgColor
+                        }
+                    ]}
+                    placeholder='Confirme sua senha'
+                    placeholderTextColor={placeholderColor}
+                    secureTextEntry={true}
+                    value={confirmarSenha}
+                    onChangeText={setConfirmarSenha}
+                />
+
+                {/* BOTÃO CADASTRAR */}
+                <TouchableOpacity style={styles.button} onPress={cadastrar}>
+                    <Text style={styles.textoButton}>Cadastrar</Text>
                 </TouchableOpacity>
-            </View>
 
-            {/* FORMULÁRIO */}
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>Nome</Text>
-            <TextInput
-                style={[
-                    styles.textoCadastroInput,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder='Digite seu nome completo'
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                value={nome}
-                onChangeText={setNome}
-            />
-
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>E-mail</Text>
-            <TextInput
-                style={[
-                    styles.textoCadastroInput,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder='Digite seu e-mail'
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                keyboardType='email-address'
-                autoCapitalize="none"
-                value={email}
-                onChangeText={setEmail}
-            />
-
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>Senha</Text>
-            <TextInput
-                style={[
-                    styles.textoCadastroInput,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder='Mínimo 6 caracteres'
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                secureTextEntry={true}
-                value={senha}
-                onChangeText={setSenha}
-            />
-
-            <Text style={[styles.texto, { color: isDark ? '#FFFFFF' : '#000000' }]}>Confirmar senha</Text>
-            <TextInput
-                style={[
-                    styles.textoCadastroInput,
-                    { 
-                        color: isDark ? '#FFFFFF' : '#000000',
-                        borderColor: isDark ? '#444444' : '#CCCCCC',
-                        backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF'
-                    }
-                ]}
-                placeholder='Confirme sua senha'
-                placeholderTextColor={isDark ? '#888888' : 'gray'}
-                secureTextEntry={true}
-                value={confirmarSenha}
-                onChangeText={setConfirmarSenha}
-            />
-
-            <TouchableOpacity style={styles.button} onPress={cadastrar}>
-                <Text style={styles.textoButton}>Cadastrar</Text>
-            </TouchableOpacity>
-
-            <View style={styles.arealogin}>
-                <Text style={[styles.textoConta, { color: isDark ? '#CCCCCC' : '#333333' }]}>
-                    Já tem uma conta?
-                </Text>
-
-                <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                    <Text style={styles.login}>
-                        Login
+                {/* ÁREA DO LOGIN */}
+                <View style={styles.arealogin}>
+                    <Text style={[styles.textoConta, { color: isDark ? '#A0AEC0' : '#333333' }]}>
+                        Já tem uma conta?
                     </Text>
-                </TouchableOpacity>
-            </View>
 
-        </View>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                        <Text style={styles.login}>
+                            Login
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+
+            </View>
+        </ScrollView>
     );
 }

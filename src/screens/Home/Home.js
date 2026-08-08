@@ -1,73 +1,222 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { styles } from '../../styles/style';
-import { ola } from '../../services/storage';
-
+import React, { useState, useCallback } from 'react';
+import { View, Text, ScrollView, TouchableOpacity, ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useFocusEffect } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { styles, colors } from '../../styles/style';
 import { useTheme } from '../../contexts/ThemeContext';
 
 export default function Home({ navigation }) {
     const { isDark, toggleTheme } = useTheme();
 
+    const [usuario, setUsuario] = useState(null);
+    const [produtos, setProdutos] = useState([]);
+    const [totalUsuarios, setTotalUsuarios] = useState(0);
+    const [loading, setLoading] = useState(true);
+
+    useFocusEffect(
+        useCallback(() => {
+            carregarDadosHome();
+        }, [])
+    );
+
+    async function carregarDadosHome() {
+        try {
+            setLoading(true);
+
+            const userJson = await AsyncStorage.getItem('usuarioLogado');
+            if (userJson) {
+                setUsuario(JSON.parse(userJson));
+            }
+
+            const usuariosJson = await AsyncStorage.getItem('usuarios');
+            if (usuariosJson) {
+                const listaU = JSON.parse(usuariosJson);
+                setTotalUsuarios(Array.isArray(listaU) ? listaU.length : 0);
+            }
+
+            const produtosJson = await AsyncStorage.getItem('produtos');
+            if (produtosJson) {
+                const listaP = JSON.parse(produtosJson);
+                setProdutos(Array.isArray(listaP) ? listaP : []);
+            } else {
+                setProdutos([]);
+            }
+
+        } catch (error) {
+            console.log('Erro ao carregar dados da Home:', error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const valorTotalEstoque = (produtos || []).reduce((acc, item) => {
+        const rawValor = item.valor ?? item.preco ?? 0;
+        let preco = 0;
+
+        if (typeof rawValor === 'number') {
+            preco = rawValor;
+        } else if (typeof rawValor === 'string') {
+            preco = parseFloat(rawValor.replace(',', '.')) || 0;
+        }
+
+        const qtd = Number(item.quantidade ?? item.qtd ?? 0);
+        return acc + (preco * qtd);
+    }, 0);
+
+    const bgColor = isDark ? colors.black : colors.lightBg;
+    const cardBgColor = isDark ? colors.darkCard : colors.lightCard;
+    const textColor = isDark ? colors.textLight : colors.textDark;
+    const subTextColor = isDark ? colors.textMutedDark : colors.textMuted;
+    const borderColor = isDark ? colors.darkBorder : colors.lightBorder;
+    const bluePrimary = '#2563EB';
+
+    const primeiroNome = usuario?.nome ? usuario.nome.split(' ')[0] : 'Carlos';
+
     return (
-        <View style={[
-            styles.viewPrincipal, 
-            { backgroundColor: isDark ? '#121212' : '#FFFFFF', paddingHorizontal: 20 }
-        ]}>
-            <View style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                width: '100%',
-                marginTop: 40,
-                marginBottom: 20
-            }}>
-                <Text style={{
-                    fontSize: 22,
-                    fontWeight: 'bold',
-                    color: isDark ? '#FFFFFF' : '#000000'
-                }}>
-                    Painel Principal
-                </Text>
+        <ScrollView
+            style={[styles.container, { backgroundColor: bgColor }]}
+            showsVerticalScrollIndicator={false}
+        >
+            <View style={[styles.headerHomeCurvo, { backgroundColor: isDark ? '#001D4A' : '#0052CC' }]}>
+                <View style={styles.topBarHome}>
+                    <View>
+                        <Text style={styles.saudacaoHome}>
+                            Olá, {primeiroNome}! 👋
+                        </Text>
+                        <Text style={styles.subSaudacaoHome}>
+                            Bem-vindo ao Estoque Mobile
+                        </Text>
+                    </View>
 
-                <TouchableOpacity 
-                    onPress={toggleTheme}
-                    style={{
-                        paddingVertical: 6,
-                        paddingHorizontal: 12,
-                        borderRadius: 20,
-                        backgroundColor: isDark ? '#2C2C2C' : '#E0E0E0'
-                    }}
-                >
-                    <Text style={{ fontSize: 14, color: isDark ? '#FFFFFF' : '#000000' }}>
-                        {isDark ? '☀️' : '🌙'}
+                    <TouchableOpacity onPress={toggleTheme} style={styles.btnThemeHome}>
+                        <Ionicons
+                            name={isDark ? 'sunny-outline' : 'moon-outline'}
+                            size={22}
+                            color="#FFFFFF"
+                        />
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+            <View style={styles.contentContainerHome}>
+                <View style={styles.metricsRow}>
+                    <View style={[styles.metricCardDark, { backgroundColor: cardBgColor, borderColor, borderWidth: isDark ? 1 : 0 }]}>
+                        <Text style={[styles.metricNumber, { color: bluePrimary }]}>
+                            {produtos.length}
+                        </Text>
+                        <Text style={[styles.metricLabel, { color: subTextColor }]}>
+                            Produtos cadastrados
+                        </Text>
+                    </View>
+
+                    <View style={[styles.metricCardDark, { backgroundColor: cardBgColor, borderColor, borderWidth: isDark ? 1 : 0 }]}>
+                        <Text style={[styles.metricNumber, { color: bluePrimary }]}>
+                            {totalUsuarios}
+                        </Text>
+                        <Text style={[styles.metricLabel, { color: subTextColor }]}>
+                            Usuários cadastrados
+                        </Text>
+                    </View>
+                </View>
+
+                <View style={[styles.totalCardDark, { backgroundColor: cardBgColor, borderColor, borderWidth: isDark ? 1 : 0 }]}>
+                    <Text style={[styles.totalValue, { color: bluePrimary }]}>
+                        R$ {valorTotalEstoque.toLocaleString('pt-BR', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}
                     </Text>
-                </TouchableOpacity>
-            </View>
+                    <Text style={[styles.totalLabel, { color: subTextColor }]}>
+                        Valor total do estoque
+                    </Text>
+                </View>
 
-            <View style={{
-                width: '100%',
-                padding: 16,
-                borderRadius: 8,
-                backgroundColor: isDark ? '#1E1E1E' : '#F5F5F5',
-                marginTop: 10
-            }}>
-                <Text style={{ 
-                    fontSize: 16, 
-                    fontWeight: '600', 
-                    color: isDark ? '#FFFFFF' : '#333333' 
-                }}>
-                    Bem-vindo ao Estoque Mobile!
-                </Text>
-                <Text style={{ 
-                    fontSize: 14, 
-                    color: isDark ? '#AAAAAA' : '#666666',
-                    marginTop: 6 
-                }}>
-                    Utilize o menu inferior para gerenciar produtos e usuários cadastrados.
-                </Text>
-            </View>
+                <View style={styles.sectionHeaderHome}>
+                    <Text style={[styles.sectionTitleHome, { color: textColor }]}>
+                        Últimos produtos
+                    </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('ProdutosTab', { screen: 'ListaProdutos' })}>
+                        <Text style={[styles.verTodosHome, { color: bluePrimary }]}>
+                            Ver todos
+                        </Text>
+                    </TouchableOpacity>
+                </View>
 
-        </View>
+                {loading ? (
+                    <ActivityIndicator
+                        size="large"
+                        color={bluePrimary}
+                        style={{ marginTop: 20 }}
+                    />
+                ) : produtos.length === 0 ? (
+                    <View style={[
+                        styles.card,
+                        {
+                            backgroundColor: cardBgColor,
+                            borderColor,
+                            borderWidth: 1,
+                            padding: 20,
+                            alignItems: 'center'
+                        }
+                    ]}>
+                        <Ionicons
+                            name="cube-outline"
+                            size={38}
+                            color={subTextColor}
+                            style={{ marginBottom: 8 }}
+                        />
+                        <Text style={{ color: subTextColor, textAlign: 'center' }}>
+                            Nenhum produto cadastrado no momento.
+                        </Text>
+                    </View>
+                ) : (
+                    produtos.slice(0, 4).map((item, index) => {
+                        const nomeProd = item.nomeProduto || item.nome || 'Produto';
+                        const precoProd = Number(item.valor ?? item.preco ?? 0);
+                        const qtdProd = Number(item.quantidade ?? item.qtd ?? 0);
+
+                        return (
+                            <View
+                                key={index}
+                                style={[
+                                    styles.cardItemHome,
+                                    {
+                                        backgroundColor: cardBgColor,
+                                        borderColor,
+                                        borderWidth: isDark ? 1 : 0
+                                    }
+                                ]}
+                            >
+                                <View style={styles.iconBgHome}>
+                                    <Ionicons
+                                        name="cube-outline"
+                                        size={22}
+                                        color={bluePrimary}
+                                    />
+                                </View>
+
+                                <View style={{ flex: 1 }}>
+                                    <Text style={[styles.nomeProdutoHome, { color: textColor }]}>
+                                        {nomeProd}
+                                    </Text>
+                                    <Text style={[styles.subProdutoHome, { color: subTextColor }]}>
+                                        {item.categoria || 'Geral'}
+                                    </Text>
+                                </View>
+
+                                <Text style={[styles.qtdHome, { color: subTextColor }]}>
+                                    {qtdProd} un.
+                                </Text>
+
+                                <Text style={[styles.precoHome, { color: textColor }]}>
+                                    R$ {precoProd.toFixed(2)}
+                                </Text>
+                            </View>
+                        );
+                    })
+                )}
+            </View>
+        </ScrollView>
     );
 }
