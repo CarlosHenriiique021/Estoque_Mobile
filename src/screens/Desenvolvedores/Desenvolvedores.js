@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-    Text, 
-    View, 
-    TouchableOpacity, 
-    ScrollView, 
-    Image, 
-    Linking 
+import {
+    Text,
+    View,
+    TouchableOpacity,
+    ScrollView,
+    Image,
+    Linking
 } from 'react-native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
@@ -17,36 +17,27 @@ export default function Desenvolvedores({ navigation }) {
 
     // Lista com os dados dos desenvolvedores baseada na imagem
     const desenvolvedores = [
-      {
-            id: '1',
-            nome: 'Kayo Dantas',
-            cargo: 'Desenvolvedor Mobile',
-            descricao: ' ',
-            foto: require('../../../assets/images/kayo.jpeg'), 
-            github: 'https://github.com/Kayo-Dantas',
-            linkedin: 'https://www.linkedin.com/in/kayodantas/',
-        },
         {
-            id: '2',
+            id: '1',
             nome: 'Matheus de Matos',
             cargo: 'Desenvolvedor Mobile',
             descricao: ' ',
-            foto: require('../../../assets/images/matheus.jpeg'), 
+            foto: require('../../../assets/images/matheus.jpeg'),
             github: 'https://github.com/MatheusDev0705',
             linkedin: 'https://www.linkedin.com/in/matheus-de-matos-986101263/',
         },
         {
-            id: '3',
+            id: '2',
             nome: 'Flávio Lima',
             cargo: 'Desenvolvedor Mobile',
             descricao: ' ',
-            foto: require('../../../assets/images/flavio.jpeg'), 
+            foto: require('../../../assets/images/flavio.jpeg'),
             github: 'https://github.com/agregor2012',
             linkedin: 'https://www.linkedin.com/in/flaviocezar/',
         },
-        
-         {
-            id: '4',
+
+        {
+            id: '3',
             nome: 'Carlos Henrique',
             cargo: 'Desenvolvedor Mobile',
             descricao: ' ',
@@ -54,7 +45,7 @@ export default function Desenvolvedores({ navigation }) {
             github: 'https://github.com/CarlosHenriiique021',
             linkedin: 'https://www.linkedin.com/in/carlos-henriiique/',
         },
-        
+
     ];
 
     const abrirLink = (url) => {
@@ -71,7 +62,7 @@ export default function Desenvolvedores({ navigation }) {
     return (
         <View style={[styles.container, { backgroundColor: bgColor }]}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 30 }}>
-                
+
                 {/* CABEÇALHO RECUADO PADRÃO */}
                 <View style={styles.headerSimplesTop}>
                     <TouchableOpacity
@@ -86,10 +77,10 @@ export default function Desenvolvedores({ navigation }) {
                     </Text>
 
                     <TouchableOpacity onPress={toggleTheme} style={styles.btnThemeTop}>
-                        <Ionicons 
-                            name={isDark ? 'sunny-outline' : 'moon-outline'} 
-                            size={22} 
-                            color={textColor} 
+                        <Ionicons
+                            name={isDark ? 'sunny-outline' : 'moon-outline'}
+                            size={22}
+                            color={textColor}
                         />
                     </TouchableOpacity>
                 </View>
@@ -97,7 +88,7 @@ export default function Desenvolvedores({ navigation }) {
                 {/* LISTA DE CARDS DOS DEVS */}
                 <View style={{ paddingHorizontal: 20 }}>
                     {desenvolvedores.map((dev) => (
-                        <View 
+                        <View
                             key={dev.id}
                             style={{
                                 backgroundColor: cardBgColor,
@@ -115,7 +106,7 @@ export default function Desenvolvedores({ navigation }) {
                             }}
                         >
                             {/* FOTO CIRCULAR */}
-                            <Image 
+                            <Image
                                 source={dev.foto}
                                 style={{
                                     width: 70,
